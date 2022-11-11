@@ -338,6 +338,7 @@
             "version": "==2.3.3"
         }
     },
+<<<<<<< HEAD
     "develop": {
         "psycopg2-binary": {
             "hashes": [
@@ -381,4 +382,7 @@
             "version": "==2.8.6"
         }
     }
+=======
+    "develop": {}
+>>>>>>> b70bf7e94c54bbb443435ccb42fdb1086fe3156f
 }
