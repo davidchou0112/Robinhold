@@ -134,6 +134,9 @@ class Transaction(db.Model, UserMixin):
     stock_id = db.Column(db.Integer, db.ForeignKey("stocks.id"))
     quantity = db.Column(db.Integer, nullable=False)
     is_purchased = db.Column(db.Boolean, nullable=False)
+    # purchased = db.Column(db.Boolean, default=True)
+    # sold = db.Column(db.Boolean, default=False)
+    
     price = db.Column(db.Integer, nullable=False)
 
     user = db.relationship("User", back_populates="stocks")
