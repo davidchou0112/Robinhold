@@ -4,7 +4,7 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
-from .models import db, User, Watchlist
+from .models import db, User, Watchlist, Stock
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .seeds import seed_commands
@@ -89,11 +89,51 @@ def api_help():
     return route_list
 
 
-@app.route('/testing')
-def api_testing():
+# @app.route('/testing')
+# def api_testing():
 
-    user_watchlist = User.query.get(1)
+#     user_watchlist = User.query.get(1)
 
 
-    print(user_watchlist.to_dict())
-    return user_watchlist.to_dict()
+#     print(user_watchlist.to_dict())
+#     return user_watchlist.to_dict()
+
+# ============ Get all users =============
+@app.route('/users')
+def get_all_users():
+    all_users = []
+    data = User.query.all()
+    for user in data:
+        all_users.append(user.to_dict())
+    return jsonify(all_users)
+
+# =========== Get single user by id ==========
+@app.route('/users/<int:id>')
+def get_user(id):
+    data = User.query.get(id).to_dict()
+    return data
+
+# ============== Get all stocks ==============
+@app.route("/stocks")
+def get_stocks():
+    all_stocks = []
+    data = Stock.query.all()
+    for stock in data:
+        all_stocks.append(stock.to_dict())
+    return jsonify(all_stocks)
+
+# ======== Get single stock by stock_id ==========
+@app.route("/stocks/<int:stock_id>")
+def get_single_stock(stock_id):
+    stock = Stock.query.get(stock_id)
+    return stock.to_dict()
+
+# get user's watchlists
+@app.route("/users/<int:user_id>/watchlists")
+def get_user_watchlists(user_id):
+    all_watchlists = []
+    data = Watchlist.query.filter(Watchlist.user_id==user_id).all()
+    print(data.list_to_dict())
+    # for lst in data:
+    #     all_watchlists.append(lst.to_dict())
+    return "testing"

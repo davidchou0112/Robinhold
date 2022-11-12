@@ -113,7 +113,7 @@ class Watchlist(db.Model, UserMixin):
             'id': self.id,
             'user_id': self.user_id,
             'name': self.name,
-            'watchlist_watched':self.list_to_dict()
+            'watched_stocks':self.list_to_dict()
         }
 
     def list_to_dict(self):
