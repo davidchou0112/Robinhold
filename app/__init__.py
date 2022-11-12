@@ -200,15 +200,20 @@ def post_new_transaction(user_id):
     db.session.commit()
     return "testing post transaction"
 
-# ========= Update a transaction ==============
-@app.route("/transactions/<int:id>", methods=["PUT"])
-def update_transaction(id):
-    transaction = Transaction.query.get(id)
-    print(transaction)
-    # update data in db
+# # ========= Update a transaction ==============
+# @app.route("/transactions/<int:id>", methods=["PUT"])
+# def update_transaction(id):
+#     transaction = Transaction.query.get(id)
+#     if not transaction:
+#         return {
+#             "message": "Transaction not found",
+#             "statusCode": 404,
+#         }, 404
+#     data = request.get_json()
+#     transaction.quantity = data["quantity"]
 
 
-    return "testing update transaction"
+#     return "testing update transaction"
 
 
 # ========= Delete a transaction ==============
