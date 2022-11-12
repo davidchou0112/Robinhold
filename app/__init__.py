@@ -4,7 +4,8 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
-from .models import db, User, Watchlist, Stock
+from .models import db, User, Watchlist, Stock, Transaction
+from .forms import CreateWatchlistForm  # new import
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .seeds import seed_commands
@@ -128,12 +129,35 @@ def get_single_stock(stock_id):
     stock = Stock.query.get(stock_id)
     return stock.to_dict()
 
-# get user's watchlists
+# ========== Get user's watchlists ==============
 @app.route("/users/<int:user_id>/watchlists")
 def get_user_watchlists(user_id):
     all_watchlists = []
     data = Watchlist.query.filter(Watchlist.user_id==user_id).all()
-    print(data.list_to_dict())
-    # for lst in data:
-    #     all_watchlists.append(lst.to_dict())
-    return "testing"
+    for lst in data:
+        all_watchlists.append(lst.to_dict())
+        print(all_watchlists)
+    return jsonify(all_watchlists)
+
+# # ========== Get all transations ============
+@app.route("/users/<int:user_id>/transactions")
+def get_user_transactions(user_id):
+    all_transations = []
+    data = Transaction.query.filter(Transaction.user_id == user_id).all()
+    for transation in data:
+        all_transations.append(transation.to_dict())
+    return jsonify(all_transations)
+
+# # ========= Create new watchlist ==============
+# @app.route("/users/<int:user_id>/watchlists",methods=["POST"])
+# def post_new_watchlist(user_id):
+#     form = CreateWatchlistForm()
+#     if form.validate_on_submit():
+#         data = {
+#             "user_id": user_id,
+#             "name": form.data["name"]
+#         }
+#         db.session.add(data)
+#         db.session.commit()
+#         return redirect("/users/<user_id>")
+#     return "Bad data"
