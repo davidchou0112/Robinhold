@@ -5,7 +5,6 @@ from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
 from .models import db, User, Watchlist, Stock, Transaction
-from .forms import CreateWatchlistForm  # new import
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .seeds import seed_commands
@@ -148,16 +147,29 @@ def get_user_transactions(user_id):
         all_transations.append(transation.to_dict())
     return jsonify(all_transations)
 
-# # ========= Create new watchlist ==============
-# @app.route("/users/<int:user_id>/watchlists",methods=["POST"])
-# def post_new_watchlist(user_id):
-#     form = CreateWatchlistForm()
-#     if form.validate_on_submit():
-#         data = {
-#             "user_id": user_id,
-#             "name": form.data["name"]
-#         }
-#         db.session.add(data)
-#         db.session.commit()
-#         return redirect("/users/<user_id>")
-#     return "Bad data"
+# ========= Create new watchlist ==============
+@app.route("/users/<int:user_id>/watchlists",methods=["POST"])
+def post_new_watchlist(user_id):
+    data = request.get_json()
+    new_list = Watchlist(
+        user_id = user_id,
+        name = data["name"]
+    )
+    db.session.add(new_list)
+    db.session.commit()
+    return "testing2"
+
+# ========= Create new transaction ==============
+@app.route("/users/<int:user_id>/transactions", methods=["POST"])
+def post_new_transaction(user_id):
+    data = request.get_json()
+    new_transaction = Transaction(
+        user_id = user_id,
+        stock_id = data["stock_id"],
+        quantity = data["quantity"],
+        is_purchased = True,
+        price = data["price"]
+    )
+    db.session.add(new_transaction)
+    db.session.commit()
+    return "testing post transaction"
