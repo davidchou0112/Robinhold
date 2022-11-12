@@ -1,14 +1,16 @@
 import os
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, render_template, request, session, redirect, jsonify
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
-from .models import db, User
+from .models import db, User, Watchlist
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .seeds import seed_commands
 from .config import Config
+from sqlalchemy.orm import joinedload, sessionmaker
+
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 # comment cass branch/second try
@@ -85,3 +87,15 @@ def api_help():
                     app.view_functions[rule.endpoint].__doc__ ]
                     for rule in app.url_map.iter_rules() if rule.endpoint != 'static' }
     return route_list
+
+
+@app.route('/testing')
+def api_testing():
+    # for user in db.session.query(User):
+    #     for lst in user.watchlists:
+    #         print("\t", watchlists.name)
+    # return '<h1>try</h1>'
+    user_watchlist = User.query.get(1)
+    # user_watchlist = session.query(User).options(joinedload(Watchlist.name))
+    print(user_watchlist.to_dict())
+    return user_watchlist.to_dict()

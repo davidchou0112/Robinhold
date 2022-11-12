@@ -44,8 +44,16 @@ class User(db.Model, UserMixin):
             'first_name': self.first_name,
             'last_name': self.last_name,
             'email': self.email,
-            'buying_power': self.buying_power
+            'buying_power': self.buying_power,
+            'watchlists': self.list_to_dict()
         }
+
+    def list_to_dict(self):
+        ls_dict = {}
+        for ls in self.watchlists:
+            ls_dict[ls.to_dict()['id']] = ls.to_dict()
+        return ls_dict
+
 
 
 class Stock(db.Model, UserMixin):
