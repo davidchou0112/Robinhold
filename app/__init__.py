@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, session, redirect, jsonify
+from flask import Flask, render_template, request, session, redirect, jsonify, make_response
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
@@ -151,6 +151,22 @@ def post_new_watchlist(user_id):
     db.session.commit()
     return "testing2"
 
+# ========== Update a watchlist ===============
+@app.route("/watchlists/<int:id>",methods=["PUT"])
+def update_watchlist(id):
+    watchlist = Watchlist.query.get(id)
+    # if watchlist not founded:
+    if not watchlist:
+        return {
+            "message": "Watchlist not found",
+            "statusCode": 404,
+        }, 404
+    data = request.get_json()
+    watchlist.name = data["name"]
+    db.session.commit()
+    return "update watchlist test"
+
+
 # ========= Delete a watchlist ==============
 @app.route("/watchlists/<int:id>",methods=["DELETE"])
 def delete_watchlist(id):
@@ -159,7 +175,8 @@ def delete_watchlist(id):
     db.session.commit()
     return "successfully delete watchlist"
 
-# # ========== Get all transations ============
+
+# ========== Get all transations ============
 @app.route("/users/<int:user_id>/transactions")
 def get_user_transactions(user_id):
     all_transations = []
@@ -182,6 +199,17 @@ def post_new_transaction(user_id):
     db.session.add(new_transaction)
     db.session.commit()
     return "testing post transaction"
+
+# ========= Update a transaction ==============
+@app.route("/transactions/<int:id>", methods=["PUT"])
+def update_transaction(id):
+    transaction = Transaction.query.get(id)
+    print(transaction)
+    # update data in db
+
+
+    return "testing update transaction"
+
 
 # ========= Delete a transaction ==============
 @app.route("/transactions/<int:id>", methods=["DELETE"])
