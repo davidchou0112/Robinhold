@@ -138,14 +138,6 @@ def get_user_watchlists(user_id):
         print(all_watchlists)
     return jsonify(all_watchlists)
 
-# # ========== Get all transations ============
-@app.route("/users/<int:user_id>/transactions")
-def get_user_transactions(user_id):
-    all_transations = []
-    data = Transaction.query.filter(Transaction.user_id == user_id).all()
-    for transation in data:
-        all_transations.append(transation.to_dict())
-    return jsonify(all_transations)
 
 # ========= Create new watchlist ==============
 @app.route("/users/<int:user_id>/watchlists",methods=["POST"])
@@ -158,6 +150,23 @@ def post_new_watchlist(user_id):
     db.session.add(new_list)
     db.session.commit()
     return "testing2"
+
+# ========= Delete a watchlist ==============
+@app.route("/watchlists/<int:id>",methods=["DELETE"])
+def delete_watchlist(id):
+    watchlist = Watchlist.query.get(id)
+    db.session.delete(watchlist)
+    db.session.commit()
+    return "successfully delete watchlist"
+
+# # ========== Get all transations ============
+@app.route("/users/<int:user_id>/transactions")
+def get_user_transactions(user_id):
+    all_transations = []
+    data = Transaction.query.filter(Transaction.user_id == user_id).all()
+    for transation in data:
+        all_transations.append(transation.to_dict())
+    return jsonify(all_transations)
 
 # ========= Create new transaction ==============
 @app.route("/users/<int:user_id>/transactions", methods=["POST"])
@@ -173,3 +182,11 @@ def post_new_transaction(user_id):
     db.session.add(new_transaction)
     db.session.commit()
     return "testing post transaction"
+
+# ========= Delete a transaction ==============
+@app.route("/transactions/<int:id>", methods=["DELETE"])
+def delete_transaction(id):
+    transaction = Transaction.query.get(id)
+    db.session.delete(transaction)
+    db.session.commit()
+    return "successfully delete transaction"
