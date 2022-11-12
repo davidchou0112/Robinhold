@@ -91,11 +91,9 @@ def api_help():
 
 @app.route('/testing')
 def api_testing():
-    # for user in db.session.query(User):
-    #     for lst in user.watchlists:
-    #         print("\t", watchlists.name)
-    # return '<h1>try</h1>'
+
     user_watchlist = User.query.get(1)
-    # user_watchlist = session.query(User).options(joinedload(Watchlist.name))
+
+
     print(user_watchlist.to_dict())
     return user_watchlist.to_dict()

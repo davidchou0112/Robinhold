@@ -88,7 +88,12 @@ class Stock(db.Model, UserMixin):
             'headquarter': self.headquarter,
             'founded': self.founded,
         }
-
+    def to_dict_for_watchlist(self):
+        return {
+            'id': self.id,
+            'symbol': self.symbol,
+            'price': self.price,
+        }
 
 class Watchlist(db.Model, UserMixin):
     __tablename__ = 'watchlists'
@@ -107,8 +112,16 @@ class Watchlist(db.Model, UserMixin):
         return {
             'id': self.id,
             'user_id': self.user_id,
-            'name': self.name
+            'name': self.name,
+            'watchlist_watched':self.list_to_dict()
         }
+
+    def list_to_dict(self):
+        ls_dict = {}
+        for ls in self.watchlist_watched:
+            ls_dict[ls.to_dict_for_watchlist()['id']] = ls.to_dict_for_watchlist()
+        return ls_dict
+
 
 class Transaction(db.Model, UserMixin):
     __tablename__ = 'transactions'
