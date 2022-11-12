@@ -90,7 +90,7 @@ class Watchlist(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    name = db.Column(db.String(40), nullable=False, unique=True)
+    name = db.Column(db.String(40), nullable=False)
 
     user = db.relationship("User", back_populates="watchlists")
     watchlist_watched = db.relationship('Stock', secondary= watched_stocks, back_populates="stock_watched")
