@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, session, redirect, jsonify, m
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
-from flask_login import LoginManager
+from flask_login import LoginManager, login_required
 from .models import db, User, Watchlist, Stock, Transaction
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
@@ -109,9 +109,28 @@ def get_all_users():
 
 # =========== Get single user by id ==========
 @app.route('/users/<int:id>')
+# @login_required
 def get_user(id):
+    # print(request, 'this is request')
     data = User.query.get(id).to_dict()
     return data
+
+# ========== Update Buying Power ===========
+# deposit/withdraw money should update buying power
+# buying/selling stock should update buying power
+@app.route('/users/<int:id>', methods=['PUT'])
+# @login_required
+def update_buying_power(id):
+    user = User.query.get(id)
+    if not user:
+        return {
+            "message": "User not found",
+            "statusCode": 404,
+        }, 404
+    data = request.get_json()
+    user.buying_power = data['buying_power']
+    db.session.commit()
+    return 'update buying power testing'
 
 # ============== Get all stocks ==============
 @app.route("/stocks")
@@ -124,12 +143,14 @@ def get_stocks():
 
 # ======== Get single stock by stock_id ==========
 @app.route("/stocks/<int:stock_id>")
+# @login_required
 def get_single_stock(stock_id):
     stock = Stock.query.get(stock_id)
     return stock.to_dict()
 
 # ========== Get user's watchlists ==============
 @app.route("/users/<int:user_id>/watchlists")
+# @login_required
 def get_user_watchlists(user_id):
     all_watchlists = []
     data = Watchlist.query.filter(Watchlist.user_id==user_id).all()
@@ -141,6 +162,7 @@ def get_user_watchlists(user_id):
 
 # ========= Create new watchlist ==============
 @app.route("/users/<int:user_id>/watchlists",methods=["POST"])
+# @login_required
 def post_new_watchlist(user_id):
     data = request.get_json()
     new_list = Watchlist(
@@ -153,6 +175,7 @@ def post_new_watchlist(user_id):
 
 # ========== Update a watchlist ===============
 @app.route("/watchlists/<int:id>",methods=["PUT"])
+# @login_required
 def update_watchlist(id):
     watchlist = Watchlist.query.get(id)
     # if watchlist not founded:
@@ -169,6 +192,7 @@ def update_watchlist(id):
 
 # ========= Delete a watchlist ==============
 @app.route("/watchlists/<int:id>",methods=["DELETE"])
+# @login_required
 def delete_watchlist(id):
     watchlist = Watchlist.query.get(id)
     db.session.delete(watchlist)
@@ -178,6 +202,7 @@ def delete_watchlist(id):
 
 # ========== Get all transations ============
 @app.route("/users/<int:user_id>/transactions")
+# @login_required
 def get_user_transactions(user_id):
     all_transations = []
     data = Transaction.query.filter(Transaction.user_id == user_id).all()
@@ -186,7 +211,10 @@ def get_user_transactions(user_id):
     return jsonify(all_transations)
 
 # ========= Create new transaction ==============
+# might need to work something that changes our buying power when stocks are 
+# purchased/sold (PUT method somewhere? or even new route)
 @app.route("/users/<int:user_id>/transactions", methods=["POST"])
+# @login_required
 def post_new_transaction(user_id):
     data = request.get_json()
     new_transaction = Transaction(
@@ -202,6 +230,7 @@ def post_new_transaction(user_id):
 
 # # ========= Update a transaction ==============
 # @app.route("/transactions/<int:id>", methods=["PUT"])
+# @login_required
 # def update_transaction(id):
 #     transaction = Transaction.query.get(id)
 #     if not transaction:
@@ -218,6 +247,7 @@ def post_new_transaction(user_id):
 
 # ========= Delete a transaction ==============
 @app.route("/transactions/<int:id>", methods=["DELETE"])
+# @login_required
 def delete_transaction(id):
     transaction = Transaction.query.get(id)
     db.session.delete(transaction)
