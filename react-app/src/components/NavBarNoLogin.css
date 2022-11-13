@@ -55,7 +55,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* background-image: url('../images/background01.jpeg'); */
+  background-image: url('./images/background01.jpeg');
   height: 800px;
 }
 
@@ -89,9 +89,9 @@
   margin: 20px;
 }
 
-/* #body__session3 {
-  background-image: url('../images/background03.png');
-} */
+#body__session3 {
+  background-image: url('./images/background03.png');
+}
 
 #body__h1-1 {
   color: greenyellow;
