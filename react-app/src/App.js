@@ -12,6 +12,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import AllStocks from './components/Stock/allstocks';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -49,6 +50,9 @@ function App() {
         </Route>
         <Route path='/stocks/:stockId' exact={true}>
           <Stock />
+        </Route>
+        <Route path='/stocks' exact={true}>
+            <AllStocks />
         </Route>
       </Switch>
     </BrowserRouter>

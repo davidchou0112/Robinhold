@@ -23,6 +23,9 @@ export const getAllStocks = () => async dispatch => {
         const data = await response.json();
         dispatch(displayAllStocks(data));
     }
+    else if (response.errors) {
+        console.log('testing111')
+    }
 }
 
 // ========== STATE OBJECT ==========
@@ -40,7 +43,7 @@ const stocksReducer = (state = initialState, action) => {
                 allStocks: { ...state.allStocks }
             }
             console.log(action, 'this is action')
-            action.stocks.Stock.forEach(stock => {
+            action.stocks.forEach(stock => {
                 allStocks[stock.id] = stock;
             });
             newState.allStocks = allStocks
