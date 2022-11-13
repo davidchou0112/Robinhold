@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid black;
 }
 
 .header__left {
@@ -62,6 +61,7 @@
   /* background-position: center; */
   background-repeat: no-repeat;
   height: 550px;
+  border-top: 1px solid black;
 }
 
 #body__h1 {
@@ -127,4 +127,32 @@
   color: black;
   font-size: 55px;
   font-weight: 400;
+}
+
+.navbar__right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__left {
+  display: flex;
+  align-items: center;
+  padding: 6px;
+}
+
+.navbar_link {
+  display: flex;
+  margin-right: 8px;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 20px;
+  text-decoration: none;
+  width: 75px;
+  color: black;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.navbar_link:hover {
+  color: #0dc80b;
 }

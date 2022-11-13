@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import './NavBar.css'
+import Portfolio from './Portfolio/Portfolio';
 
 
 const MainPage = () => {
@@ -35,7 +36,9 @@ const MainPage = () => {
   )
   }
 
-  return 'this shows the portfolio page when a user is logged in'
+  return (
+    <Portfolio />
+  )
 
 
 

@@ -1,0 +1,11 @@
+.port_wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  margin: 30px;
+}
+
+.port_left{
+  display: flex;
+  flex-direction: column;
+ }
