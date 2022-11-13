@@ -2,12 +2,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 30px;
+  border-bottom: 1px solid black;
 }
 
 .header__left {
   display: flex;
   align-items: center;
+  border-right: 1px solid black;
+  padding: 6px;
 }
 
 .header__right {
@@ -26,7 +28,7 @@
   text-decoration: none;
   width: 75px;
   color: black;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
 }
 
@@ -37,7 +39,7 @@
 
 .header__name {
   font-size: 25px;
-  font-weight: 600;
+  font-weight: 500;
   padding: 10px;
 }
 
@@ -56,20 +58,23 @@
   justify-content: center;
   align-items: center;
   background-image: url('./images/background01.jpeg');
-  height: 800px;
+  background-size: cover;
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  height: 550px;
 }
 
 #body__h1 {
   color: greenyellow;
-  font-size: 60px;
+  font-size: 70px;
   font-weight: 400;
+  padding: 30px;
 }
 
 #body__h2 {
   color: greenyellow;
-  font-size: 30px;
-  font-weight: 200;
-  padding: 30px;
+  font-size: 24px;
+  font-weight: 400;
 }
 
 .body__button {
@@ -89,12 +94,37 @@
   margin: 20px;
 }
 
+
+.body__button:hover {
+  color: white;
+  background-color: black;
+  border: 1px solid black;
+}
+
+#body__button_1 {
+  color: white;
+  background-color: black;
+  border: 1px solid black;
+}
+
+#body__button_1:hover {
+  background-color: rgb(87, 85, 85);
+  border: 1px solid rgb(87, 85, 85);
+}
+
+#body__button_0:hover {
+  background-color: rgb(241, 223, 25);
+  border: 1px solid rgb(241, 223, 25);
+  color: black;
+}
+
+
 #body__session3 {
   background-image: url('./images/background03.png');
 }
 
 #body__h1-1 {
-  color: greenyellow;
-  font-size: 60px;
+  color: black;
+  font-size: 55px;
   font-weight: 400;
 }

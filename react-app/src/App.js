@@ -5,7 +5,7 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 
-import NavBarNoLogin from './components/NavBarNoLogin';
+import MainPage from './components/MainPage';
 import Stock from './components/Stock/Stock'
 
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -31,7 +31,6 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
-      <NavBarNoLogin />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -46,14 +45,11 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <MainPage />
         </Route>
-
         <Route path='/stocks/:stockId' exact={true}>
           <Stock />
         </Route>
-
-
       </Switch>
     </BrowserRouter>
   );
