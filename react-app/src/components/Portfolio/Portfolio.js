@@ -1,10 +1,10 @@
 import './Portfolio.css'
 import React from 'react';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
-import { getBuyingPower } from '../../store/portfolio';
+// import { useParams } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
+// import { getBuyingPower } from '../../store/portfolio';
 
 
 const Portfolio = () => {
@@ -14,6 +14,12 @@ const Portfolio = () => {
   const buyingPower = useSelector(state => state.session.user.buying_power)
   console.log('buyingPower:', useSelector(state => state.session.user.buying_power))
 
+  const watchlist = useSelector(state => state.session.user.watchlists)
+  console.log('watchlist:', watchlist)
+
+  const watchlistArr = Object.entries(watchlist);
+  console.log('watchlistArr:', watchlistArr)
+  console.log('watched_stocks:', watchlistArr['watched_stocks'])
   // useEffect(() => {
   //   dispatch(getBuyingPower(userId))
   // }, [])
@@ -42,6 +48,7 @@ const Portfolio = () => {
         </div>
         <div>
           watchlists section
+          {/* <p>{watchlistArr['watched_stocks']}</p> */}
         </div>
       </div>
     </div>
