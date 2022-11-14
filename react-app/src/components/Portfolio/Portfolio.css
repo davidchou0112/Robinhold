@@ -1,11 +1,17 @@
-.port_wrapper{
+.port_wrapper {
   display: flex;
   flex-direction: row;
-  justify-content:space-between;
+  justify-content: space-between;
   margin: 30px;
 }
 
-.port_left{
+.port_left {
   display: flex;
   flex-direction: column;
- }
+}
+
+.buying_power {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+}

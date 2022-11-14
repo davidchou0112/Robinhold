@@ -27,12 +27,9 @@ const Portfolio = () => {
           Total investment money chart section
         </div>
 
-        <div>
-          buying power section
-        </div>
-
-        <div>
-          ${buyingPower}
+        <div className='buying_power'>
+          buying power
+          <p>${buyingPower}</p>
         </div>
 
       </div>
