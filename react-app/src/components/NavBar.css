@@ -27,6 +27,7 @@
   text-decoration: none;
   width: 75px;
   color: black;
+  background-color: black;
   font-size: 14px;
   font-weight: 600;
 }
@@ -39,7 +40,9 @@
 .header__name {
   font-size: 25px;
   font-weight: 500;
-  padding: 10px;
+  padding: 5px 5px 2px 10px;
+  text-decoration: none;
+  color: black;
 }
 
 .header__logo {
