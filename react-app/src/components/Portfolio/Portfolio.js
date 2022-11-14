@@ -8,8 +8,8 @@ import { getBuyingPower } from '../../store/portfolio';
 
 
 const Portfolio = () => {
-  const dispatch = useDispatch();
-  const { userId } = useParams();
+  // const dispatch = useDispatch();
+  // const { userId } = useParams();
 
   const buyingPower = useSelector(state => state.session.user.buying_power)
   console.log('buyingPower:', useSelector(state => state.session.user.buying_power))
