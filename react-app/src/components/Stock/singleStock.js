@@ -20,7 +20,7 @@ const SingleStock = () => {
 
     return (
         <div>
-            <h1>{singleStock.name}:{singleStock.symbol}</h1>
+            <h1>{singleStock.name}</h1>
             <h2>${singleStock.price}</h2>
             <Stock />
             <p>{singleStock.description}</p>
