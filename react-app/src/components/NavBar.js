@@ -37,8 +37,9 @@ const NavBar = () => {
   return (
     <div className='header__wrapper'>
       <div className='navbar__left'>
-        <div className='header__name'>Robinhold</div>
-        <img className='header__logo' src={Logo} alt='logo' />
+        <NavLink className='header__name' to='/'>
+          RobinHold <img className='header__logo' src={Logo} alt='logo' />
+        </NavLink>
       </div>
       <div className='navbar__right'>
         <NavLink className='navbar_link' to='/' exact={true} activeClassName='active'>
