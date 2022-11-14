@@ -25,9 +25,6 @@ const NavBar = () => {
           <NavLink className='header__button' to='/sign-up' exact={true} activeClassName='active'>
             Sign up
           </NavLink>
-          {/* <NavLink className='header__button' to='/' exact={true} activeClassName='active'>
-            Demo user
-          </NavLink> */}
         </div>
       </div>
     )
