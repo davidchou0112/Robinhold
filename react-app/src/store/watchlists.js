@@ -1,4 +1,6 @@
 const LOAD_WATCHLISTS = "watchlists/loadWatchlists"
+const CREATE_WATCHLIST = "watchlists/createWatchlist"
+
 
 const loadWatchlists = (watchlists) => {
     return {
@@ -7,12 +9,21 @@ const loadWatchlists = (watchlists) => {
     }
 }
 
+const createWatchlist = (watchlist) => {
+    return {
+        type: CREATE_WATCHLIST,
+        watchlist
+    }
+}
+
+
 
 // ================= Thunk ==================
 export const getAllWatchlists = () => async (dispatch) => {
-    const res = await fetch(`/users/${userId}/watchlists`)
-    const data = res.json()
-    console.log(res)
+    // =============  not sure about path ==============
+    // const res = await fetch(`/users/${userId}/watchlists`)
+    // const data = res.json()
+    // console.log(res)
 
 }
 

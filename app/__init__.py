@@ -146,9 +146,15 @@ def get_stocks():
 # @login_required
 def get_single_stock(stock_id):
     stock = Stock.query.get(stock_id)
+    if not stock:
+        return {
+            "message": "Stock couldn't be found",
+            "statusCode": 404,
+        }, 404
     return stock.to_dict()
 
 # ========== Get user's watchlists ==============
+# route could be "api/watchlists/current" and how to get current user id
 @app.route("/users/<int:user_id>/watchlists")
 # @login_required
 def get_user_watchlists(user_id):
@@ -169,6 +175,14 @@ def post_new_watchlist(user_id):
         user_id = user_id,
         name = data["name"]
     )
+    # if not new_list:
+    #     return {
+    #         "message": "Validation error",
+    #         "statusCode": 400,
+    #         "errors": {
+    #             "name": "Name of watchlist is required"
+    #         }
+    #     }, 400
     db.session.add(new_list)
     db.session.commit()
     return "testing2"
@@ -211,7 +225,7 @@ def get_user_transactions(user_id):
     return jsonify(all_transations)
 
 # ========= Create new transaction ==============
-# might need to work something that changes our buying power when stocks are 
+# might need to work something that changes our buying power when stocks are
 # purchased/sold (PUT method somewhere? or even new route)
 @app.route("/users/<int:user_id>/transactions", methods=["POST"])
 # @login_required
@@ -253,3 +267,17 @@ def delete_transaction(id):
     db.session.delete(transaction)
     db.session.commit()
     return "successfully delete transaction"
+
+
+# # ============  Add stock into watchlist ===========
+# @app.route("/users/watchlists/<int:watchlist_id>", methods=["PUT"])
+# def add_stock_to_watchlist(watchlist_id):
+#     watchlist = Watchlist.query.get(watchlist_id)
+
+
+
+# # ============= Get all stocks of current user ===========
+# @app.route("/api/stocks/current")
+# def get_user_stocks():
+#     # need current user id
+#     return
