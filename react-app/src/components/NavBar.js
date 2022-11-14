@@ -15,9 +15,12 @@ const NavBar = () => {
     return (
       <div className='header__wrapper'>
         <div className='header__left'>
+          <div className='header__name'>Robinhold</div>
+          {/* <img className='header__logo' src={Logo} alt='logo' /> */}
           <NavLink className='header__name' to='/'>
             <img className='header__logo' src={Logo} alt='logo' />
           </NavLink>
+
         </div>
         <div className='header__right'>
           <NavLink className='header__button' to='/login' exact={true} activeClassName='active'>
