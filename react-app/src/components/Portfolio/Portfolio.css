@@ -9,3 +9,35 @@
   display: flex;
   flex-direction: column;
  }
+
+ .LineGraph{
+  height : 200px;
+}
+
+/* ------------------------------------------------------------- */
+
+.portfolio-wrapper {
+  flex: 0.7;
+  /* color: white; */
+}
+
+.chart-header {
+  text-align: left;
+}
+
+.chart-header h1 {
+  margin: 0;
+}
+
+.chart-header p {
+  margin-top: 0;
+}
+
+.pf-chart-wrapper {
+  width: 100%;
+}
+
+.portfolio-chart-container {
+  display: flex;
+  flex-direction: column;
+}
