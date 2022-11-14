@@ -8,15 +8,28 @@ const loadWatchlists = (watchlists) => {
 }
 
 
+// ================= Thunk ==================
+export const getAllWatchlists = () => async (dispatch) => {
+    const res = await fetch(`/users/${userId}/watchlists`)
+    const data = res.json()
+    console.log(res)
+
+}
 
 
-const initialState = {}
+
+const initialState = {allWatchlists:{}, singleWatchlist:{}}
 const watchlistsReducer = (state=initialState, action) =>{
+    let newState
     switch (action.type) {
         case LOAD_WATCHLISTS:
-            return { watchlists: action.watchlists }
+            newState = { allWatchlists:{}, singleWatchlist:{} }
+            action.watchlists.forEach(watchlist => (
+                newState.allWatchlists[watchlist.id] = {...watchlist}
+            ))
+            return newState
 
-        default:
+            default:
             return state
     }
 }
