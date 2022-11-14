@@ -1,9 +1,10 @@
 
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import Logo from './images/robinhood__logo.png'
+import * as sessionActions from '../store/session'
 import './NavBar.css'
 
 const NavBar = () => {
@@ -24,9 +25,9 @@ const NavBar = () => {
           <NavLink className='header__button' to='/sign-up' exact={true} activeClassName='active'>
             Sign up
           </NavLink>
-          <NavLink className='header__button' to='/' exact={true} activeClassName='active'>
+          {/* <NavLink className='header__button' to='/' exact={true} activeClassName='active'>
             Demo user
-          </NavLink>
+          </NavLink> */}
         </div>
       </div>
     )

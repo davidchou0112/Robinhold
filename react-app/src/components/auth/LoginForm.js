@@ -8,8 +8,14 @@ const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [credential, setCredential] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+
+  const demoUserButton = (e) => {
+    setCredential('demo@aa.io');
+    setPassword('password');
+  }
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -32,6 +38,7 @@ const LoginForm = () => {
   }
 
   return (
+
     <form onSubmit={onLogin}>
       <div>
         {errors.map((error, ind) => (
@@ -59,7 +66,9 @@ const LoginForm = () => {
         />
         <button type='submit'>Login</button>
       </div>
+      <button type='submit' onClick={demoUserButton}>Demo User</button>
     </form>
+
   );
 };
 
