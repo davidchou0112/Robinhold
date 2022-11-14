@@ -6,13 +6,14 @@ import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 
 import MainPage from './components/MainPage';
-import Stock from './components/Stock/Stock'
+// import Stock from './components/Stock/Stock'
 
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import AllStocks from './components/Stock/allstocks';
+import SingleStock from './components/Stock/singleStock';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -49,10 +50,10 @@ function App() {
           <MainPage />
         </Route>
         <Route path='/stocks/:stockId' exact={true}>
-          <Stock />
+          <SingleStock />
         </Route>
         <Route path='/stocks' exact={true}>
-            <AllStocks />
+          <AllStocks />
         </Route>
       </Switch>
     </BrowserRouter>
