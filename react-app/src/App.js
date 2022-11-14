@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 
 import MainPage from './components/MainPage';
 // import Stock from './components/Stock/Stock'
+import Watchlists from './components/Watchlist/allWatchlists';
 
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
@@ -14,6 +15,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import AllStocks from './components/Stock/allstocks';
 import SingleStock from './components/Stock/singleStock';
+import SingleWatchlist from './components/Watchlist/singleWatchlist';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -54,6 +56,12 @@ function App() {
         </Route>
         <Route path='/stocks' exact={true}>
           <AllStocks />
+        </Route>
+        <Route path='/watchlists/:watchlistId' extct={true}>
+          <SingleWatchlist />
+        </Route>
+        <Route path='/watchlists' extct={true}>
+          <Watchlists />
         </Route>
       </Switch>
     </BrowserRouter>

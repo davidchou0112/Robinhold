@@ -1,5 +1,6 @@
 const LOAD_WATCHLISTS = "watchlists/loadWatchlists"
-const CREATE_WATCHLIST = "watchlists/createWatchlist"
+const LOAD_SINGLEWATCHLIST = "waatchlists/loadSingleWatchlist"
+// const CREATE_WATCHLIST = "watchlists/createWatchlist"
 
 
 const loadWatchlists = (watchlists) => {
@@ -9,9 +10,9 @@ const loadWatchlists = (watchlists) => {
     }
 }
 
-const createWatchlist = (watchlist) => {
+const loadSingleWatchlist = (watchlist) => {
     return {
-        type: CREATE_WATCHLIST,
+        type: LOAD_SINGLEWATCHLIST,
         watchlist
     }
 }
@@ -19,11 +20,21 @@ const createWatchlist = (watchlist) => {
 
 
 // ================= Thunk ==================
-export const getAllWatchlists = () => async (dispatch) => {
+export const getAllWatchlists = (userId) => async (dispatch) => {
     // =============  not sure about path ==============
-    // const res = await fetch(`/users/${userId}/watchlists`)
-    // const data = res.json()
-    // console.log(res)
+    const res = await fetch(`/users/${userId}/watchlists`)
+    const data = res.json()
+    // console.log("!!!!!!!!!!here is the thunk",data)
+
+    // if (res.ok){
+    //     dispatch(loadWatchlists(data))
+    // }
+}
+
+export const getSingleWatchlist = (id) => async(dispatch) => {
+    const res = await fetch(`/watchlists/${id}`)
+    const data = res.json()
+    // console.log("=======get single watchlist",data)
 
 }
 
@@ -35,9 +46,16 @@ const watchlistsReducer = (state=initialState, action) =>{
     switch (action.type) {
         case LOAD_WATCHLISTS:
             newState = { allWatchlists:{}, singleWatchlist:{} }
+            // console.log("===========action here",action)
+
             action.watchlists.forEach(watchlist => (
                 newState.allWatchlists[watchlist.id] = {...watchlist}
             ))
+            return newState
+
+        case LOAD_SINGLEWATCHLIST:
+            newState = { allWatchlists:{}, singleWatchlist:{} }
+            newState.singleWatchlist = action.watchlist
             return newState
 
             default:

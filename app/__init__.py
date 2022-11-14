@@ -109,7 +109,7 @@ def get_all_users():
 
 # =========== Get single user by id ==========
 @app.route('/users/<int:id>')
-# @login_required
+@login_required
 def get_user(id):
     # print(request, 'this is request')
     data = User.query.get(id).to_dict()
@@ -164,6 +164,18 @@ def get_user_watchlists(user_id):
         all_watchlists.append(lst.to_dict())
         print(all_watchlists)
     return jsonify(all_watchlists)
+
+# =============== Get watchlist by id ===============
+@app.route("/watchlists/<int:id>")
+def get_watchlist_by_id(id):
+    watchlist = Watchlist.query.get(id)
+    print(watchlist)
+    if not watchlist:
+        return {
+            "message": "Watchlist not found",
+            "statusCode": 404,
+        }, 404
+    return watchlist.to_dict()
 
 
 # ========= Create new watchlist ==============
