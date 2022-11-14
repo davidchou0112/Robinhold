@@ -4,8 +4,6 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LineGraph from './LineGraph';
 import TimePeriod from './TimePeriod';
-import Chip from '@material-ui/core/Chip';
-import { Avatar } from "@material-ui/core";
 import AddFundsModal from './AddFundModal';
 
 const popularTopics = [
@@ -79,18 +77,7 @@ const Portfolio = () => {
           <p>Show More</p>
         </div>
         <div className="newsfeed_popularlists_badges">
-          {popularTopics.map((topic) => (
-            <Chip
-              className="topic__badge"
-              variant="outlined"
-              label={topic}
-              avatar={
-                <Avatar
-                  src={`https://avatars.dicebear.com/api/human/${topic}.svg`}
-                />
-              }
-            />
-          ))}
+
           {/* <p>{watchlistArr['watched_stocks']}</p> */}
         </div>
       </div>

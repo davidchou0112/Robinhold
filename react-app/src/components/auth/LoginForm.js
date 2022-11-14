@@ -70,6 +70,8 @@ const LoginForm = () => {
                 onChange={updatePassword}
               />
               <small>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+                <i class="far fa-eye" id="togglePassword"></i>
                 <input type='checkbox' /> Keep me logged in for up to 30 days
               </small>
             </div>
