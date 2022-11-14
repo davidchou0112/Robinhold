@@ -12,7 +12,10 @@ const LogoutButton = () => {
   return (
     <div>
 
-      <button className='header__button' onClick={onLogout}>Logout</button>
+      <button className='header__button' onClick={onLogout}>
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        Logout
+        </button>
     </div>
 
   );

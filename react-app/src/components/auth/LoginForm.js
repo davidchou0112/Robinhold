@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import { NavLink } from 'react-router-dom'
+import * as sessionActions from '../../store/session'
 import './auth.css'
 
 const LoginForm = () => {
@@ -17,6 +18,18 @@ const LoginForm = () => {
     setCredential('demo@aa.io');
     setPassword('password');
   }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setErrors([]);
+    return dispatch(sessionActions.login({ credential, password })).catch(
+      async (res) => {
+        const data = await res.json();
+        if (data && data.message) setErrors(Object.values(data.message));
+      }
+    );
+  };
+
+
 
   const onLogin = async (e) => {
     e.preventDefault();

@@ -54,17 +54,25 @@ const stocksReducer = (state = initialState, action) => {
     switch (action.type) {
 
         // all stocks
+        // case GET_ALL_STOCKS:
+        //     let allStocks = {};
+        //     newState = {
+        //         ...state,
+        //         allStocks: { ...state.allStocks }
+        //     }
+        //     console.log(action, 'this is action')
+        //     action.stocks.forEach(stock => {
+        //         allStocks[stock.id] = stock;
+        //     });
+        //     newState.allStocks = allStocks
+        //     return newState
+
         case GET_ALL_STOCKS:
-            let allStocks = {};
             newState = {
                 ...state,
-                allStocks: { ...state.allStocks }
+                allStocks: { ...action.stocks }
             }
-            console.log(action, 'this is action')
-            action.stocks.forEach(stock => {
-                allStocks[stock.id] = stock;
-            });
-            newState.allStocks = allStocks
+
             return newState
 
         // single stock

@@ -5,7 +5,8 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import Logo from './images/robinhood__logo.png'
 import * as sessionActions from '../store/session'
-import './NavBar.css'
+import './NavBar.css';
+import SearchBar from './SearchBar';
 
 const NavBar = () => {
 
@@ -40,6 +41,9 @@ const NavBar = () => {
         <NavLink className='header__name' to='/'>
           <img className='header__logo' src={Logo} alt='logo' />
         </NavLink>
+      </div>
+      <div>
+        <SearchBar />
       </div>
       <div className='navbar__right'>
         <NavLink className='navbar_link' to='/' exact={true} activeClassName='active'>
