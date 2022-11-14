@@ -10,8 +10,63 @@
   flex-direction: column;
 }
 
-.buying_power {
-  justify-content: space-between;
+.LineGraph {
+  height: 200px;
+}
+
+/* ------------------------------------------------------------- */
+
+.portfolio-wrapper {
+  flex: 0.7;
+  /* color: white; */
+}
+
+.chart-header {
+  text-align: left;
+}
+
+.chart-header h1 {
+  margin: 0;
+}
+
+.chart-header p {
+  margin-top: 0;
+}
+
+.pf-chart-wrapper {
+  width: 100%;
+}
+
+.portfolio-chart-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+}
+
+
+/* -------------------------time-period-css------------------------------------ */
+.timeperiod__container {
+  display: flex;
+  border-bottom: 1px solid #3b4754;
+}
+
+.timeperiod__buttons__container {
+  display: flex;
+  align-items: center;
+}
+
+.timeperiod__button {
+  font-weight: bold;
+  padding: 10px 10px 20px 10px;
+  /* margin-left : 48px; */
+  cursor: pointer;
+}
+
+.timeperiod__button:hover {
+  color: #5ac53b;
+  transform: scale(1.05);
+}
+
+.timeperiod__button.active {
+  color: #5ac53b;
+  border-bottom: 2px solid #5ac53b;
 }

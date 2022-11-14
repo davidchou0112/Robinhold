@@ -1,56 +1,134 @@
 import './Portfolio.css'
-import React from 'react';
-// import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-// import { useParams } from 'react-router-dom';
-// import { NavLink } from 'react-router-dom';
-// import { getBuyingPower } from '../../store/portfolio';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import LineGraph from './LineGraph';
+import TimePeriod from './TimePeriod';
+import Chip from '@material-ui/core/Chip';
+import { Avatar } from "@material-ui/core";
+import AddFundsModal from './AddFundModal';
 
+const popularTopics = [
+  "Newly Listed Crypto",
+  "New OTC securities",
+  "IPO Access",
+  "Crypto",
+  "Altcoins",
+  "Bitcoin Family",
+  "Daily Movers",
+  "Technology",
+  "ETFs",
+  "100 Most Popular",
+  "Ethereum Family",
+  "Upcoming Earnings",
+  "HealthCare",
+  "Tech,Media,&Telecom",
+  "Energy",
+  "Pharma",
+  "Growth&Value ETFs",
+  "Energy&Water"
+];
 
 const Portfolio = () => {
-  // const dispatch = useDispatch();
-  // const { userId } = useParams();
+  const [showBP, setShowBP] = useState(false);
 
-  const buyingPower = useSelector(state => state.session.user.buying_power)
-  console.log('buyingPower:', useSelector(state => state.session.user.buying_power))
 
-  const watchlist = useSelector(state => state.session.user.watchlists)
-  console.log('watchlist:', watchlist)
+  const clickBuyPower = () => {
+    if (showBP) return;
+    setShowBP(true)
+  }
 
-  const watchlistArr = Object.entries(watchlist);
-  console.log('watchlistArr:', watchlistArr)
-  console.log('watched_stocks:', watchlistArr['watched_stocks'])
-  // useEffect(() => {
-  //   dispatch(getBuyingPower(userId))
-  // }, [])
+  const clickDeposit = async () => {
 
-  // return 'this shows the portfolio page when a user is logged in'
+  }
+
+  useEffect(() => {
+    if (!showBP) return;
+    const closeshowBP = () => {
+      setShowBP(false);
+    }
+    document.addEventListener('click', closeshowBP);
+    return () => document.removeEventListener('click', closeshowBP)
+  }, [showBP])
+
+
   return (
-    <div className='port_wrapper'>
-
-      <div className='port_left'>
-        <div>
-          Total investment money chart section
+    <div className='portfolio-wrapper'>
+      <div className="newsfeed-container"></div>
+      <div className='portfolio-chart-container'>
+        <div className='chart-header'>
+          <h1>$185,856</h1>
+          <p>+$88.88(+0.068%) Today</p>
         </div>
-
-        <div className='buying_power'>
-          buying power
-          <p>${buyingPower}</p>
+        <div className='pf-chart-wrapper'>
+          <LineGraph />
+          {/* <TimePeriod /> */}
         </div>
-
       </div>
-
-      <div className='port_left'>
-        <div>
-          stocks holding section
-
-
+      <div className="newsfeed__buying__section">
+        <h2> Buying Power</h2>
+        <h2> $2586.11</h2>
+      </div>
+      <div className="newsfeed__market__section">
+        <div className="newsfeed__market__box">
         </div>
-        <div>
-          watchlists section
+      </div>
+      <div className="newsfeed__popularlists__section">
+        <div className="newsfeed__popularlists__intro">
+          <h1>Trending lists</h1>
+          <p>Show More</p>
+        </div>
+        <div className="newsfeed_popularlists_badges">
+          {popularTopics.map((topic) => (
+            <Chip
+              className="topic__badge"
+              variant="outlined"
+              label={topic}
+              avatar={
+                <Avatar
+                  src={`https://avatars.dicebear.com/api/human/${topic}.svg`}
+                />
+              }
+            />
+          ))}
           {/* <p>{watchlistArr['watched_stocks']}</p> */}
         </div>
       </div>
+
+
+      <div className='buying-power-div' >
+        <div className='buying-power flex-between' onClick={clickBuyPower}>
+          <div>Buying Power</div>
+          <div>$158,265</div>
+        </div>
+
+        {showBP && (
+
+          <div id='add-funds' className='row hidden'>
+            <div className='deposit-funds'>
+              <div className='flex-between'>
+                <div>Brokerage Cash</div>
+                <div>$158,265</div>
+              </div>
+              <div className='flex-between border-grey'>
+                <div>Buying Power</div>
+                <div>$158,265</div>
+              </div>
+              {/* <div className='width-full'>
+                    <button className='deposit-button'>Deposit Funds</button>
+                    </div> */}
+              <div>
+                <AddFundsModal />
+              </div>
+              <div></div>
+            </div>
+            <div className='deposit-message'>Buying Power represents the total value of assets you can purchase.</div>
+          </div>
+        )}
+      </div>
+
+
+
     </div>
   )
 
