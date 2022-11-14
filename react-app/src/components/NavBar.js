@@ -54,7 +54,7 @@ const NavBar = () => {
         <NavLink className='navbar_link' to='/' exact={true} activeClassName='active'>
           SomethingElse
         </NavLink>
-        <div className='navbar_link'>
+        <div>
           <LogoutButton />
         </div>
 
