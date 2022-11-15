@@ -20,6 +20,7 @@ export default function CreateWatchlistForm() {
 
         let createdList = await dispatch(createWatchlist(newWatchlist, userId))
             .catch(async (res) => {
+                console.log("response from create list=========",res)
                 const data = await res.json()
                 if (data && data.errors) setErrors(data.errors)
             })
