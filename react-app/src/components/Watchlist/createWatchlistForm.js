@@ -1,34 +1,29 @@
 import { useState } from "react"
-import { useDispatch } from "react-redux"
-import { useParams } from "react-router-dom"
-import { createWatchlist } from "../../store/watchlists"
+import { useDispatch, useSelector } from "react-redux"
+import { useHistory } from "react-router-dom"
+import { createWatchlist, getAllWatchlists } from "../../store/watchlists"
 
 export default function CreateWatchlistForm() {
 
-    console.log('here i am')
+    // console.log('here i am')
+    const history = useHistory()
     const dispatch = useDispatch()
-    const [name, setName] = useState()
+    const [name, setName] = useState("")
     const [errors, setErrors] = useState([])
-    const { userId } = useParams()
+    const userId = useSelector(state => state.session.user.id)
+    // console.log("userId is here", userId)
 
     const handleSubmit = async e => {
         e.preventDefault()
-        console.log('123')
+        setName("")
+        setErrors([])
         const newWatchlist = {
             name
         }
-        setErrors([])
 
-        dispatch(createWatchlist(newWatchlist, userId))
-
-        // return await dispatch(createWatchlist(newWatchlist, userId))
-        //     .catch(async (res) => {
-        //         // console.log("response from create list=========",createdList)
-        //         const data = await res.json()
-        //         if (data && data.errors) setErrors(data.errors)
-        //     })
-        // if (createdList) {
-        // }
+        await dispatch(createWatchlist(newWatchlist, userId))
+        await dispatch(getAllWatchlists(userId))
+        history.push("/watchlists")
     }
 
     return (

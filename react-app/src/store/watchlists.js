@@ -70,7 +70,7 @@ export const createWatchlist = (watchlist, userId) => async (dispatch) => {
     })
     if ( res.ok ){
         const newWatchlist = await res.json()
-        dispatch(createNewWatchlist(newWatchlist,userId))
+        dispatch(createNewWatchlist(newWatchlist, userId))
         return newWatchlist
     }
 }
@@ -110,14 +110,10 @@ const watchlistsReducer = (state = initialState, action) => {
             return newState
 
         case CREATE_WATCHLIST:
-            return {
-                ...state,
-                allWatchlists: {
-                    ...state.allWatchlists,
-                    ...action.watchlist
-                },
-                singleWatchlist: {}
-            }
+            newState = {...state}
+            let id = action.watchlist.id
+            newState.allWatchlists[id] = action.watchlist
+            return newState
 
         case DELETE_WATCHLIST:
             newState = {

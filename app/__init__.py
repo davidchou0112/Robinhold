@@ -4,6 +4,7 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager, login_required, current_user
+from .forms.new_watchlist_form import CreateWatchlistForm
 from .models import db, User, Watchlist, Stock, Transaction
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
@@ -158,7 +159,7 @@ def get_single_stock(stock_id):
 # ========== Get user's watchlists ==============
 # route could be "api/watchlists/current" and how to get current user id
 @app.route("/users/<int:user_id>/watchlists")
-@login_required
+# @login_required
 def get_user_watchlists(user_id):
     all_watchlists = []
     data = Watchlist.query.filter(Watchlist.user_id==user_id).all()
@@ -169,7 +170,7 @@ def get_user_watchlists(user_id):
 
 # =============== Get watchlist by id ===============
 @app.route("/watchlists/<int:id>")
-@login_required
+# @login_required
 def get_watchlist_by_id(id):
     watchlist = Watchlist.query.get(id)
     print(watchlist)
@@ -184,7 +185,7 @@ def get_watchlist_by_id(id):
 
 # ========== Update a watchlist ===============
 @app.route("/watchlists/<int:id>",methods=["PUT"])
-@login_required
+# @login_required
 def update_watchlist(id):
     watchlist = Watchlist.query.get(id)
     # if watchlist not founded:
@@ -200,25 +201,31 @@ def update_watchlist(id):
 
 # ========= Create new watchlist ==============
 @app.route("/users/<int:user_id>/watchlists", methods=["POST"])
-# @app.route("/watchlists", methods=["POST"]) <---not work
-@login_required
+# @login_required
 def post_new_watchlist(user_id):
+    # ----------- Attempt 1 -------------could work
     data = request.get_json()
     new_list = Watchlist(
         user_id = user_id,
         name = data["name"]
     )
-    # if not new_list:
-    #     return {
-    #         "message": "Validation error",
-    #         "statusCode": 400,
-    #         "errors": {
-    #             "name": "Name of watchlist is required"
-    #         }
-    #     }, 400
+
     db.session.add(new_list)
     db.session.commit()
     return new_list.to_dict()
+
+# @app.route("/watchlists", methods=["POST"]).
+# def post_new_watchlist():
+#     form = CreateWatchlistForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+#     if form.validate_on_submit():
+#         watchlist = Watchlist(
+#             user_id=current_user.get_id(),
+#             name=form.data['name']
+#         )
+#         db.session.add(watchlist)
+#         db.session.commit()
+#         return "new creating testing"
 
 # ========= Delete a watchlist ==============
 @app.route("/watchlists/<int:id>",methods=["DELETE"])
