@@ -130,7 +130,7 @@ def update_buying_power(id):
     data = request.get_json()
     user.buying_power = data['buying_power']
     db.session.commit()
-    return 'update buying power testing'
+    return user.to_dict()
 
 # ============== Get all stocks ==============
 @app.route("/stocks")

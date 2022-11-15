@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LineGraph from './LineGraph';
 import TimePeriod from './TimePeriod';
-import AddFundsModal from './AddFundModal';
+import AddFundsForm from './AddFunds';
 
 const popularTopics = [
   "Newly Listed Crypto",
@@ -29,10 +29,10 @@ const popularTopics = [
 
 const Portfolio = () => {
   const [showBP, setShowBP] = useState(false);
-
-
+  const currentUser = useSelector(state=> state.session.user)
+  console.log(currentUser)
   const clickBuyPower = () => {
-    if (showBP) return;
+    if (showBP) return
     setShowBP(true)
   }
 
@@ -45,8 +45,8 @@ const Portfolio = () => {
     const closeshowBP = () => {
       setShowBP(false);
     }
-    document.addEventListener('click', closeshowBP);
-    return () => document.removeEventListener('click', closeshowBP)
+    document.addEventListener('submit', closeshowBP);
+    return () => document.removeEventListener('submit', closeshowBP)
   }, [showBP])
 
 
@@ -60,33 +60,16 @@ const Portfolio = () => {
         </div>
         <div className='pf-chart-wrapper'>
           <LineGraph />
-          {/* <TimePeriod /> */}
         </div>
       </div>
-      <div className="newsfeed__buying__section">
+      {/* <div className="newsfeed__buying__section">
         <h2> Buying Power</h2>
-        <h2> $2586.11</h2>
-      </div>
-      <div className="newsfeed__market__section">
-        <div className="newsfeed__market__box">
-        </div>
-      </div>
-      <div className="newsfeed__popularlists__section">
-        <div className="newsfeed__popularlists__intro">
-          <h1>Trending lists</h1>
-          <p>Show More</p>
-        </div>
-        <div className="newsfeed_popularlists_badges">
-
-          {/* <p>{watchlistArr['watched_stocks']}</p> */}
-        </div>
-      </div>
-
-
+        <h2>${currentUser.buying_power}</h2>
+      </div> */}
       <div className='buying-power-div' >
         <div className='buying-power flex-between' onClick={clickBuyPower}>
-          <div>Buying Power</div>
-          <div>$158,265</div>
+          <h2>Buying Power</h2>
+          <h2>${currentUser.buying_power}</h2>
         </div>
 
         {showBP && (
@@ -95,24 +78,20 @@ const Portfolio = () => {
             <div className='deposit-funds'>
               <div className='flex-between'>
                 <div>Brokerage Cash</div>
-                <div>$158,265</div>
+                <div>${currentUser.buying_power}</div>
               </div>
               <div className='flex-between border-grey'>
                 <div>Buying Power</div>
-                <div>$158,265</div>
+                <div>${currentUser.buying_power}</div>
               </div>
-              {/* <div className='width-full'>
-                    <button className='deposit-button'>Deposit Funds</button>
-                    </div> */}
-              <div>
-                <AddFundsModal />
-              </div>
-              <div></div>
+              <AddFundsForm />
             </div>
             <div className='deposit-message'>Buying Power represents the total value of assets you can purchase.</div>
           </div>
         )}
       </div>
+
+
 
 
 
