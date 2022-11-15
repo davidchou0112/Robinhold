@@ -9,7 +9,7 @@ import './singleStock.css'
 const SingleStock = () => {
     const dispatch = useDispatch();
     const { stockId } = useParams();
-    // console.log('this is stockId__:', stockId)
+    console.log('this is stockId__:', stockId)
 
     const singleStock = useSelector(state => state.stocks.singleStock)
     // console.log('this is state__:', useSelector(state => state))
