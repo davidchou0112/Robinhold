@@ -63,19 +63,19 @@ const initialState = {allWatchlists:{}, singleWatchlist:{}}
 const watchlistsReducer = (state=initialState, action) =>{
     let newState
     switch (action.type) {
-        // case LOAD_WATCHLISTS:
-        //     newState = { allWatchlists:{}, singleWatchlist:{} }
-        //     // console.log("===========action here",action)
+        case LOAD_WATCHLISTS:
+            newState = { allWatchlists:{}, singleWatchlist:{} }
+            // console.log("===========action here",action)
 
-        //     action.watchlists.forEach(watchlist => (
-        //         newState.allWatchlists[watchlist.id] = {...watchlist}
-        //     ))
-        //     return newState
+            action.watchlists.forEach(watchlist => (
+                newState.allWatchlists[watchlist.id] = {...watchlist}
+            ))
+            return newState
 
-        // case LOAD_SINGLEWATCHLIST:
-        //     newState = { allWatchlists:{}, singleWatchlist:{} }
-        //     newState.singleWatchlist = action.watchlist
-        //     return newState
+        case LOAD_SINGLEWATCHLIST:
+            newState = { allWatchlists:{}, singleWatchlist:{} }
+            newState.singleWatchlist = action.watchlist
+            return newState
 
         case CREATE_WATCHLIST:
             return {
