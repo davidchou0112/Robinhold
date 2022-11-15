@@ -88,9 +88,11 @@ class Stock(db.Model, UserMixin):
             'headquarter': self.headquarter,
             'founded': self.founded,
         }
+
     def to_dict_for_watchlist(self):
         return {
             'id': self.id,
+            'name': self.name,
             'symbol': self.symbol,
             'price': self.price,
         }

@@ -2,21 +2,19 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 import { getAllWatchlists } from "../../store/watchlists"
-import SingleWatchlist from "./singleWatchlist"
+import CreateWatchlistForm from "./createWatchlistForm"
+// import SingleWatchlist from "./singleWatchlist"
 
 
-export default function Watchlists(){
+export default function Watchlists() {
     const dispatch = useDispatch()
-    const allWatchlistsObj = useSelector(state => state.session.user.watchlists)
-    console.log(allWatchlistsObj)
+    const allWatchlistsObj = useSelector(state => state.watchlist.allWatchlists)
+    // console.log(allWatchlistsObj)
     const userId = useSelector(state => state.session.user.id)
     const allWatchlistsArr = Object.values(allWatchlistsObj)
-    console.log(allWatchlistsArr)
 
-    // const watched_stocks = Object.values(allWatchlistsArr[3])
-    // console.log(watched_stocks)
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(getAllWatchlists(userId))
     }, [dispatch, userId])
 
@@ -28,9 +26,10 @@ export default function Watchlists(){
                         {watchlist.id}
                         {watchlist.name}
                     </NavLink>
+                    {/* <button onClick={handleDelete()}>Delete</button> */}
                 </div>
             ))}
-
+            <CreateWatchlistForm />
         </div>
     )
 }

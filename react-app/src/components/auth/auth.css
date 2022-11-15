@@ -9,7 +9,7 @@
     justify-content: center;
     padding: 12px;
     border-radius: 20px;
-    color: black;
+    color: rgb(255, 255, 255);
     font-weight: 600;
     background-color: rgb(0, 0, 0);
     margin-top: 20px;
@@ -38,8 +38,6 @@
     align-items: start;
     padding: 50px 50px 50px 50px;
 }
-
-.login_form {}
 
 .login_header {
     margin-bottom: 30px;
@@ -70,3 +68,4 @@
     padding: 50px 50px 50px 50px;
 
 }
+
