@@ -15,21 +15,9 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   const demoUserButton = (e) => {
-    setCredential('demo@aa.io');
+    setEmail('demo@aa.io');
     setPassword('password');
   }
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setErrors([]);
-    return dispatch(sessionActions.login({ credential, password })).catch(
-      async (res) => {
-        const data = await res.json();
-        if (data && data.message) setErrors(Object.values(data.message));
-      }
-    );
-  };
-
-
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -58,9 +46,9 @@ const LoginForm = () => {
         <form onSubmit={onLogin} className='login_context'>
           <div className='login_form'>
             <div className='login_header'><strong>Log in to Robinhold</strong></div>
-            <div>
+            <div className='error_message'>
               {errors.map((error, ind) => (
-                <div key={ind}>{error}</div>
+                <div className='error_message' key={ind}>{error}</div>
               ))}
             </div>
             <label htmlFor='email'>Email</label>
@@ -95,7 +83,6 @@ const LoginForm = () => {
             </div>
             <div className='no_account'><small>Not on Robinhold? <NavLink to='/sign-up' exact={true}>Create an account</NavLink></small></div>
           </div>
-
         </form>
       </div>
     </div >
