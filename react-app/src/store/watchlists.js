@@ -50,7 +50,7 @@ export const getSingleWatchlist = (id) => async (dispatch) => {
 // -------------- Create new watchlist ---------------------
 export const createWatchlist = (watchlist, userId) => async (dispatch) => {
     const res = await fetch(`/users/${userId}/watchlists`, {
-        metnod: "POST",
+        method: "POST",
         headers: {
             'Content-Type': "application/json"
         },
