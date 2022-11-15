@@ -90,8 +90,8 @@ const LoginForm = () => {
             </div>
 
             <div className='button_field'>
-              <button className='button' type='submit'>Login</button>
-              <button className='button' type='submit' onClick={demoUserButton}>Demo User</button>
+              <button className='body__button' id='body__button_3' type='submit'>Login</button>
+              <button className='body__button' id='body__button_3' type='submit' onClick={demoUserButton}>Demo User</button>
             </div>
             <div className='no_account'><small>Not on Robinhold? <NavLink to='/sign-up' exact={true}>Create an account</NavLink></small></div>
           </div>

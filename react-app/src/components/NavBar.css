@@ -26,14 +26,15 @@
   border-radius: 20px;
   text-decoration: none;
   width: 75px;
-  color: rgb(255, 255, 255);
+  color: white;
   background-color: black;
   font-size: 14px;
   font-weight: 600;
+
 }
 
 .header__button:hover {
-  color: white;
+  color: #0dc80b;
   background-color: black;
 }
 
@@ -121,6 +122,18 @@
   color: black;
 }
 
+#body__button_3 {
+  color: white;
+  background-color: black;
+  border: 1px solid black;
+  width: 150px;
+  margin: 10px;
+}
+
+#body__button_3:hover {
+  background-color: rgb(87, 85, 85);
+  border: 1px solid rgb(87, 85, 85);
+}
 
 #body__session3 {
   background-image: url('./images/background03.png');

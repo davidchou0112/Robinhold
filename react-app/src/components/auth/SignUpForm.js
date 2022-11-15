@@ -93,7 +93,7 @@ const SignUpForm = () => {
             placeholder='Repeat Password'
           ></input>
         </div>
-        <button className='button' type='submit'>Sign Up</button>
+        <button className='body__button' id='body__button_3' type='submit'>Sign Up</button>
         <div className='no_account'><small>Already started? <NavLink to='/login' exact={true}>Log in to complete your application</NavLink></small></div>
       </form>
     </div>
