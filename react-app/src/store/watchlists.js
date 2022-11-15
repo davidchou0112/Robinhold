@@ -3,19 +3,19 @@ const LOAD_SINGLEWATCHLIST = "waatchlists/loadSingleWatchlist"
 const CREATE_WATCHLIST = "watchlists/createWatchlist"
 
 
-const loadWatchlists = (watchlists) => {
-    return {
-        type: LOAD_WATCHLISTS,
-        watchlists
-    }
-}
+// const loadWatchlists = (watchlists) => {
+//     return {
+//         type: LOAD_WATCHLISTS,
+//         watchlists
+//     }
+// }
 
-const loadSingleWatchlist = (watchlist) => {
-    return {
-        type: LOAD_SINGLEWATCHLIST,
-        watchlist
-    }
-}
+// const loadSingleWatchlist = (watchlist) => {
+//     return {
+//         type: LOAD_SINGLEWATCHLIST,
+//         watchlist
+//     }
+// }
 
 const createNewWatchlist = (watchlist) => {
     return {
@@ -54,7 +54,7 @@ export const createWatchlist = (watchlist, userId) => async(dispatch) => {
         },
         body: JSON.stringify(watchlist)
     })
-    console.log(res)
+    console.log("?????????????",res)
 
 }
 
@@ -63,19 +63,31 @@ const initialState = {allWatchlists:{}, singleWatchlist:{}}
 const watchlistsReducer = (state=initialState, action) =>{
     let newState
     switch (action.type) {
-        case LOAD_WATCHLISTS:
-            newState = { allWatchlists:{}, singleWatchlist:{} }
-            // console.log("===========action here",action)
+        // case LOAD_WATCHLISTS:
+        //     newState = { allWatchlists:{}, singleWatchlist:{} }
+        //     // console.log("===========action here",action)
 
-            action.watchlists.forEach(watchlist => (
-                newState.allWatchlists[watchlist.id] = {...watchlist}
-            ))
-            return newState
+        //     action.watchlists.forEach(watchlist => (
+        //         newState.allWatchlists[watchlist.id] = {...watchlist}
+        //     ))
+        //     return newState
 
-        case LOAD_SINGLEWATCHLIST:
-            newState = { allWatchlists:{}, singleWatchlist:{} }
-            newState.singleWatchlist = action.watchlist
-            return newState
+        // case LOAD_SINGLEWATCHLIST:
+        //     newState = { allWatchlists:{}, singleWatchlist:{} }
+        //     newState.singleWatchlist = action.watchlist
+        //     return newState
+
+        case CREATE_WATCHLIST:
+            return {
+                ...state,
+                allWatchlists: {
+                    ...state.allWatchlists,
+                    ...action.watchlist
+                },
+                singleWatchlist:{}
+            }
+
+
 
             default:
             return state
