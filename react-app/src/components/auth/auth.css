@@ -15,6 +15,11 @@
     margin-top: 20px;
 }
 
+.error_message {
+    color: red;
+    padding-bottom: 10px;
+}
+
 .input_field {
     width: 90%;
     height: 6px;
@@ -40,7 +45,7 @@
 }
 
 .login_header {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .login_wrapper {
@@ -68,4 +73,3 @@
     padding: 50px 50px 50px 50px;
 
 }
-
