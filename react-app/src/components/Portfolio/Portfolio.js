@@ -30,7 +30,9 @@ const popularTopics = [
 const Portfolio = () => {
   const [showBP, setShowBP] = useState(false);
   const currentUser = useSelector(state=> state.session.user)
-  console.log(currentUser)
+  const userTransactions = useSelector(state=>state.transaction.allTransactions)
+  console.log(userTransactions)
+  // console.log(currentUser)
   const clickBuyPower = () => {
     if (showBP) return
     setShowBP(true)
