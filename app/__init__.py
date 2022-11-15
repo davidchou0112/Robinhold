@@ -119,7 +119,7 @@ def get_user(id):
 # deposit/withdraw money should update buying power
 # buying/selling stock should update buying power
 @app.route('/users/<int:id>', methods=['PUT'])
-# @login_required
+@login_required
 def update_buying_power(id):
     user = User.query.get(id)
     if not user:
@@ -180,6 +180,7 @@ def get_watchlist_by_id(id):
 
 # ========= Create new watchlist ==============
 @app.route("/users/<int:user_id>/watchlists",methods=["POST"])
+# @app.route("/watchlists", methods=["POST"]) <---not work
 # @login_required
 def post_new_watchlist(user_id):
     data = request.get_json()

@@ -11,21 +11,50 @@ export default function SingleWatchlist(){
     console.log("testing to get watchlistobj",watchlistObj)
     const watched_stocks = Object.values(watchlistObj.watched_stocks)
     console.log(watched_stocks)
-
+    
     useEffect(()=>{
         dispatch(getSingleWatchlist(watchlistId))
     }, [dispatch, watchlistId])
 
     return (
         <div>
-            {watched_stocks.map(stock => (
-                <div key={stock.id}>
-                    <NavLink to={`/stocks/${stock.id}`}>
-                        {stock.symbol}
-                        ${stock.price}
-                    </NavLink>
-                </div>
-            ))}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Symbol</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {watched_stocks.map(stock => (
+                        <tr key={stock.id}>
+                            <NavLink to={`/stocks/${stock.id}`}>
+                                <td>{stock.id}</td>
+                            </NavLink>
+                                <td>{stock.symbol}</td>
+                                <td>{stock.price}</td>
+                        </tr>
+                    ))}
+                </tbody>
+
+                    {/* <tr>
+                        {watched_stocks.map(stock => (
+                            <NavLink to={`/stocks/${stock.id}`}>
+                                <td>{stock.name}</td>
+                                <td>{stock.symbol}</td>
+                                <td>{stock.price}</td>
+                            </NavLink>
+                        ))}
+                    </tr> */}
+                <tr>
+
+                </tr>
+
+                <tbody>
+
+                </tbody>
+            </table>
         </div>
     )
 }

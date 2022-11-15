@@ -1,6 +1,6 @@
 const LOAD_WATCHLISTS = "watchlists/loadWatchlists"
 const LOAD_SINGLEWATCHLIST = "waatchlists/loadSingleWatchlist"
-// const CREATE_WATCHLIST = "watchlists/createWatchlist"
+const CREATE_WATCHLIST = "watchlists/createWatchlist"
 
 
 const loadWatchlists = (watchlists) => {
@@ -13,6 +13,13 @@ const loadWatchlists = (watchlists) => {
 const loadSingleWatchlist = (watchlist) => {
     return {
         type: LOAD_SINGLEWATCHLIST,
+        watchlist
+    }
+}
+
+const createNewWatchlist = (watchlist) => {
+    return {
+        type: CREATE_WATCHLIST,
         watchlist
     }
 }
@@ -38,6 +45,18 @@ export const getSingleWatchlist = (id) => async(dispatch) => {
 
 }
 
+// -------------- Create new watchlist ---------------------
+export const createWatchlist = (watchlist, userId) => async(dispatch) => {
+    const res = await fetch(`/users/${userId}/watchlists`, {
+        metnod: "POST",
+        headers: {
+            'Content-Type': "application/json"
+        },
+        body: JSON.stringify(watchlist)
+    })
+    console.log(res)
+
+}
 
 
 const initialState = {allWatchlists:{}, singleWatchlist:{}}
