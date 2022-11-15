@@ -88,9 +88,11 @@ class Stock(db.Model, UserMixin):
             'headquarter': self.headquarter,
             'founded': self.founded,
         }
+
     def to_dict_for_watchlist(self):
         return {
             'id': self.id,
+            'name': self.name,
             'symbol': self.symbol,
             'price': self.price,
         }
@@ -136,7 +138,7 @@ class Transaction(db.Model, UserMixin):
     is_purchased = db.Column(db.Boolean, nullable=False)
     # purchased = db.Column(db.Boolean, default=True)
     # sold = db.Column(db.Boolean, default=False)
-    
+
     price = db.Column(db.Integer, nullable=False)
 
     user = db.relationship("User", back_populates="stocks")

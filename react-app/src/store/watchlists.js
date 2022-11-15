@@ -2,6 +2,7 @@ const LOAD_WATCHLISTS = "watchlists/loadWatchlists"
 const LOAD_SINGLEWATCHLIST = "waatchlists/loadSingleWatchlist"
 const CREATE_WATCHLIST = "watchlists/createWatchlist"
 const UPDATE_WATCHLIST = "watchlists/updateWatchlist"
+const DELETE_WATCHLIST = "watchlists/deleteWatchlists"
 
 const loadWatchlists = (watchlists) => {
     console.log('this is watchlists>>', watchlists)
@@ -25,13 +26,19 @@ const createNewWatchlist = (watchlist) => {
     }
 }
 
-const updateWatchlist = (watchlist) => {
+const deleteWatchlist = (watchlistId) => {
     return {
-        type: UPDATE_WATCHLIST,
-        watchlist
+        type: DELETE_WATCHLIST,
+        watchlistId
     }
 }
 
+// const updateWatchlist = (watchlist) => {
+//     return {
+//         type: UPDATE_WATCHLIST,
+//         watchlist
+//     }
+// }
 
 
 // ================= Thunk ==================
@@ -55,7 +62,7 @@ export const getSingleWatchlist = (id) => async (dispatch) => {
 // -------------- Create new watchlist ---------------------
 export const createWatchlist = (watchlist, userId) => async (dispatch) => {
     const res = await fetch(`/users/${userId}/watchlists`, {
-        metnod: "POST",
+        method: "POST",
         headers: {
             'Content-Type': "application/json"
         },
@@ -64,12 +71,26 @@ export const createWatchlist = (watchlist, userId) => async (dispatch) => {
     if ( res.ok ){
         const newWatchlist = await res.json()
         dispatch(createNewWatchlist(newWatchlist,userId))
+        return newWatchlist
     }
 }
 
+// //------------- Update watchlist -----------------
+// export const updateCurrWatchlist = (watchlist) => async (dispatch) => {
+//     const res = await fetch(`/users/watchlists`)
+// }
 
 
-
+//  ------------- Delete Watchlist ---------------
+export const deleteSingleList = (watchlistId) => async (dispatch) => {
+    const res = await fetch(`/watchlists/${watchlistId}`, {
+        method: "DELETE"
+    })
+    if (res.ok) {
+        await dispatch(deleteWatchlist(watchlistId))
+        return res
+    }
+}
 
 
 const initialState = { allWatchlists: {}, singleWatchlist: {} }
@@ -98,7 +119,13 @@ const watchlistsReducer = (state = initialState, action) => {
                 singleWatchlist: {}
             }
 
-
+        case DELETE_WATCHLIST:
+            newState = {
+                singleWatchlist: {},
+                allWatchlists: { ...state.allWatchlists }
+            }
+            delete newState.allWatchlists[action.watchlistId]
+            return newState
 
         default:
             return state

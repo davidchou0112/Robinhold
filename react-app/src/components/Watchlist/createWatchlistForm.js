@@ -17,16 +17,18 @@ export default function CreateWatchlistForm() {
         const newWatchlist = {
             name
         }
+        setErrors([])
 
-        let createdList = await dispatch(createWatchlist(newWatchlist, userId))
-            .catch(async (res) => {
-                console.log("response from create list=========",res)
-                const data = await res.json()
-                if (data && data.errors) setErrors(data.errors)
-            })
-        if (createdList) {
-            setErrors([])
-        }
+        dispatch(createWatchlist(newWatchlist, userId))
+
+        // return await dispatch(createWatchlist(newWatchlist, userId))
+        //     .catch(async (res) => {
+        //         // console.log("response from create list=========",createdList)
+        //         const data = await res.json()
+        //         if (data && data.errors) setErrors(data.errors)
+        //     })
+        // if (createdList) {
+        // }
     }
 
     return (

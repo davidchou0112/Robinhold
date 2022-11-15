@@ -201,7 +201,7 @@ def update_watchlist(id):
 # ========= Create new watchlist ==============
 @app.route("/users/<int:user_id>/watchlists", methods=["POST"])
 # @app.route("/watchlists", methods=["POST"]) <---not work
-# @login_required
+@login_required
 def post_new_watchlist(user_id):
     data = request.get_json()
     new_list = Watchlist(
