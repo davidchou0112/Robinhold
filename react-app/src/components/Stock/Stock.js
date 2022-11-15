@@ -19,7 +19,7 @@ class Stock extends React.Component {
 
     fetchStock() {
         const pointerToThis = this;
-        console.log(pointerToThis);
+        // console.log(pointerToThis);
         const API_KEY = 'FZ0Z77IPDL0DZW40';
         let StockSymbol = 'AAPL';
         let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=AAPL&outputsize=compact&apikey=${API_KEY}`;
@@ -37,7 +37,7 @@ class Stock extends React.Component {
             )
             .then(
                 function (data) {
-                    console.log(data);
+                    // console.log(data);
 
                     for (var key in data['Time Series (Daily)']) {
                         stockChartXValuesFunction.push(key);

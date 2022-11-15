@@ -25,13 +25,13 @@ const displaySingleStock = (singleStock) => {
 // all stocks
 export const getAllStocks = () => async dispatch => {
     const response = await fetch(`/stocks`);
-    console.log(response, 'this is response')
+    // console.log(response, 'this is response')
     if (response.ok) {
         const data = await response.json();
         dispatch(displayAllStocks(data));
     }
     else if (response.errors) {
-        console.log('testing111')
+        // console.log('testing111')
     }
 }
 
@@ -40,7 +40,7 @@ export const getSingleStock = (stockId) => async dispatch => {
     const response = await fetch(`/stocks/${stockId}`);
     if (response.ok) {
         const data = await response.json();
-        console.log('this is data__:', data)
+        // console.log('this is data__:', data)
         dispatch(displaySingleStock(data))
     }
 }

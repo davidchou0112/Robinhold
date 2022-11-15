@@ -4,15 +4,15 @@ import { NavLink, useParams } from "react-router-dom";
 import { getSingleWatchlist } from "../../store/watchlists";
 
 
-export default function SingleWatchlist(){
+export default function SingleWatchlist() {
     const dispatch = useDispatch()
     const { watchlistId } = useParams()
     const watchlistObj = useSelector(state => state.session.user.watchlists[watchlistId])
-    console.log("testing to get watchlistobj",watchlistObj)
+    // console.log("testing to get watchlistobj",watchlistObj)
     const watched_stocks = Object.values(watchlistObj.watched_stocks)
-    console.log(watched_stocks)
+    // console.log(watched_stocks)
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(getSingleWatchlist(watchlistId))
     }, [dispatch, watchlistId])
 

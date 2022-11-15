@@ -5,18 +5,18 @@ import { getAllWatchlists } from "../../store/watchlists"
 import SingleWatchlist from "./singleWatchlist"
 
 
-export default function Watchlists(){
+export default function Watchlists() {
     const dispatch = useDispatch()
     const allWatchlistsObj = useSelector(state => state.session.user.watchlists)
-    console.log(allWatchlistsObj)
+    // console.log(allWatchlistsObj)
     const userId = useSelector(state => state.session.user.id)
     const allWatchlistsArr = Object.values(allWatchlistsObj)
-    console.log(allWatchlistsArr)
+    // console.log(allWatchlistsArr)
 
     // const watched_stocks = Object.values(allWatchlistsArr[3])
     // console.log(watched_stocks)
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(getAllWatchlists(userId))
     }, [dispatch, userId])
 
