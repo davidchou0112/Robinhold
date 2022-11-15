@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 import { deleteSingleList, getAllWatchlists } from "../../store/watchlists"
 import UpdateWatchlistModal from "../UpdateWatchlistModal"
+import UpdateWatchlistForm from "../UpdateWatchlistModal/updateWatchlistForm"
 import CreateWatchlistForm from "./createWatchlistForm"
 // import SingleWatchlist from "./singleWatchlist"
 
@@ -26,12 +27,12 @@ export default function Watchlists() {
                         {watchlist.id}
                         {watchlist.name}
                     </NavLink>
-                    {/* <button>Update</button> */}
-                    <UpdateWatchlistModal />
+                    <UpdateWatchlistModal watchlistId={watchlist.id}/>
                     <button onClick={()=> dispatch(deleteSingleList(watchlist.id))}>Delete</button>
                 </div>
             ))}
             <CreateWatchlistForm />
+            {/* <UpdateWatchlistForm /> */}
         </div>
     )
 }
