@@ -100,6 +100,7 @@ def api_help():
 
 # ============ Get all users =============
 @app.route('/users')
+@login_required
 def get_all_users():
     all_users = []
     data = User.query.all()
@@ -134,6 +135,7 @@ def update_buying_power(id):
 
 # ============== Get all stocks ==============
 @app.route("/stocks")
+@login_required
 def get_stocks():
     all_stocks = []
     data = Stock.query.all()
@@ -143,7 +145,7 @@ def get_stocks():
 
 # ======== Get single stock by stock_id ==========
 @app.route("/stocks/<int:stock_id>")
-# @login_required
+@login_required
 def get_single_stock(stock_id):
     stock = Stock.query.get(stock_id)
     if not stock:
@@ -167,6 +169,7 @@ def get_user_watchlists(user_id):
 
 # =============== Get watchlist by id ===============
 @app.route("/watchlists/<int:id>")
+@login_required
 def get_watchlist_by_id(id):
     watchlist = Watchlist.query.get(id)
     print(watchlist)
@@ -178,8 +181,25 @@ def get_watchlist_by_id(id):
     return watchlist.to_dict()
 
 
+
+# ========== Update a watchlist ===============
+@app.route("/watchlists/<int:id>",methods=["PUT"])
+@login_required
+def update_watchlist(id):
+    watchlist = Watchlist.query.get(id)
+    # if watchlist not founded:
+    if not watchlist:
+        return {
+            "message": "Watchlist not found",
+            "statusCode": 404,
+        }, 404
+    data = request.get_json()
+    watchlist.name = data["name"]
+    db.session.commit()
+    return "update watchlist test"
+
 # ========= Create new watchlist ==============
-@app.route("/users/<int:user_id>/watchlists",methods=["POST"])
+@app.route("/users/<int:user_id>/watchlists", methods=["POST"])
 # @app.route("/watchlists", methods=["POST"]) <---not work
 # @login_required
 def post_new_watchlist(user_id):
@@ -198,28 +218,11 @@ def post_new_watchlist(user_id):
     #     }, 400
     db.session.add(new_list)
     db.session.commit()
-    return "testing2"
-
-# ========== Update a watchlist ===============
-@app.route("/watchlists/<int:id>",methods=["PUT"])
-# @login_required
-def update_watchlist(id):
-    watchlist = Watchlist.query.get(id)
-    # if watchlist not founded:
-    if not watchlist:
-        return {
-            "message": "Watchlist not found",
-            "statusCode": 404,
-        }, 404
-    data = request.get_json()
-    watchlist.name = data["name"]
-    db.session.commit()
-    return "update watchlist test"
-
+    return new_list.to_dict()
 
 # ========= Delete a watchlist ==============
 @app.route("/watchlists/<int:id>",methods=["DELETE"])
-# @login_required
+@login_required
 def delete_watchlist(id):
     watchlist = Watchlist.query.get(id)
     db.session.delete(watchlist)
@@ -229,7 +232,7 @@ def delete_watchlist(id):
 
 # ========== Get all transations ============
 @app.route("/users/<int:user_id>/transactions")
-# @login_required
+@login_required
 def get_user_transactions(user_id):
     all_transations = []
     data = Transaction.query.filter(Transaction.user_id == user_id).all()
@@ -241,7 +244,7 @@ def get_user_transactions(user_id):
 # might need to work something that changes our buying power when stocks are
 # purchased/sold (PUT method somewhere? or even new route)
 @app.route("/users/<int:user_id>/transactions", methods=["POST"])
-# @login_required
+@login_required
 def post_new_transaction(user_id):
     data = request.get_json()
     new_transaction = Transaction(
@@ -274,7 +277,7 @@ def post_new_transaction(user_id):
 
 # ========= Delete a transaction ==============
 @app.route("/transactions/<int:id>", methods=["DELETE"])
-# @login_required
+@login_required
 def delete_transaction(id):
     transaction = Transaction.query.get(id)
     db.session.delete(transaction)
