@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 import { getAllWatchlists } from "../../store/watchlists"
+import CreateWatchlistForm from "./createWatchlistForm"
 import SingleWatchlist from "./singleWatchlist"
 
 
@@ -30,7 +31,7 @@ export default function Watchlists() {
                     </NavLink>
                 </div>
             ))}
-
+            <CreateWatchlistForm />
         </div>
     )
 }

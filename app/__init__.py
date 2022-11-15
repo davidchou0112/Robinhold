@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, session, redirect, jsonify, m
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
-from flask_login import LoginManager, login_required
+from flask_login import LoginManager, login_required, current_user
 from .models import db, User, Watchlist, Stock, Transaction
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
@@ -119,7 +119,7 @@ def get_user(id):
 # deposit/withdraw money should update buying power
 # buying/selling stock should update buying power
 @app.route('/users/<int:id>', methods=['PUT'])
-# @login_required
+@login_required
 def update_buying_power(id):
     user = User.query.get(id)
     if not user:
@@ -156,7 +156,7 @@ def get_single_stock(stock_id):
 # ========== Get user's watchlists ==============
 # route could be "api/watchlists/current" and how to get current user id
 @app.route("/users/<int:user_id>/watchlists")
-# @login_required
+@login_required
 def get_user_watchlists(user_id):
     all_watchlists = []
     data = Watchlist.query.filter(Watchlist.user_id==user_id).all()
@@ -180,6 +180,7 @@ def get_watchlist_by_id(id):
 
 # ========= Create new watchlist ==============
 @app.route("/users/<int:user_id>/watchlists",methods=["POST"])
+# @app.route("/watchlists", methods=["POST"]) <---not work
 # @login_required
 def post_new_watchlist(user_id):
     data = request.get_json()
