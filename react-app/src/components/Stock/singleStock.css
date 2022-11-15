@@ -1,0 +1,31 @@
+.detail_label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.header_label {
+    border-bottom: 1px solid black;
+    padding-bottom: 15px;
+}
+
+.single_stock_wrapper {
+    margin: 20px;
+    width: 700px;
+}
+
+.stock_details {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 20px 0px 20px 0px;
+
+}
+
+.stock_description {
+    margin: 20px 0px 20px 0px;
+    padding-top: 5px;
+}
+
+.detail_details {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
