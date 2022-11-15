@@ -9,16 +9,19 @@ import SingleWatchlist from "./singleWatchlist"
 export default function Watchlists() {
     const dispatch = useDispatch()
     const allWatchlistsObj = useSelector(state => state.session.user.watchlists)
-    // console.log(allWatchlistsObj)
+    console.log(allWatchlistsObj)
     const userId = useSelector(state => state.session.user.id)
     const allWatchlistsArr = Object.values(allWatchlistsObj)
     // console.log(allWatchlistsArr)
+    // console.log('this is userId>>', userId)
 
     // const watched_stocks = Object.values(allWatchlistsArr[3])
     // console.log(watched_stocks)
 
     useEffect(() => {
+        // console.log('im here!')
         dispatch(getAllWatchlists(userId))
+        // console.log('i made it too')
     }, [dispatch, userId])
 
     return (

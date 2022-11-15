@@ -3,8 +3,9 @@ import { useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 import { createWatchlist } from "../../store/watchlists"
 
-export default function CreateWatchlistForm(){
+export default function CreateWatchlistForm() {
 
+    console.log('here i am')
     const dispatch = useDispatch()
     const [name, setName] = useState()
     const [errors, setErrors] = useState([])
@@ -12,23 +13,24 @@ export default function CreateWatchlistForm(){
 
     const handleSubmit = async e => {
         e.preventDefault()
+        console.log('123')
         const newWatchlist = {
             name
         }
 
         let createdList = await dispatch(createWatchlist(newWatchlist, userId))
-            .catch(async(res)=> {
+            .catch(async (res) => {
                 const data = await res.json()
                 if (data && data.errors) setErrors(data.errors)
             })
-        if(createdList){
+        if (createdList) {
             setErrors([])
         }
     }
 
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.map(err => (
                         <li key={err}>{err}</li>
@@ -39,7 +41,7 @@ export default function CreateWatchlistForm(){
                         required
                         type={'text'}
                         value={name}
-                        onChange={e=> setName(e.target.value)}
+                        onChange={e => setName(e.target.value)}
                     />
                 </div>
                 <div>
