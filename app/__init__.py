@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager, login_required, current_user
 from .forms.new_watchlist_form import CreateWatchlistForm
-from .models import db, User, Watchlist, Stock, Transaction
+from .models import db, User, Watchlist, Stock, Transaction, watched_stocks
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .seeds import seed_commands
@@ -304,3 +304,32 @@ def delete_transaction(id):
 # def get_user_stocks():
 #     # need current user id
 #     return
+
+# ========== ADD STOCK TO WATCHLIST ==========
+@app.route('/watchlists/<int:watchlist_id>/<int:stock_id>', methods=['POST'])
+# @login_required
+def add_to_watchlist(watchlist_id, stock_id):
+    watchlist = Watchlist.query.get(watchlist_id)
+    stock = Stock.query.get(stock_id)
+    print('watchlist from seed' , watchlist)
+
+    data = request.get_json()
+
+    new_list = watched_stocks.insert().values(
+        watchlist_id = data['watchlist_id'],
+        stock_id = data['stock_id'])
+
+    db.session.execute(new_list)
+    db.session.commit()
+    return 'testing'
+
+# ========== DELETE STOCK FROM WATCHLIST ==========
+@app.route('/watchlists/<int:watchlist_id>/<int:stock_id>', methods=['DELETE'])
+# @login_required
+def delete_from_watchlist(watchlist_id, stock_id):
+    stock = Stock.query.get(stock_id)
+    print('stock from seed' , stock)
+
+    db.session.delete(stock)
+    db.session.commit()
+    return 'stock deleted from watchlist'
