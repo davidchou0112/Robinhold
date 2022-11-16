@@ -187,11 +187,12 @@
 }
 
 .dataResult {
-  width: 150px;
+  width: 178px;
   height: 50px;
   background-color: lightgrey;
   /* box-shadow: white 0px 5px 15px; */
   border: white solid 1px;
+  border-radius: 5px;
   overflow: hidden;
   overflow-y: auto;
 }
@@ -229,4 +230,12 @@
 
 .dataName {
   background-color: transparent;
+}
+
+#search_icon{
+  margin: 5px;
+}
+
+.search_wrapper{
+  position: absolute;
 }

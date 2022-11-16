@@ -5,8 +5,8 @@ from flask_login import UserMixin
 watched_stocks = db.Table(
     "watched_stocks",
     db.Model.metadata,
-    db.Column("watchlist_id", db.Integer, db.ForeignKey('watchlists.id'), primary_key=True),
-    db.Column("stock_id", db.Integer, db.ForeignKey('stocks.id'), primary_key=True)
+    db.Column("watchlist_id", db.Integer, db.ForeignKey(add_prefix_for_prod('watchlists.id')), primary_key=True),
+    db.Column("stock_id", db.Integer, db.ForeignKey(add_prefix_for_prod('stocks.id')), primary_key=True)
 )
 
 class User(db.Model, UserMixin):
@@ -107,7 +107,7 @@ class Watchlist(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     name = db.Column(db.String(40), nullable=False)
 
     user = db.relationship("User", back_populates="watchlists")
@@ -135,8 +135,8 @@ class Transaction(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    stock_id = db.Column(db.Integer, db.ForeignKey("stocks.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
+    stock_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("stocks.id")))
     quantity = db.Column(db.Integer, nullable=False)
     is_purchased = db.Column(db.Boolean, nullable=False)
     # purchased = db.Column(db.Boolean, default=True)

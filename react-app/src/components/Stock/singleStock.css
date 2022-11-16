@@ -9,8 +9,9 @@
 }
 
 .single_stock_wrapper {
-    margin: 20px;
-    width: 700px;
+    /* margin: 20px; */
+    margin-left: 200px;
+    width: 1400px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }

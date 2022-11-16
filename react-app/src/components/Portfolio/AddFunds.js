@@ -27,19 +27,18 @@ const AddFundsForm = () => {
 
     return (
 
-        <div className='add-funds-form-div'>
-          <form  className='deposit-form' onSubmit={handleSubmitAF}>
-            <p>Deposit Funds</p>
+        <div className='add-funds-container'>
+          <form  className='addFund-form' onSubmit={handleSubmitAF}>
             <label>From</label>
               <input type="text" value= "Rothschild's Family Trust" disabled/>
-            <label htmlFor='add-amount'> Amount</label>
+            <label> Amount</label>
               <input type="number"
               placeholder='$0.00'
               id='add-amount'
               value={amount}
               onChange={(e)=> setAmount(e.target.value)}
               required/>
-            <button type="submit" className='review-button'>Submit Transfer</button>
+            <button type="submit" className='Deposit-fund-button'>Deposit Fund</button>
           </form>
         </div>
     )
