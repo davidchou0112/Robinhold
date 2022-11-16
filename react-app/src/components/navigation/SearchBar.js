@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { getAllStocks } from './../store/stocks'
+import { getAllStocks } from '../../store/stocks'
 import './NavBar.css'
 
 
@@ -41,7 +41,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div>
+    <div className='justforwhite'>
       <div className="searchInputs">
         <i id='search_icon' className="fa-solid fa-magnifying-glass"></i>
         <input

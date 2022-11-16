@@ -1,4 +1,4 @@
-.timeperiod__container {
+/* .timeperiod__container {
     display: flex;
     border-bottom: 1px solid #3b4754;
   }
@@ -11,7 +11,7 @@
   .timeperiod__button {
     font-weight: bold;
     padding: 10px 10px 20px 10px;
-    /* margin-left : 48px; */
+    margin-left : 48px;
     cursor: pointer;
   }
 
@@ -23,4 +23,4 @@
   .timeperiod__button.active {
     color: #5ac53b;
     border-bottom: 2px solid #5ac53b;
-  }
+  } */

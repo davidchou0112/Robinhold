@@ -1,35 +1,49 @@
 import { useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
-const AddFunds = ({setShowModal}) => {
+import { addBuyingPowerThunk } from "../../store/portfolio";
+const AddFundsForm = () => {
     const history = useHistory();
     const dispatch = useDispatch();
-
-
+    const [showcConfirmation, setShowConfirmation] = useState(false)
+    const [amount, setAmount] = useState('')
     const [submitted, setSubmitted] = useState(false);
+    const currentUser = useSelector(state=> state?.session?.user)
+    const buyingPower = useSelector(state=>Number(state?.session?.user?.buying_power))
 
 
-    // const handleSubmitAF = async (e) => {
 
-    // }
+
+    const handleSubmitAF = async (e) => {
+      e.preventDefault()
+      setSubmitted(true)
+      const finalAmount = buyingPower + Number(amount)
+      const payload = {buying_power: finalAmount}
+      await dispatch(addBuyingPowerThunk(payload, currentUser.id))
+      // history.push('/')
+      window.alert(`$${amount} will be deducted from your bank account within the next several days. It may take up to 5 business days to transfer.`)
+      // window.location.reload();
+    }
 
     return (
-        <div className='funds-modal hidden'>
-        <div className='close-modal' onClick={this.clickClose}>&times;</div>
+
         <div className='add-funds-form-div'>
-          <form onSubmit={this.handleSubmit} className='deposit-form'>
+          <form  className='deposit-form' onSubmit={handleSubmitAF}>
             <p>Deposit Funds</p>
             <label>From</label>
-              <input type="text" value='A BANK' disabled/>
+              <input type="text" value= "Rothschild's Family Trust" disabled/>
             <label htmlFor='add-amount'> Amount</label>
-              <input type="text" value={this.state.amount} placeholder='$0.00' onChange={this.handleChange} id='add-amount' required/>
-            <button className='review-button'>Confirm</button>
+              <input type="number"
+              placeholder='$0.00'
+              id='add-amount'
+              value={amount}
+              onChange={(e)=> setAmount(e.target.value)}
+              required/>
+            <button type="submit" className='review-button'>Submit Transfer</button>
           </form>
         </div>
-      </div>
     )
 
 }
 
-export default AddFunds
+export default AddFundsForm

@@ -1,12 +1,14 @@
 import './Portfolio.css'
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LineGraph from './LineGraph';
 import TimePeriod from './TimePeriod';
-import AddFundsModal from './AddFundModal';
-
-const popularTopics = [
+import AddFundsForm from './AddFunds';
+import {fetchUserTransactions} from '../../store/transactions'
+import { useTransition } from 'react';
+import * as portfolioActions from '../../store/portfolio'
+ const popularTopics = [
   "Newly Listed Crypto",
   "New OTC securities",
   "IPO Access",
@@ -26,13 +28,37 @@ const popularTopics = [
   "Growth&Value ETFs",
   "Energy&Water"
 ];
+const CalculateShareTotal = (userTransactions) => {
+  let totalShareVal = 0
+  for (let i=0; i<userTransactions.length; i++) {
+      let ele = useTransition[i]
+      totalShareVal += ele.price * ele.quantity
+  }
+  return totalShareVal
+}
+
 
 const Portfolio = () => {
   const [showBP, setShowBP] = useState(false);
+  const currentUser = useSelector(state=> state.session.user)
+  const dispatch = useDispatch()
+  const userTransactions = useSelector(state=>Object.values(state.transaction))
+  const userId = Number(currentUser.id)
+  const buyingPower = Number(currentUser.buying_power)
+  useEffect(()=> {
+    dispatch(fetchUserTransactions(userId))
+  }, [])
 
+  let totalVal = 0
+  userTransactions.forEach(transaction=>{
+    totalVal += transaction.price * transaction.quantity
+  })
+  console.log('......', totalVal)
+
+  const totalHolding = buyingPower+totalVal
 
   const clickBuyPower = () => {
-    if (showBP) return;
+    if (showBP) return
     setShowBP(true)
   }
 
@@ -40,83 +66,68 @@ const Portfolio = () => {
 
   }
 
+
   useEffect(() => {
     if (!showBP) return;
     const closeshowBP = () => {
       setShowBP(false);
     }
-    document.addEventListener('click', closeshowBP);
-    return () => document.removeEventListener('click', closeshowBP)
+    document.addEventListener('submit', closeshowBP);
+    return () => document.removeEventListener('submit', closeshowBP)
   }, [showBP])
 
 
   return (
+    <div className='body-wrapper'>
+    <div className='body-container'>
+
+
     <div className='portfolio-wrapper'>
-      <div className="newsfeed-container"></div>
+      <div className="pf-left-container">
       <div className='portfolio-chart-container'>
         <div className='chart-header'>
-          <h1>$185,856</h1>
+          <h1>${totalHolding}</h1>
           <p>+$88.88(+0.068%) Today</p>
         </div>
         <div className='pf-chart-wrapper'>
           <LineGraph />
-          {/* <TimePeriod /> */}
         </div>
       </div>
-      <div className="newsfeed__buying__section">
+      {/* <div className="newsfeed__buying__section">
         <h2> Buying Power</h2>
-        <h2> $2586.11</h2>
-      </div>
-      <div className="newsfeed__market__section">
-        <div className="newsfeed__market__box">
-        </div>
-      </div>
-      <div className="newsfeed__popularlists__section">
-        <div className="newsfeed__popularlists__intro">
-          <h1>Trending lists</h1>
-          <p>Show More</p>
-        </div>
-        <div className="newsfeed_popularlists_badges">
+        <h2>${currentUser.buying_power}</h2>
+      </div> */}
 
-          {/* <p>{watchlistArr['watched_stocks']}</p> */}
-        </div>
-      </div>
-
-
-      <div className='buying-power-div' >
-        <div className='buying-power flex-between' onClick={clickBuyPower}>
-          <div>Buying Power</div>
-          <div>$158,265</div>
+        <div className='buying-power-wrapper' onClick={clickBuyPower}>
+          <h2>Buying Power</h2>
+          <h2>${currentUser?.buying_power}</h2>
         </div>
 
         {showBP && (
 
-          <div id='add-funds' className='row hidden'>
+          <div className='buying-power-container'>
             <div className='deposit-funds'>
               <div className='flex-between'>
                 <div>Brokerage Cash</div>
-                <div>$158,265</div>
+                <div>${currentUser?.buying_power}</div>
               </div>
               <div className='flex-between border-grey'>
                 <div>Buying Power</div>
-                <div>$158,265</div>
+                <div>${currentUser?.buying_power}</div>
               </div>
-              {/* <div className='width-full'>
-                    <button className='deposit-button'>Deposit Funds</button>
-                    </div> */}
-              <div>
-                <AddFundsModal />
-              </div>
-              <div></div>
+              <AddFundsForm />
             </div>
             <div className='deposit-message'>Buying Power represents the total value of assets you can purchase.</div>
           </div>
         )}
+        </div>
       </div>
 
 
+      <div className='watchlist-wrapper'></div>
 
-    </div>
+      </div>
+      </div>
   )
 
 
