@@ -103,6 +103,8 @@ const Portfolio = () => {
           <h2>${currentUser?.buying_power}</h2>
         </div>
 
+        <div className="form-break"></div>
+
         {showBP && (
 
           <div className='buying-power-container'>
@@ -111,13 +113,17 @@ const Portfolio = () => {
                 <div>Brokerage Cash</div>
                 <div>${currentUser?.buying_power}</div>
               </div>
-              <div className='flex-between border-grey'>
+              <div className="form-break"></div>
+              <div className='flex-between'>
                 <div>Buying Power</div>
                 <div>${currentUser?.buying_power}</div>
               </div>
-              <AddFundsForm />
-            </div>
-            <div className='deposit-message'>Buying Power represents the total value of assets you can purchase.</div>
+              <div className="form-break"></div>
+              <div className='addFundForm'>
+                <AddFundsForm />
+                <div className='deposit-message'>Buying Power represents the total value of assets you can purchase.</div>
+              </div>
+          </div>
           </div>
         )}
         </div>

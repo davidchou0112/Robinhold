@@ -236,6 +236,7 @@ const SignUpForm = () => {
           </form>
         </div>
       </div >
+      <div className='login_session2'></div>
     </div>
 
 

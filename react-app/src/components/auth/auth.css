@@ -57,8 +57,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-width: 400px;
+    /* min-width: 400px; */
     background-color: white;
+    /* height: 500px; */
 }
 
 .login_context {
@@ -80,7 +81,8 @@
 
 .login_wrapper {
     display: flex;
-    max-width: fit-content;
+    /* max-width: fit-content; */
+    flex-direction: row;
     background-color: white;
 }
 
@@ -100,13 +102,20 @@
 }
 
 #signup_background {
-    background-position: top;
+    /* background-position: top; */
     height: 913px;
     width: 600px;
     background-image: url('../images/robinhold_signup.jpg');
     background-repeat: no-repeat;
     background-size: 100%;
     background-color: white;
+    /* display: flex; */
+        /* flex-direction: column;
+        justify-content: center;
+        align-items: center; */
+        /* background-size: cover; */
+        /* height: 550px;
+        border-top: 1px solid black; */
 }
 
 .signup_body {
@@ -121,4 +130,10 @@
 #auth_label {
     font-size: larger;
     font-weight: bold;
+}
+
+
+.login_session2{
+background-color: white;
+height:500px;
 }
