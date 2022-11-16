@@ -49,6 +49,7 @@
     margin-bottom: 25px;
     border-radius: 2px;
     background-color: white;
+    color: black;
 }
 
 .login_body {
@@ -90,9 +91,19 @@
 
 #login_background {
     background-position: top;
-    height: 850px;
+    height: 913px;
     width: 600px;
     background-image: url('../images/robinhold_login.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: white;
+}
+
+#signup_background {
+    background-position: top;
+    height: 913px;
+    width: 600px;
+    background-image: url('../images/robinhold_signup.jpg');
     background-repeat: no-repeat;
     background-size: 100%;
     background-color: white;
