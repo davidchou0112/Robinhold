@@ -1,8 +1,8 @@
-import React from "react"
-import { useState } from "react"
+import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { getAllWatchlists, updateCurrWatchlist } from "../../store/watchlists"
+
 
 export default function UpdateWatchlistForm({watchlistId}) {
 
@@ -12,7 +12,7 @@ export default function UpdateWatchlistForm({watchlistId}) {
     const [ name, setName ] = useState("")
     const [ errors, setErrors ] = useState([])
 
-    console.log("~~~~~~~~~~~",watchlistId)
+    // console.log("~~~~~~~~~~~",watchlistId)
 
     const onSubmit = async e => {
         e.preventDefault()
@@ -24,6 +24,7 @@ export default function UpdateWatchlistForm({watchlistId}) {
 
         await dispatch(updateCurrWatchlist(watchlistId, newWatchlist))
         await dispatch(getAllWatchlists(userId))
+        
         history.push('/watchlists')
     }
 
