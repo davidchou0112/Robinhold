@@ -21,7 +21,7 @@ export default function SingleWatchlist() {
     const handleDelete = async () => {
         const deleted = await dispatch(deleteSingleList(watchlistObj.id))
         dispatch(getAllWatchlists(userId))
-        console.log("=====================",deleted)
+        // console.log("=====================",deleted)
         if(deleted){
             history.push("/watchlists")
         }

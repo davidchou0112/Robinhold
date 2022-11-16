@@ -1,5 +1,5 @@
 const LOAD_WATCHLISTS = "watchlists/loadWatchlists"
-const LOAD_SINGLEWATCHLIST = "waatchlists/loadSingleWatchlist"
+const LOAD_SINGLEWATCHLIST = "watchlists/loadSingleWatchlist"
 const CREATE_WATCHLIST = "watchlists/createWatchlist"
 const UPDATE_WATCHLIST = "watchlists/updateWatchlist"
 const DELETE_WATCHLIST = "watchlists/deleteWatchlists"
@@ -33,12 +33,12 @@ const deleteWatchlist = (watchlistId) => {
     }
 }
 
-// const updateWatchlist = (watchlist) => {
-//     return {
-//         type: UPDATE_WATCHLIST,
-//         watchlist
-//     }
-// }
+const updateWatchlist = (watchlist) => {
+    return {
+        type: UPDATE_WATCHLIST,
+        watchlist
+    }
+}
 
 
 // ================= Thunk ==================
@@ -70,15 +70,27 @@ export const createWatchlist = (watchlist, userId) => async (dispatch) => {
     })
     if ( res.ok ){
         const newWatchlist = await res.json()
-        dispatch(createNewWatchlist(newWatchlist,userId))
+        dispatch(createNewWatchlist(newWatchlist, userId))
         return newWatchlist
     }
 }
 
-// //------------- Update watchlist -----------------
-// export const updateCurrWatchlist = (watchlist) => async (dispatch) => {
-//     const res = await fetch(`/users/watchlists`)
-// }
+//------------- Update watchlist -----------------
+export const updateCurrWatchlist = (watchlistId, watchlist) => async (dispatch) => {
+    const res = await fetch(`/watchlists/${watchlistId}`, {
+        method: "PUT",
+        headers: {
+            'Content-Type': "application/json"
+        },
+        body: JSON.stringify(watchlist)
+    })
+    if(res.ok) {
+        const data = await res.json()
+        console.log("data in thunk update watchlist===========",data)
+        dispatch(updateWatchlist(data))
+        return data
+    }
+}
 
 
 //  ------------- Delete Watchlist ---------------
@@ -110,14 +122,10 @@ const watchlistsReducer = (state = initialState, action) => {
             return newState
 
         case CREATE_WATCHLIST:
-            return {
-                ...state,
-                allWatchlists: {
-                    ...state.allWatchlists,
-                    ...action.watchlist
-                },
-                singleWatchlist: {}
-            }
+            newState = {...state}
+            let id = action.watchlist.id
+            newState.allWatchlists[id] = action.watchlist
+            return newState
 
         case DELETE_WATCHLIST:
             newState = {
@@ -125,6 +133,11 @@ const watchlistsReducer = (state = initialState, action) => {
                 allWatchlists: { ...state.allWatchlists }
             }
             delete newState.allWatchlists[action.watchlistId]
+            return newState
+
+        case UPDATE_WATCHLIST:
+            newState = { ...state }
+            newState.allWatchlists[action.watchlist.id] = action.watchlist
             return newState
 
         default:

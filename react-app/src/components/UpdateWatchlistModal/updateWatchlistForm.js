@@ -1,34 +1,34 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
-import { createWatchlist, getAllWatchlists } from "../../store/watchlists"
+import { getAllWatchlists, updateCurrWatchlist } from "../../store/watchlists"
 
-export default function CreateWatchlistForm() {
+export default function UpdateWatchlistForm({watchlistId}) {
 
-    // console.log('here i am')
-    const history = useHistory()
     const dispatch = useDispatch()
-    const [name, setName] = useState("")
-    const [errors, setErrors] = useState([])
-    const userId = useSelector(state => state.session.user.id)
-    // console.log("userId is here", userId)
+    const history = useHistory()
+    const [ name, setName ] = useState("")
+    const [ errors, setErrors ] = useState([])
+    const userId = useSelector(state=> state.session.user.id)
 
-    const handleSubmit = async e => {
+    console.log("~~~~~~~~~~~",watchlistId)
+
+    const onSubmit = async e => {
         e.preventDefault()
-        setName("")
         setErrors([])
+
         const newWatchlist = {
             name
         }
 
-        await dispatch(createWatchlist(newWatchlist, userId))
+        await dispatch(updateCurrWatchlist(watchlistId, newWatchlist))
         await dispatch(getAllWatchlists(userId))
-        history.push("/watchlists")
+        history.push('/watchlists')
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className="update_watchlist_form_container">
+            <form onSubmit={onSubmit}>
                 <ul>
                     {errors.map(err => (
                         <li key={err}>{err}</li>
@@ -43,7 +43,7 @@ export default function CreateWatchlistForm() {
                     />
                 </div>
                 <div>
-                    <button type="submit">Create Watchlist</button>
+                    <button type="submit">Update Watchlist</button>
                 </div>
             </form>
         </div>
