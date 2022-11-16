@@ -7,7 +7,7 @@ import Stock from './Stock'
 import './singleStock.css'
 import Watchlists from '../Watchlist/allWatchlists';
 import AddToWatchlist from '../Watchlist/addToWatchlist';
-
+import TestingGraph from '../Portfolio/testingGraph'
 const SingleStock = () => {
     const dispatch = useDispatch();
     const { stockId } = useParams();
@@ -26,7 +26,8 @@ const SingleStock = () => {
             <div>
                 <h2>{singleStock.name}</h2>
                 <h1>${singleStock.price}</h1>
-                <Stock />
+                {/* <Stock /> */}
+                <TestingGraph />
                 <h2 className='header_label'>About (dynamic)</h2>
                 <div className='stock_description'>
                     <p>{singleStock.description}</p>
