@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { getAllStocks } from './../store/stocks'
+import { getAllStocks } from '../../store/stocks'
 import './NavBar.css'
 
 
@@ -41,7 +41,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div>
+    <div className='search_wrapper'>
       <div className="searchInputs">
         <i id='search_icon' className="fa-solid fa-magnifying-glass"></i>
         <input
@@ -53,15 +53,16 @@ const SearchBar = () => {
         />
 
       </div>
-
-      {filteredData.length !== 0 && (
+      <div className='searchall'>
+        {filteredData.length !== 0 && (
         <div className='dataResult'>
           {filteredData.map((value, key) => {
             return <NavLink className='dataItem' key={value.id} to={`/stocks/${value.id}`} onClick={clearInput}>
               <p className='dataName'>{value.symbol}</p></NavLink>
           })}
         </div>
-      )}
+        )}
+      </div>
     </div>
 
 

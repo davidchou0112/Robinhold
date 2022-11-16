@@ -1,7 +1,27 @@
+.justforwhite {
+    background-color: white;
+}
+
+.justforwhite1 {
+    background-color: white;
+    height: max-content;
+}
+
+.bblackfwhite {
+    color: black;
+    background-color: white;
+}
+
+.blackblue {
+    color: blue;
+    background-color: white;
+}
+
 .button_field {
     margin-top: 25px;
     display: grid;
     justify-content: left;
+    background-color: white;
 }
 
 .button {
@@ -9,10 +29,16 @@
     justify-content: center;
     padding: 12px;
     border-radius: 20px;
-    color: black;
+    color: rgb(255, 255, 255);
     font-weight: 600;
     background-color: rgb(0, 0, 0);
     margin-top: 20px;
+}
+
+.error_message {
+    color: red;
+    background-color: white;
+    padding-bottom: 10px;
 }
 
 .input_field {
@@ -22,6 +48,8 @@
     margin-top: 10px;
     margin-bottom: 25px;
     border-radius: 2px;
+    background-color: white;
+    color: black;
 }
 
 .login_body {
@@ -29,7 +57,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-width: 400px;
+    /* min-width: 400px; */
+    background-color: white;
+    /* height: 500px; */
 }
 
 .login_context {
@@ -37,30 +67,55 @@
     flex-direction: column;
     align-items: start;
     padding: 50px 50px 50px 50px;
+    background-color: white;
 }
 
-.login_form {}
-
 .login_header {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    background-color: white;
+}
+
+.login_form {
+    background-color: white;
 }
 
 .login_wrapper {
     display: flex;
-    max-width: fit-content;
+    /* max-width: fit-content; */
+    flex-direction: row;
+    background-color: white;
 }
 
 .no_account {
     margin-top: 65px;
+    background-color: white;
 }
 
 #login_background {
-    background-position: center;
-    height: 710px;
+    background-position: top;
+    height: 913px;
     width: 600px;
     background-image: url('../images/robinhold_login.jpg');
     background-repeat: no-repeat;
     background-size: 100%;
+    background-color: white;
+}
+
+#signup_background {
+    /* background-position: top; */
+    height: 913px;
+    width: 600px;
+    background-image: url('../images/robinhold_signup.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: white;
+    /* display: flex; */
+        /* flex-direction: column;
+        justify-content: center;
+        align-items: center; */
+        /* background-size: cover; */
+        /* height: 550px;
+        border-top: 1px solid black; */
 }
 
 .signup_body {
@@ -68,5 +123,17 @@
     flex-direction: column;
     align-items: start;
     padding: 50px 50px 50px 50px;
+    background-color: white;
+    min-height: 750px;
+}
 
+#auth_label {
+    font-size: larger;
+    font-weight: bold;
+}
+
+
+.login_session2{
+background-color: white;
+height:500px;
 }

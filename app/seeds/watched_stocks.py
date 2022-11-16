@@ -8,12 +8,21 @@ def seed_watched_stocks():
     list2 = watched_stocks.insert().values(
         watchlist_id=1, stock_id=2)
     list3 = watched_stocks.insert().values(
-        watchlist_id=1, stock_id=3)
+        watchlist_id=1, stock_id=8)
+    list4 = watched_stocks.insert().values(
+        watchlist_id=2, stock_id=4)
+    list5 = watched_stocks.insert().values(
+        watchlist_id=2, stock_id=5)
+    list6 = watched_stocks.insert().values(
+        watchlist_id=2, stock_id=9)
+
 
     db.session.execute(list1)
     db.session.execute(list2)
     db.session.execute(list3)
-
+    db.session.execute(list4)
+    db.session.execute(list5)
+    db.session.execute(list6)
     db.session.commit()
 
 

@@ -71,7 +71,9 @@ class Stock extends React.Component {
                             showlegend: false
                         }
                     ]}
-                    layout={{ width: 720, height: 440, title: 'AAPL', showgrid: false, showlegend: false }}
+                    layout={{ width: 720, height: 440, title: 'AAPL', showgrid: false, showlegend: false,
+                              paper_bgcolor: 'rgb(233,233,233)', plot_bgcolor: 'purple'
+                }}
                 />
             </div>
         )

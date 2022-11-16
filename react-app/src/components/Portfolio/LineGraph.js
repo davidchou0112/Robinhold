@@ -4,9 +4,10 @@ import './Portfolio.css'
 
 function LineGraph() {
   const [graphData, setGraphData] = useState([]);
-
+  const [isActive, setIsActive] = useState(false)
   const handleTpClick = async (e) => {
     createMockData()
+    setIsActive(current => !current)
   }
 
   const createMockData = () => {
@@ -79,7 +80,7 @@ function LineGraph() {
       />
         <div className="timeperiod__container">
             <div className="timeperiod__buttons__container">
-                <div className="timeperiod__button active" onClick={handleTpClick}>1D</div>
+                <div className='timeperiod__button active' onClick={handleTpClick}>1D</div>
                 <div className="timeperiod__button" onClick={handleTpClick}>1W</div>
                 <div className="timeperiod__button" onClick={handleTpClick}>1M</div>
                 <div className="timeperiod__button" onClick={handleTpClick}>3M</div>

@@ -3,9 +3,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
+import NavBar from './components/navigation/NavBar';
 
-import MainPage from './components/MainPage';
+import MainPage from './components/navigation/MainPage';
 // import Stock from './components/Stock/Stock'
 import Watchlists from './components/Watchlist/allWatchlists';
 
@@ -16,6 +16,8 @@ import { authenticate } from './store/session';
 import AllStocks from './components/Stock/allstocks';
 import SingleStock from './components/Stock/singleStock';
 import SingleWatchlist from './components/Watchlist/singleWatchlist';
+import LineGraph from './components/Portfolio/LineGraph';
+import Stock from './components/Stock/Stock';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -62,6 +64,9 @@ function App() {
         </Route>
         <Route path='/watchlists' extct={true}>
           <Watchlists />
+        </Route>
+        <Route path='/testing' exact={true}>
+          <Stock />
         </Route>
       </Switch>
     </BrowserRouter>

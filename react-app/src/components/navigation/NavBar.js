@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
-import Logo from './images/robinhood__logo.png'
-import * as sessionActions from '../store/session'
+import LogoutButton from '../auth/LogoutButton';
+import Logo from '../images/robinhood__logo.png'
+import * as sessionActions from '../../store/session'
 import './NavBar.css';
 import SearchBar from './SearchBar';
 
@@ -36,10 +36,10 @@ const NavBar = () => {
   }
 
   return (
-    <div className='header__wrapper'>
+    <div className='header__wrapper' id='blacknow'>
       <div className='navbar__left'>
-        <NavLink className='header__name' to='/'>
-          <img className='header__logo' src={Logo} alt='logo' />
+        <NavLink className='header__name' id='blacknow' to='/'>
+          <img className='header__logo' id='blacknow' src={Logo} alt='logo' />
         </NavLink>
       </div>
       <div>
@@ -59,7 +59,10 @@ const NavBar = () => {
           SomethingElse
         </NavLink>
         <div>
-          <LogoutButton />
+          <NavLink to='/' exact={true} activeClassName='active'>
+            <LogoutButton />
+          </NavLink>
+
         </div>
 
       </div>
