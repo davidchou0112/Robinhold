@@ -9,6 +9,9 @@ watched_stocks = db.Table(
     db.Column("stock_id", db.Integer, db.ForeignKey(add_prefix_for_prod('stocks.id')), primary_key=True)
 )
 
+if environment == "production":
+    watched_stocks.schema = SCHEMA
+        
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
