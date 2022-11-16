@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 import { deleteSingleList, getAllWatchlists } from "../../store/watchlists"
 import UpdateWatchlistModal from "../UpdateWatchlistModal"
-import UpdateWatchlistForm from "../UpdateWatchlistModal/updateWatchlistForm"
 import CreateWatchlistForm from "./createWatchlistForm"
 // import SingleWatchlist from "./singleWatchlist"
 
@@ -19,6 +18,8 @@ export default function Watchlists() {
         dispatch(getAllWatchlists(userId))
     }, [dispatch, userId])
 
+    if(!allWatchlistsArr) return null
+
     return (
         <div>
             {allWatchlistsArr.map(watchlist => (
@@ -32,7 +33,6 @@ export default function Watchlists() {
                 </div>
             ))}
             <CreateWatchlistForm />
-            {/* <UpdateWatchlistForm /> */}
         </div>
     )
 }

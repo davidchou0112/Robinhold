@@ -4,7 +4,7 @@ import "../../context/Modal.css"
 import UpdateWatchlistForm from "./updateWatchlistForm";
 
 
-function UpdateWatchlistModal(){
+function UpdateWatchlistModal({watchlistId}){
     const [ showModal, setShowModal ] = useState(false)
 
     return (
@@ -12,7 +12,7 @@ function UpdateWatchlistModal(){
             <button onClick={()=> setShowModal(true)}>Update</button>
             {showModal && (
                 <Modal onClose={()=>setShowModal(false)}>
-                    < UpdateWatchlistForm/>
+                    < UpdateWatchlistForm watchlistId={watchlistId}/>
                 </Modal>
             )}
         </>

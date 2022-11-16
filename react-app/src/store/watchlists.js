@@ -77,7 +77,7 @@ export const createWatchlist = (watchlist, userId) => async (dispatch) => {
 
 //------------- Update watchlist -----------------
 export const updateCurrWatchlist = (watchlistId, watchlist) => async (dispatch) => {
-    const res = await fetch(`/users/watchlists/${watchlistId}`, {
+    const res = await fetch(`/watchlists/${watchlistId}`, {
         method: "PUT",
         headers: {
             'Content-Type': "application/json"
@@ -86,6 +86,7 @@ export const updateCurrWatchlist = (watchlistId, watchlist) => async (dispatch) 
     })
     if(res.ok) {
         const data = await res.json()
+        console.log("data in thunk update watchlist===========",data)
         dispatch(updateWatchlist(data))
         return data
     }
@@ -138,7 +139,7 @@ const watchlistsReducer = (state = initialState, action) => {
             newState = { ...state }
             newState.allWatchlists[action.watchlist.id] = action.watchlist
             return newState
-            
+
         default:
             return state
     }
