@@ -7,7 +7,9 @@ Create Date: 2022-11-16 09:13:38.220299
 """
 from alembic import op
 import sqlalchemy as sa
-
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
 revision = 'cb0628584850'
@@ -31,7 +33,10 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name'),
     sa.UniqueConstraint('symbol')
-    )
+    ) 
+    if environment == "production":
+        op.execute(f"ALTER TABLE stocks SET SCHEMA {SCHEMA};")
+    
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(length=40), nullable=False),
@@ -44,6 +49,8 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     op.create_table('transactions',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
@@ -55,6 +62,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE transactions SET SCHEMA {SCHEMA};")
     op.create_table('watchlists',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
@@ -62,6 +71,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE watchlists SET SCHEMA {SCHEMA};")
     op.create_table('watched_stocks',
     sa.Column('watchlist_id', sa.Integer(), nullable=False),
     sa.Column('stock_id', sa.Integer(), nullable=False),
@@ -69,6 +80,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['watchlist_id'], ['watchlists.id'], ),
     sa.PrimaryKeyConstraint('watchlist_id', 'stock_id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE watched_stocks SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
