@@ -12,6 +12,7 @@ export default function Watchlists() {
     // console.log(allWatchlistsObj)
     const userId = useSelector(state => state.session.user.id)
     const allWatchlistsArr = Object.values(allWatchlistsObj)
+    console.log(allWatchlistsArr)
 
     useEffect(() => {
         dispatch(getAllWatchlists(userId))
@@ -21,13 +22,28 @@ export default function Watchlists() {
 
     return (
         <div className="all_lists_container">
+            <h3>Lists</h3>
             {allWatchlistsArr.map(watchlist => (
-                <div key={watchlist.id}>
-                    <NavLink to={`/watchlists/${watchlist.id}`}>
-                        {watchlist.name}
-                    </NavLink>
-                    <UpdateWatchlistModal watchlistId={watchlist.id}/>
-                    <button onClick={()=> dispatch(deleteSingleList(watchlist.id))}>Delete</button>
+                <div key={watchlist.id} >
+                    <div id="list_name">
+                        <NavLink to={`/watchlists/${watchlist.id}`}>
+                            {watchlist.name}
+                        </NavLink>
+                        {Object.values(watchlist.watched_stocks).map(stock => (
+                            <div id="watched_stocks_container">
+                                <li key={stock.id} id="single_watched_stock">
+                                    <NavLink to={`/stocks/${stock.id}`}>
+                                        {stock.name}
+                                    </NavLink>
+                                </li>
+                            </div>
+                        ))}
+                        <UpdateWatchlistModal watchlistId={watchlist.id}/>
+                        <button onClick={()=> dispatch(deleteSingleList(watchlist.id))}>Delete</button>
+                    </div>
+                    <div id="list_items">
+
+                    </div>
                 </div>
             ))}
             <CreateWatchlistForm />
