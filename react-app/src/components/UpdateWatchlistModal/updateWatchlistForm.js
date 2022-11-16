@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom"
 import { getAllWatchlists, updateCurrWatchlist } from "../../store/watchlists"
 
 
-export default function UpdateWatchlistForm({watchlistId}) {
+export default function UpdateWatchlistForm({watchlistId,setShowModal}) {
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -24,8 +24,9 @@ export default function UpdateWatchlistForm({watchlistId}) {
 
         await dispatch(updateCurrWatchlist(watchlistId, newWatchlist))
         await dispatch(getAllWatchlists(userId))
-        
+        setShowModal(false)
         history.push('/watchlists')
+
     }
 
     return (

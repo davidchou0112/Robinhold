@@ -12,7 +12,10 @@ function UpdateWatchlistModal({watchlistId}){
             <button onClick={()=> setShowModal(true)}>Update</button>
             {showModal && (
                 <Modal onClose={()=>setShowModal(false)}>
-                    < UpdateWatchlistForm watchlistId={watchlistId}/>
+                    < UpdateWatchlistForm
+                    watchlistId={watchlistId}
+                    setShowModal={setShowModal}
+                    />
                 </Modal>
             )}
         </>
