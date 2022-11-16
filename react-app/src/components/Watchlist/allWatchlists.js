@@ -4,8 +4,7 @@ import { NavLink } from "react-router-dom"
 import { deleteSingleList, getAllWatchlists } from "../../store/watchlists"
 import UpdateWatchlistModal from "../UpdateWatchlistModal"
 import CreateWatchlistForm from "./createWatchlistForm"
-// import SingleWatchlist from "./singleWatchlist"
-
+import "./allWatchlists.css"
 
 export default function Watchlists() {
     const dispatch = useDispatch()
@@ -21,11 +20,10 @@ export default function Watchlists() {
     if(!allWatchlistsArr) return null
 
     return (
-        <div>
+        <div className="all_lists_container">
             {allWatchlistsArr.map(watchlist => (
                 <div key={watchlist.id}>
                     <NavLink to={`/watchlists/${watchlist.id}`}>
-                        {watchlist.id}
                         {watchlist.name}
                     </NavLink>
                     <UpdateWatchlistModal watchlistId={watchlist.id}/>
