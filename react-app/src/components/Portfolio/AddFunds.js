@@ -8,18 +8,21 @@ const AddFundsForm = () => {
     const [showcConfirmation, setShowConfirmation] = useState(false)
     const [amount, setAmount] = useState('')
     const [submitted, setSubmitted] = useState(false);
-    const currentUser = useSelector(state=> state.session.user)
+    const currentUser = useSelector(state=> state?.session?.user)
+    const buyingPower = useSelector(state=>Number(state?.session?.user?.buying_power))
+
+
 
 
     const handleSubmitAF = async (e) => {
       e.preventDefault()
       setSubmitted(true)
-      const finalAmount = Number(currentUser.buying_power) + Number(amount)
-      const addFundData = {buying_power: finalAmount}
-      await dispatch(addBuyingPowerThunk(addFundData, currentUser.id))
+      const finalAmount = buyingPower + Number(amount)
+      const payload = {buying_power: finalAmount}
+      await dispatch(addBuyingPowerThunk(payload, currentUser.id))
       // history.push('/')
       window.alert(`$${amount} will be deducted from your bank account within the next several days. It may take up to 5 business days to transfer.`)
-      window.location.reload();
+      // window.location.reload();
     }
 
     return (

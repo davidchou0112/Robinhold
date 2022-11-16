@@ -27,6 +27,7 @@ function LineGraph() {
   }, []);
 
   return (
+    <>
     <div className="pf-graph">
       <Line
         data={{
@@ -78,6 +79,7 @@ function LineGraph() {
           },
         }}
       />
+      </div>
         <div className="timeperiod__container">
             <div className="timeperiod__buttons__container">
                 <div className='timeperiod__button active' onClick={handleTpClick}>1D</div>
@@ -89,7 +91,7 @@ function LineGraph() {
                 <div className="timeperiod__button" onClick={handleTpClick}>ALL</div>
             </div>
         </div>
-    </div>
+    </>
 
   );
 }

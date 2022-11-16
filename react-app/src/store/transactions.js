@@ -30,14 +30,14 @@ export const fetchUserTransactions = (userId) => async (dispatch) => {
 
 
 // ---------------------------reducer----------------------------
-const initialState = {allTransactions: {}}
+const initialState = {}
 
 const transactionReducer = (state = initialState, action) => {
     let newState;
     switch(action.type) {
         case GET_USER_TRANSACTION:
-        newState = {...state, allTransactions:{}}
-        action.transactions.forEach((transaction)=>(newState.allTransactions[transaction.id]=transaction))
+        newState = {...state}
+        action.transactions.forEach((transaction)=>(newState[transaction.id]=transaction))
         return newState
 
         default:

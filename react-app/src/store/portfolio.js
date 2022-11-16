@@ -9,10 +9,10 @@
 //         userId
 //     }
 // }
-const addBuyingPower = (userId) => {
+const addBuyingPower = (user) => {
     return {
         type: ADD_BUYING_POWER,
-        userId
+        user
     }
 }
 
@@ -43,23 +43,27 @@ const addBuyingPower = (userId) => {
 }
 
 // // ========== STATE OBJECT & REDUCER ==========
-// const initialState = { buyingPower: {} };
+const initialState = { user: {} };
 
-// const portfolioReducer = (state = initialState, action) => {
-//     let newState = {};
-//     switch (action.type) {
+const portfolioReducer = (state = initialState, action) => {
+    let newState;
+    switch (action.type) {
+        case ADD_BUYING_POWER:
+            newState = {...state, user:{...state.user}}
+            newState.user = action.user
+            return newState
 
-//         case GET_BUYING_POWER:
-//             let buyingPower = {};
-//             newState = {
-//                 ...state,
-//                 buyingPower: { ...state.buyingPower }
-//             }
-//             newState.buyingPower = buyingPower
-//             return newState
+        // case GET_BUYING_POWER:
+        //     let buyingPower = {};
+        //     newState = {
+        //         ...state,
+        //         buyingPower: { ...state.buyingPower }
+        //     }
+        //     newState.buyingPower = buyingPower
+        //     return newState
 
-//         default:
-//             return { ...state }
-//     }
-// }
-export default addBuyingPowerThunk;
+        default:
+            return { ...state }
+    }
+}
+export default portfolioReducer;

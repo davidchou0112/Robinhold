@@ -100,7 +100,7 @@ def api_help():
 
 # ============ Get all users =============
 @app.route('/users')
-@login_required
+# @login_required
 def get_all_users():
     all_users = []
     data = User.query.all()
@@ -110,7 +110,7 @@ def get_all_users():
 
 # =========== Get single user by id ==========
 @app.route('/users/<int:id>')
-@login_required
+# @login_required
 def get_user(id):
     # print(request, 'this is request')
     data = User.query.get(id).to_dict()
@@ -120,7 +120,7 @@ def get_user(id):
 # deposit/withdraw money should update buying power
 # buying/selling stock should update buying power
 @app.route('/users/<int:id>', methods=['PUT'])
-@login_required
+# @login_required
 def update_buying_power(id):
     user = User.query.get(id)
     if not user:
@@ -132,6 +132,7 @@ def update_buying_power(id):
     user.buying_power = data['buying_power']
     db.session.commit()
     return user.to_dict()
+
 
 # ============== Get all stocks ==============
 @app.route("/stocks")
