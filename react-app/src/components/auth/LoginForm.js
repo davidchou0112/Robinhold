@@ -40,53 +40,53 @@ const LoginForm = () => {
   }
 
   return (
-    <div className='justforwhite'>
+    <div className='justforwhite1'>
       <div className='login_wrapper'>
-      <div id='login_background'></div>
-      <div className='login_body'>
-        <form onSubmit={onLogin} className='login_context'>
-          <div className='login_form'>
-            <div className='login_header'><strong>Log in to Robinhold</strong></div>
-            <div className='error_message'>
-              {errors.map((error, ind) => (
-                <div className='error_message' key={ind}>{error}</div>
-              ))}
-            </div>
-            <label htmlFor='email'>Email</label>
-            <div>
-              <input className='input_field'
-                name='email'
-                type='text'
-                placeholder='Email'
-                value={email}
-                onChange={updateEmail}
-              />
-            </div>
-            <label htmlFor='password'>Password</label>
-            <div>
-              <input className='input_field'
-                name='password'
-                type='password'
-                placeholder='Password'
-                value={password}
-                onChange={updatePassword}
-              />
-              <small>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
-                <i class="far fa-eye" id="togglePassword"></i>
-                <input type='checkbox' /> Keep me logged in for up to 30 days
-              </small>
-            </div>
+        <div id='login_background'></div>
+        <div className='login_body'>
+          <form onSubmit={onLogin} className='login_context'>
+            <div className='login_form'>
+              <div className='login_header'><strong className='bblackfwhite' id='auth_label'>Log in to Robinhold</strong></div>
+              <div className='error_message'>
+                {errors.map((error, ind) => (
+                  <div className='error_message' key={ind}>{error}</div>
+                ))}
+              </div>
+              <label className='bblackfwhite' htmlFor='email'>Email</label>
+              <div className='bblackfwhite'>
+                <input className='input_field'
+                  name='email'
+                  type='text'
+                  placeholder='Email'
+                  value={email}
+                  onChange={updateEmail}
+                />
+              </div>
+              <label className='bblackfwhite' htmlFor='password'>Password</label>
+              <div className='bblackfwhite'>
+                <input className='input_field'
+                  name='password'
+                  type='password'
+                  placeholder='Password'
+                  value={password}
+                  onChange={updatePassword}
+                />
+                <small className='bblackfwhite'>
+                  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+                  <i class="far fa-eye" id="togglePassword"></i>
+                  <input type='checkbox' /> Keep me logged in for up to 30 days
+                </small>
+              </div>
 
-            <div className='button_field'>
-              <button className='body__button' id='body__button_3' type='submit'>Login</button>
-              <button className='body__button' id='body__button_3' type='submit' onClick={demoUserButton}>Demo User</button>
+              <div className='button_field'>
+                <button className='body__button' id='body__button_3' type='submit'>Login</button>
+                <button className='body__button' id='body__button_3' type='submit' onClick={demoUserButton}>Demo User</button>
+              </div>
+              <div className='no_account'><small className='bblackfwhite'>Not on Robinhold? <NavLink className='blackblue' to='/sign-up' exact={true}>Create an account</NavLink></small></div>
             </div>
-            <div className='no_account'><small>Not on Robinhold? <NavLink to='/sign-up' exact={true}>Create an account</NavLink></small></div>
-          </div>
-        </form>
-      </div>
-    </div >
+          </form>
+        </div>
+      </div >
     </div>
 
 

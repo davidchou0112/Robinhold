@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
+import { fromWatchList } from "../../store/actionWatchlist";
 
 export default function DeleteFromWatchlist() {
     const dispatch = useDispatch();
@@ -16,7 +17,7 @@ export default function DeleteFromWatchlist() {
         const updatedWatchlist = {
             name: watchlist['1'].name
         }
-        dispatch(toWatchList(updatedWatchlist, userId, stockId))
+        dispatch(fromWatchList(updatedWatchlist, userId, stockId))
     }
 
     return (

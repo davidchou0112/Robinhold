@@ -1,9 +1,9 @@
-*{
-  color:white;
+* {
+  color: white;
   background-color: black;
 }
 
-.body-wrapper{
+.body-wrapper {
   background-color: black;
   margin: 0;
   display: grid;
@@ -11,7 +11,7 @@
   z-index: -1;
 }
 
-.body-container{
+.body-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -27,7 +27,7 @@
 
 /* ------------LEFT SIDE---------------- */
 
-.portfolio-wrapper{
+.portfolio-wrapper {
   flex: 0.7;
   display: flex;
   flex-direction: column;
@@ -41,26 +41,27 @@
   font-size: 12px;
 }
 
-.buying-power-header{
+.buying-power-header {
   padding: 20px 0px 20px 0px;
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #3b4754;
   margin-bottom: 60px;
 }
+
 .pf-chart-wrapper {
   width: 100%;
   /* margin-right: 100px; */
 }
 
 /* --------------------time period-------------------------- */
-.timeperiod__container{
-  display:flex;
+.timeperiod__container {
+  display: flex;
   border-bottom: 1px solid #3b4754;
 }
 
 
-.timeperiod__buttons__container{
+.timeperiod__buttons__container {
   font-size: 16px;
   display: flex;
   align-items: center;
@@ -68,7 +69,7 @@
   padding-bottom: 0px;
 }
 
-.timeperiod__button{
+.timeperiod__button {
   font-weight: bold;
   padding: 10px 10px 20px 10px;
   cursor: pointer;
@@ -87,7 +88,7 @@
 }
 
 /* ------------------buying power--------------------- */
-.buying-power-wrapper{
+.buying-power-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -98,7 +99,7 @@
 
 
 /* ---------------------RIGHT SIDE----------------------- */
-.watchlist-wrapper{
+.watchlist-wrapper {
   flex: 0.3;
   display: flex;
   flex-direction: column;
