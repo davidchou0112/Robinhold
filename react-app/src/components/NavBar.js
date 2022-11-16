@@ -59,7 +59,10 @@ const NavBar = () => {
           SomethingElse
         </NavLink>
         <div>
-          <LogoutButton />
+          <NavLink to='/' exact={true} activeClassName='active'>
+            <LogoutButton />
+          </NavLink>
+
         </div>
 
       </div>

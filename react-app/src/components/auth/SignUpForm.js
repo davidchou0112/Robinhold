@@ -7,6 +7,8 @@ import './auth.css';
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
+  const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
@@ -16,15 +18,44 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      // setErrors([]);
+      // const data = await dispatch(signUp(username, email, firstname, lastname, password));
+      // console.log(data)
+      // console.log(data)
+      // if (data) {
+      //   setErrors(data)
+      // }
+
+      setErrors([]);
+      const data = await dispatch(signUp(username, email, firstname, lastname, password));
+      console.log(data)
       if (data) {
-        setErrors(data)
+        return setErrors(data)
       }
+
+
+      // return dispatch(signUp(username, email, firstname, lastname, password))
+      //   .catch(async (res) => {
+      //     const data = await res.json();
+      //     console.log(data)
+      //     if (data && data.errors) setErrors(data.errors);
+      //   });
+
+
     }
+    return setErrors(['Confirm Password field must be the same as the Password field']);
   };
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
+  };
+
+  const updateFirstname = (e) => {
+    setFirstname(e.target.value);
+  };
+
+  const updateLastname = (e) => {
+    setLastname(e.target.value);
   };
 
   const updateEmail = (e) => {
@@ -46,7 +77,7 @@ const SignUpForm = () => {
   return (
     <div className='signup_body'>
       <form onSubmit={onSignUp}>
-        <div>
+        <div className='error_message'>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
@@ -58,7 +89,27 @@ const SignUpForm = () => {
             name='username'
             onChange={updateUsername}
             value={username}
-            placeholder='Username'
+            placeholder='betweeen 4 and 12 charaters'
+          ></input>
+        </div>
+        <div>
+          <label>First Name</label>
+          <input className='input_field'
+            type='text'
+            name='firstname'
+            onChange={updateFirstname}
+            value={firstname}
+            placeholder='betweeen 1 and 20 charaters'
+          ></input>
+        </div>
+        <div>
+          <label>Last Name</label>
+          <input className='input_field'
+            type='text'
+            name='lastname'
+            onChange={updateLastname}
+            value={lastname}
+            placeholder='betweeen 1 and 20 charaters'
           ></input>
         </div>
         <div>
@@ -78,7 +129,7 @@ const SignUpForm = () => {
             name='password'
             onChange={updatePassword}
             value={password}
-            placeholder='Password'
+            placeholder='betweeen 6 and 20 charaters'
 
           ></input>
         </div>
