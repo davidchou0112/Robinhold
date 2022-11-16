@@ -41,7 +41,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div className='justforwhite'>
+    <div className='search_wrapper'>
       <div className="searchInputs">
         <i id='search_icon' className="fa-solid fa-magnifying-glass"></i>
         <input
@@ -53,15 +53,16 @@ const SearchBar = () => {
         />
 
       </div>
-
-      {filteredData.length !== 0 && (
+      <div className='searchall'>
+        {filteredData.length !== 0 && (
         <div className='dataResult'>
           {filteredData.map((value, key) => {
             return <NavLink className='dataItem' key={value.id} to={`/stocks/${value.id}`} onClick={clearInput}>
               <p className='dataName'>{value.symbol}</p></NavLink>
           })}
         </div>
-      )}
+        )}
+      </div>
     </div>
 
 
