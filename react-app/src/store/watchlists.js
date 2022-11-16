@@ -68,9 +68,9 @@ export const createWatchlist = (watchlist, userId) => async (dispatch) => {
         },
         body: JSON.stringify(watchlist)
     })
-    if ( res.ok ){
+    if (res.ok) {
         const newWatchlist = await res.json()
-        dispatch(createNewWatchlist(newWatchlist,userId))
+        dispatch(createNewWatchlist(newWatchlist, userId))
         return newWatchlist
     }
 }

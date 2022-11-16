@@ -11,6 +11,8 @@
 .single_stock_wrapper {
     margin: 20px;
     width: 700px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .stock_details {
@@ -28,4 +30,8 @@
 .detail_details {
     margin-top: 5px;
     margin-bottom: 15px;
+}
+
+.watchlist {
+    padding: 5px;
 }

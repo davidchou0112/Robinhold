@@ -5,6 +5,8 @@ import { useParams } from 'react-router-dom';
 import { getSingleStock } from '../../store/stocks';
 import Stock from './Stock'
 import './singleStock.css'
+import Watchlists from '../Watchlist/allWatchlists';
+import AddToWatchlist from '../Watchlist/addToWatchlist';
 
 const SingleStock = () => {
     const dispatch = useDispatch();
@@ -21,10 +23,10 @@ const SingleStock = () => {
 
     return (
         <div className='single_stock_wrapper'>
-            <h2>{singleStock.name}</h2>
-            <h1>${singleStock.price}</h1>
-            <Stock />
             <div>
+                <h2>{singleStock.name}</h2>
+                <h1>${singleStock.price}</h1>
+                <Stock />
                 <h2 className='header_label'>About (dynamic)</h2>
                 <div className='stock_description'>
                     <p>{singleStock.description}</p>
@@ -124,7 +126,12 @@ const SingleStock = () => {
                 </div>
 
                 <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small>
+            </div>
 
+            <div className='watchlist'>
+
+                {/* <Watchlists /> */}
+                <AddToWatchlist />
             </div>
         </div>
 
