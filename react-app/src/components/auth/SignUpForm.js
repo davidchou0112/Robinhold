@@ -76,44 +76,44 @@ const SignUpForm = () => {
 
   return (
     <div className='signup_body'>
-      <form onSubmit={onSignUp}>
+      <form className='justforwhite' onSubmit={onSignUp}>
         <div className='error_message'>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div>
-          <label>User Name</label>
+        <div className='justforwhite'>
+          <label className='bblackfwhite'>User Name</label>
           <input className='input_field'
             type='text'
             name='username'
             onChange={updateUsername}
             value={username}
-            placeholder='betweeen 4 and 12 charaters'
+            placeholder='Between 4 and 12 characters'
           ></input>
         </div>
-        <div>
-          <label>First Name</label>
+        <div className='justforwhite'>
+          <label className='bblackfwhite'>First Name</label>
           <input className='input_field'
             type='text'
             name='firstname'
             onChange={updateFirstname}
             value={firstname}
-            placeholder='betweeen 1 and 20 charaters'
+            placeholder='Between 1 and 20 characters'
           ></input>
         </div>
-        <div>
-          <label>Last Name</label>
+        <div className='justforwhite'>
+          <label className='bblackfwhite'>Last Name</label>
           <input className='input_field'
             type='text'
             name='lastname'
             onChange={updateLastname}
             value={lastname}
-            placeholder='betweeen 1 and 20 charaters'
+            placeholder='Between 1 and 20 characters'
           ></input>
         </div>
-        <div>
-          <label>Email</label>
+        <div className='justforwhite'>
+          <label className='bblackfwhite'>Email</label>
           <input className='input_field'
             type='text'
             name='email'
@@ -122,19 +122,19 @@ const SignUpForm = () => {
             placeholder='Email'
           ></input>
         </div>
-        <div>
-          <label>Password</label>
+        <div className='justforwhite'>
+          <label className='bblackfwhite'>Password</label>
           <input className='input_field'
             type='password'
             name='password'
             onChange={updatePassword}
             value={password}
-            placeholder='betweeen 6 and 20 charaters'
+            placeholder='Between 6 and 20 characters'
 
           ></input>
         </div>
-        <div>
-          <label>Repeat Password</label>
+        <div className='justforwhite'>
+          <label className='bblackfwhite'>Repeat Password</label>
           <input className='input_field'
             type='password'
             name='repeat_password'
@@ -145,7 +145,7 @@ const SignUpForm = () => {
           ></input>
         </div>
         <button className='body__button' id='body__button_3' type='submit'>Sign Up</button>
-        <div className='no_account'><small>Already started? <NavLink to='/login' exact={true}>Log in to complete your application</NavLink></small></div>
+        <div className='no_account'><small className='bblackfwhite'>Already started? <NavLink className='blackblue' to='/login' exact={true}>Log in to complete your application</NavLink></small></div>
       </form>
     </div>
   );
