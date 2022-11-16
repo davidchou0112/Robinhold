@@ -87,6 +87,7 @@ const LoginForm = () => {
           </form>
         </div>
       </div >
+      <div className='login_session2'></div>
     </div>
 
 
