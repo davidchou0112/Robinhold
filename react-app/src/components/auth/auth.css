@@ -1,3 +1,7 @@
+.justforwhite{
+    background-color: white;
+}
+
 .button_field {
     margin-top: 25px;
     display: grid;
@@ -35,6 +39,7 @@
     justify-content: center;
     align-items: center;
     min-width: 400px;
+    background-color: white;
 }
 
 .login_context {
@@ -42,15 +47,18 @@
     flex-direction: column;
     align-items: start;
     padding: 50px 50px 50px 50px;
+    background-color: white;
 }
 
 .login_header {
     margin-bottom: 20px;
+    background-color: white;
 }
 
 .login_wrapper {
     display: flex;
     max-width: fit-content;
+    background-color: white;
 }
 
 .no_account {
@@ -64,6 +72,7 @@
     background-image: url('../images/robinhold_login.jpg');
     background-repeat: no-repeat;
     background-size: 100%;
+    background-color: white;
 }
 
 .signup_body {

@@ -40,7 +40,8 @@ const LoginForm = () => {
   }
 
   return (
-    <div className='login_wrapper'>
+    <div className='justforwhite'>
+      <div className='login_wrapper'>
       <div id='login_background'></div>
       <div className='login_body'>
         <form onSubmit={onLogin} className='login_context'>
@@ -86,6 +87,8 @@ const LoginForm = () => {
         </form>
       </div>
     </div >
+    </div>
+
 
   );
 };
