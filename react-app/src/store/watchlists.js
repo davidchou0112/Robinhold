@@ -5,7 +5,6 @@ const UPDATE_WATCHLIST = "watchlists/updateWatchlist"
 const DELETE_WATCHLIST = "watchlists/deleteWatchlists"
 
 const loadWatchlists = (watchlists) => {
-    console.log('this is watchlists>>', watchlists)
     return {
         type: LOAD_WATCHLISTS,
         watchlists
@@ -76,14 +75,15 @@ export const createWatchlist = (watchlist, userId) => async (dispatch) => {
 }
 
 //------------- Update watchlist -----------------
-export const updateCurrWatchlist = (watchlistId, watchlist) => async (dispatch) => {
-    const res = await fetch(`/watchlists/${watchlistId}`, {
+export const updateCurrWatchlist = (id, watchlist) => async (dispatch) => {
+    const res = await fetch(`/watchlists/${id}`, {
         method: "PUT",
         headers: {
             'Content-Type': "application/json"
         },
         body: JSON.stringify(watchlist)
     })
+    console.log("res in thunkkkkkk",res)
     if(res.ok) {
         const data = await res.json()
         console.log("data in thunk update watchlist===========",data)
