@@ -188,7 +188,6 @@ def get_watchlist_by_id(id):
 # @login_required
 def update_watchlist(id):
     watchlist = Watchlist.query.get(id)
-    # if watchlist not founded:
     if not watchlist:
         return {
             "message": "Watchlist not found",
@@ -197,7 +196,7 @@ def update_watchlist(id):
     data = request.get_json()
     watchlist.name = data["name"]
     db.session.commit()
-    return "update watchlist test"
+    return watchlist.to_dict()
 
 # ========= Create new watchlist ==============
 @app.route("/users/<int:user_id>/watchlists", methods=["POST"])
