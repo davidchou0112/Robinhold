@@ -15,7 +15,7 @@ export default function AddToWatchlist() {
     const stockToWatchlist = async e => {
         e.preventDefault();
         const updatedWatchlist = {
-            name: watchlist['1'].name
+            name: watchlist['2'].name
         }
         dispatch(toWatchList(updatedWatchlist, userId, stockId))
     }
