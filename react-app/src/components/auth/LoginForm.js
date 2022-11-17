@@ -71,6 +71,7 @@ const LoginForm = () => {
                   value={password}
                   onChange={updatePassword}
                 />
+                <br></br>
                 <small className='bblackfwhite'>
                   {/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
                   <i class="far fa-eye" id="togglePassword"></i> */}
