@@ -14,7 +14,7 @@ function TestingGraph(props) {
       dispatch(stockActions.getSingleStock(stockId))
     }, [])
 
-    useEffect(() => {
+  useEffect(() => {
       // createMockData();
       fetchLiveStock()
     }, []);
