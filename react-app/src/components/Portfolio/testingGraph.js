@@ -8,7 +8,7 @@ function TestingGraph() {
 
     const API_KEY = 'FZ0Z77IPDL0DZW40';
     let StockSymbol = 'AAPL';
-    let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=AAPL&outputsize=compact&apikey=${API_KEY}`;
+    let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${StockSymbol}&outputsize=compact&apikey=${API_KEY}`;
 
     let stockChartXValuesFunction = [];
     let stockChartYValuesFunction = [];
@@ -19,6 +19,34 @@ function TestingGraph() {
       setIsActive(current => !current)
     }
 
+    // function fetchStock() {
+    //   let dataArr = []
+    //   let stockChartXValuesFunction = [];
+    //   let stockChartYValuesFunction = [];
+    //   fetch(API_Call)
+    //   .then(
+    //     function (response) {
+    //       return response.json()
+    //     }
+    //     )
+    //     .then(
+    //       function (data) {
+    //       // console.log('////////////////////rt', data)
+    //         for (var key in data['Time Series (Daily)']) {
+    //           let value = data['Time Series (Daily)'][key]['1. open']
+    //             // console.log('-------key------------', key)
+    //             // console.log('---------value----------', value)
+    //             // stockChartXValuesFunction.push(key);
+    //             // stockChartYValuesFunction.push(data['Time Series (Daily)'][key]['1. open']);
+    //             dataArr.push({x: key, y: value})
+    //             // dataArr.push({x: key, y: data['Time Series (Daily)'][key]['1. open']})
+    //           }
+    //           // console.log('-------graphdataBEFORE-----------',dataArr)
+    //       })
+    //       setGraphData(dataArr)
+    //     }
+    // console.log('-------graphdata------------', graphData)
+
     const createMockData = () => {
       let data = [];
       let value = 50;
@@ -27,12 +55,16 @@ function TestingGraph() {
         date.setHours(0, 0, 0, 0);
         date.setDate(i);
         value += Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 10);
+        // console.log('========date=========', date)
+        // console.log('========value=========', value)
         data.push({ x: date, y: value });
       }
       setGraphData(data);
     };
+
     useEffect(() => {
       createMockData();
+      // fetchStock()
     }, []);
 
     return (
@@ -87,7 +119,7 @@ function TestingGraph() {
             },
           }}
         />
-          <div className="timeperiod__container">
+          {/* <div className="timeperiod__container">
               <div className="timeperiod__buttons__container">
                   <div className='timeperiod__button active' onClick={handleTpClick}>1D</div>
                   <div className="timeperiod__button" onClick={handleTpClick}>1W</div>
@@ -97,7 +129,7 @@ function TestingGraph() {
                   <div className="timeperiod__button" onClick={handleTpClick}>1Y</div>
                   <div className="timeperiod__button" onClick={handleTpClick}>ALL</div>
               </div>
-          </div>
+          </div> */}
       </div>
 
     );

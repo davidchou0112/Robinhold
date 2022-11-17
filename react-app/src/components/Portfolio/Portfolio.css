@@ -23,6 +23,15 @@
   /* z-index: 50; */
 }
 
+.errorList{
+  display: flex;
+  list-style: none;
+  color: #ff385c;
+  font-size: 14px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 
 /* ------------LEFT SIDE---------------- */
