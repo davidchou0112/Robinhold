@@ -98,6 +98,7 @@ def get_all_users():
         all_users.append(user.to_dict())
     return jsonify(all_users)
 
+
 # =========== Get single user by id ==========
 @app.route('/users/<int:id>')
 # @login_required
@@ -105,6 +106,7 @@ def get_user(id):
     # print(request, 'this is request')
     data = User.query.get(id).to_dict()
     return data
+
 
 # ========== Update Buying Power ===========
 # deposit/withdraw money should update buying power
@@ -228,7 +230,7 @@ def delete_watchlist(id):
 
 # ========== Get all transations ============
 @app.route("/users/<int:user_id>/transactions")
-@login_required
+# @login_required
 def get_user_transactions(user_id):
     all_transations = []
     data = Transaction.query.filter(Transaction.user_id == user_id).all()
@@ -239,20 +241,35 @@ def get_user_transactions(user_id):
 # ========= Create new transaction ==============
 # might need to work something that changes our buying power when stocks are
 # purchased/sold (PUT method somewhere? or even new route)
+# @app.route("/users/<int:user_id>/transactions", methods=["POST"])
+# # @login_required
+# def post_new_transaction(user_id):
+#     data = request.get_json()
+#     new_transaction = Transaction(
+#         user_id = user_id,
+#         stock_id = data["stock_id"],
+#         quantity = data["quantity"],
+#         is_purchased = data["is_purchased"],
+#         price = data["price"]
+#     )
+#     db.session.add(new_transaction)
+#     db.session.commit()
+#     return "testing post transaction"
+
 @app.route("/users/<int:user_id>/transactions", methods=["POST"])
-@login_required
+# @login_required
 def post_new_transaction(user_id):
     data = request.get_json()
     new_transaction = Transaction(
         user_id = user_id,
-        stock_id = data["stock_id"],
+        stock_symbol = data["stock_symbol"],
         quantity = data["quantity"],
-        is_purchased = True,
+        is_purchased = data["is_purchased"],
         price = data["price"]
     )
     db.session.add(new_transaction)
     db.session.commit()
-    return "testing post transaction"
+    return new_transaction.to_dict()
 
 # # ========= Update a transaction ==============
 # @app.route("/transactions/<int:id>", methods=["PUT"])
@@ -272,13 +289,13 @@ def post_new_transaction(user_id):
 
 
 # ========= Delete a transaction ==============
-@app.route("/transactions/<int:id>", methods=["DELETE"])
-@login_required
-def delete_transaction(id):
-    transaction = Transaction.query.get(id)
-    db.session.delete(transaction)
-    db.session.commit()
-    return "successfully delete transaction"
+# @app.route("/transactions/<int:id>", methods=["DELETE"])
+# @login_required
+# def delete_transaction(id):
+#     transaction = Transaction.query.get(id)
+#     db.session.delete(transaction)
+#     db.session.commit()
+#     return "successfully delete transaction"
 
 
 # # ============  Add stock into watchlist ===========
