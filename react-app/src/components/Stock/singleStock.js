@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getSingleStock } from '../../store/stocks';
@@ -20,7 +20,8 @@ const SingleStock = () => {
 
     useEffect(() => {
         dispatch(getSingleStock(stockId))
-    }, [])
+        // .then(() => setIsLoaded(true))
+    }, [dispatch, stockId])
 
     return (
         <div className='single_stock_wrapper'>

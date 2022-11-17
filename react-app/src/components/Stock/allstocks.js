@@ -10,7 +10,7 @@ const AllStocks = () => {
 
     useEffect(() => {
         dispatch(getAllStocks())
-    }, [])
+    }, [dispatch])
 
 
     return (

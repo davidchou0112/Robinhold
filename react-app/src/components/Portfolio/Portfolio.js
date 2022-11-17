@@ -47,7 +47,7 @@ const Portfolio = () => {
   const buyingPower = Number(currentUser.buying_power)
   useEffect(() => {
     dispatch(fetchUserTransactions(userId))
-  }, [])
+  }, [dispatch, userId])
 
   let totalVal = 0
   userTransactions.forEach(transaction => {
