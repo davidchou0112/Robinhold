@@ -103,17 +103,17 @@ const SingleStock = () => {
                     Insert Data Here
                 </div>
 
-                <h2 className='header_label'>News</h2>
+                <h2 className='header_label'>News (hard coded)</h2>
                 <div className='stock_description' id='news_list'>
                     <News />
                 </div>
 
-                <h2 className='header_label'>Analyst ratings</h2>
+                <h2 className='header_label'>Analyst ratings (images)</h2>
                 <div className='stock_description'>
                     <div className='analyst_rating'></div>
                 </div>
 
-                <h2 className='header_label'>Earnings</h2>
+                <h2 className='header_label'>Earnings (images)</h2>
                 <div className='stock_description'>
                     <div className='earnings'></div>
                 </div>

@@ -134,18 +134,18 @@ const Portfolio = () => {
           <h2 className='portfolio_label'>Trending Lists</h2>
           <div>Insert Data Here</div>
 
-          <h2 className='portfolio_label'>Learn</h2>
+          <h2 className='portfolio_label'>Learn (images)</h2>
           <div className='portfolio_news'>
             <Learn />
           </div>
 
 
-          <h2 className='portfolio_label'>News</h2>
+          <h2 className='portfolio_label'>News (hard coded)</h2>
           <div className='portfolio_news'>
             <News />
           </div>
 
-          <h2 className='daily_movers_label'>Daily Movers</h2>
+          <h2 className='daily_movers_label'>Daily Movers (images)</h2>
           <small className='daily_movers_small'>Stocks making the biggest moves today.</small>
           <DailyMovers />
           <br></br>
