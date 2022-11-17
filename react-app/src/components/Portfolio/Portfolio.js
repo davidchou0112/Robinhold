@@ -132,7 +132,7 @@ const Portfolio = () => {
           </div>
 
           <h2 className='portfolio_label'>Trending Lists</h2>
-          <div></div>
+          <div>Insert Data Here</div>
 
           <h2 className='portfolio_label'>Learn</h2>
           <div className='portfolio_news'>
@@ -146,16 +146,14 @@ const Portfolio = () => {
           </div>
 
           <h2 className='daily_movers_label'>Daily Movers</h2>
-          <small>Stocks making the biggest moves today.</small>
+          <small className='daily_movers_small'>Stocks making the biggest moves today.</small>
           <DailyMovers />
-
+          <br></br>
+          <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small>
+          <br></br>
         </div>
-
-
         <div className='watchlist-wrapper'></div>
-
       </div>
-
     </div>
   )
 

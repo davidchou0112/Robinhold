@@ -60,6 +60,17 @@
   margin-bottom: 60px;
 }
 
+.daily_movers_label {
+  border-top: 1px groove gray;
+  padding-top: 15px;
+}
+
+.daily_movers_small {
+  margin-top: 5px;
+  margin-bottom: 10px;
+
+}
+
 .pf-chart-wrapper {
   width: 100%;
   /* margin-right: 100px; */

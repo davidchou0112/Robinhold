@@ -129,6 +129,7 @@ const SingleStock = () => {
                 </div>
 
                 <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small>
+
             </div>
 
             <div className='watchlist'>

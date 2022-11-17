@@ -2,10 +2,13 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
+    margin: 10px 5px 5px 5px;
+    padding-bottom: 30px;
+    border-bottom: 1px groove gray;
 }
 
 .daily_movers_1 {
-    border: 1px groove gray;
+    border: 1px solid gray;
     border-radius: 12px;
     width: 92%;
     height: 185px;
@@ -16,7 +19,7 @@
 }
 
 .daily_movers_2 {
-    border: 1px groove gray;
+    border: 1px solid gray;
     border-radius: 12px;
     width: 92%;
     height: 185px;
@@ -27,7 +30,7 @@
 }
 
 .daily_movers_3 {
-    border: 1px groove gray;
+    border: 1px solid gray;
     border-radius: 12px;
     width: 92%;
     height: 185px;
@@ -38,7 +41,7 @@
 }
 
 .daily_movers_4 {
-    border: 1px groove gray;
+    border: 1px solid gray;
     border-radius: 12px;
     width: 92%;
     height: 185px;

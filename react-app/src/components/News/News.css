@@ -58,6 +58,10 @@
     display: flex;
 }
 
+.news_box:hover {
+    text-decoration: underline;
+}
+
 /* padding: top right down left*/
 
 .site_name {
