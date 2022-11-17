@@ -8,6 +8,9 @@ import AddFundsForm from './AddFunds';
 import { fetchUserTransactions } from '../../store/transactions'
 import { useTransition } from 'react';
 import * as portfolioActions from '../../store/portfolio'
+import News from '../News/News';
+import Learn from './Learn';
+import DailyMovers from './DailyMovers';
 const popularTopics = [
   "Newly Listed Crypto",
   "New OTC securities",
@@ -127,6 +130,22 @@ const Portfolio = () => {
               </div>
             )}
           </div>
+
+          <h2 className='portfolio_label'>Trending Lists</h2>
+          <div></div>
+
+          <h2 className='portfolio_label'>Learn</h2>
+          <Learn />
+
+          <h2 className='portfolio_label'>News</h2>
+          <div className='portfolio_news'>
+            <News />
+          </div>
+
+          <h2 className='daily_movers_label'>Daily Movers</h2>
+          <small>Stocks making the biggest moves today.</small>
+          <DailyMovers />
+
         </div>
 
 
