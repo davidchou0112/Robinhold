@@ -32,6 +32,9 @@ const News = () => {
                     <div className='news_title'>
                         <p id='transparant_me'>Alibaba, Nio Stocks Fall: Hang Seng Index Today - Alibaba Group Holding - Benzinga</p>
                     </div>
+                    <div className='news_description'>
+                        <p id='transparant_me'>Hong Kong stocks opened in the red on Thursday, with the benchmark Hang Seng losing over 2.5% in morning trade, following news of Tencent cutting its $20 billion stake in Meituan.</p>
+                    </div>
                 </div>
                 <div className='news2'></div>
             </a>
@@ -54,13 +57,13 @@ const News = () => {
             <a className='news_link' href='https://finance.yahoo.com/quote/TSLA/'>
                 <div className='news_box'>
                     <div className='site_name'>
-                        <p id='transparant_me'>Testing Site Name</p>
+                        <p id='transparant_me'>FINANCIAL TIMES</p>
                     </div>
                     <div className='news_title'>
-                        <p id='transparant_me'>Testing Site News Title</p>
+                        <p id='transparant_me'>Autumn Statement Live Updates: What Jeremy Hunt Has Achieved So Far</p>
                     </div>
                     <div className='news_description'>
-                        <p id='transparant_me'>Testing Site News Description</p>
+                        <p id='transparant_me'>UK: Chancellor Jeremy Hunt will deliver a fiscal statement to the House of Commons at 11.30am. He is expected to announce tax increases and cuts to public services in a bid to plug a “fiscal hole” in the country’s public finances.</p>
                     </div>
                 </div>
                 <div className='news4'></div>
