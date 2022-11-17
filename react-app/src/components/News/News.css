@@ -13,8 +13,33 @@
     background-image: url('../images/news_testing_2.jpg');
     background-repeat: no-repeat;
     border: 1px solid rgb(0, 0, 0);
+    border-radius: 15px;
     width: 245px;
-    height: 185px;
+    height: 138px;
+    background-position: center;
+    background-size: contain;
+    margin-bottom: 10px;
+}
+
+.news3 {
+    background-image: url('../images/news_testing_3.jpg');
+    background-repeat: no-repeat;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 15px;
+    width: 245px;
+    height: 138px;
+    background-position: center;
+    background-size: contain;
+    margin-bottom: 10px;
+}
+
+.news4 {
+    background-image: url('../images/news_testing_3.jpg');
+    background-repeat: no-repeat;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 15px;
+    width: 245px;
+    height: 138px;
     background-position: center;
     background-size: contain;
     margin-bottom: 10px;

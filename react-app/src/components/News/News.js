@@ -14,7 +14,7 @@ const News = () => {
                             <p id='transparant_me'>Yahoo Finance</p>
                         </div>
                         <div className='news_title'>
-                            <p id='transparant_me'>Musk's reign at Twitter has been chaotic. Don't count him out.</p>
+                            <p id='transparant_me'>Musk's Reign At Twitter Has Been Chaotic. Don't Count Him Out.</p>
                         </div>
                         <div className='news_description'>
                             <p id='transparant_me'>Elon Musk’s takeover of Twitter spurred chaos from the get-go. From bungled mass layoffs, to the launch of a verification system that Twitter halted days after its release, Musk’s first weeks have, rightfully, raised doubts about his ability to run the micro-blogging site.</p>
@@ -36,19 +36,19 @@ const News = () => {
                 <div className='news2'></div>
             </a>
             <br></br>
-            <a className='news_link' href='https://finance.yahoo.com/quote/TSLA/'>
+            <a className='news_link' href='https://www.cnbc.com/2022/11/17/amazon-is-looking-to-trim-headcount-through-a-voluntary-buyout-program.html'>
                 <div className='news_box'>
                     <div className='site_name'>
-                        <p id='transparant_me'>Testing Site Name</p>
+                        <p id='transparant_me'>CNBC</p>
                     </div>
                     <div className='news_title'>
-                        <p id='transparant_me'>Testing Site News Title</p>
+                        <p id='transparant_me'>Amazon Is Looking To Trim Headcount Through A Voluntary Buyout Program</p>
                     </div>
                     <div className='news_description'>
-                        <p id='transparant_me'>Testing Site News Description</p>
+                        <p id='transparant_me'>Amazon is offering voluntary buyouts to some employees inside the company, as it looks for ways to trim its headcount beyond the massive layoffs already underway.</p>
                     </div>
                 </div>
-                <div className='news1'></div>
+                <div className='news3'></div>
             </a>
             <br></br>
             <a className='news_link' href='https://finance.yahoo.com/quote/TSLA/'>
@@ -63,7 +63,7 @@ const News = () => {
                         <p id='transparant_me'>Testing Site News Description</p>
                     </div>
                 </div>
-                <div className='news1'></div>
+                <div className='news4'></div>
             </a>
         </div>
     )

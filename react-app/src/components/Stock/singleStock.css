@@ -19,6 +19,7 @@
 .header_label {
     border-bottom: 1px groove gray;
     padding-bottom: 5px;
+    padding-top: 3%;
 }
 
 #news_list {
