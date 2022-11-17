@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 import { deleteSingleList, getAllWatchlists } from "../../store/watchlists"
@@ -7,6 +7,8 @@ import CreateWatchlistForm from "./createWatchlistForm"
 import "./allWatchlists.css"
 
 export default function Watchlists() {
+
+    const [ listForm, setListform ] = useState(false)
     const dispatch = useDispatch()
     const allWatchlistsObj = useSelector(state => state.watchlist.allWatchlists)
     // console.log(allWatchlistsObj)
@@ -18,32 +20,74 @@ export default function Watchlists() {
         dispatch(getAllWatchlists(userId))
     }, [dispatch, userId])
 
+    const openListForm = () => {
+        if(listForm) return
+        setListform(true)
+    }
+
+    useEffect(()=> {
+        if(!listForm) return
+        const closeListForm = ()=>{
+            setListform(false)
+        }
+        document.addEventListener("submit", closeListForm)
+        return () => document.removeEventListener("submit",closeListForm)
+    },[listForm])
+
     if(!allWatchlistsArr) return null
 
     return (
-        <div className="all_lists_container">
-            <h3>Lists</h3>
+        <div className="all-lists-container">
+            <div id="list-general-header">
+                <h3>Lists</h3>
+                <div id="list-drop-down">
+                    <button className="update-delete-button" onClick={()=>openListForm}>
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                    {listForm && (
+                        <div>
+                            <CreateWatchlistForm />
+                        </div>
+                    )}
+                    <div id="list-drop-down-menu">
+                        test
+                    </div>
+                </div>
+            </div>
             {allWatchlistsArr.map(watchlist => (
                 <div key={watchlist.id} >
-                    <div id="list_name">
-                        <NavLink to={`/watchlists/${watchlist.id}`}>
-                            {watchlist.name}
-                        </NavLink>
+                    <div id="list-header-container">
+                        <div>
+                            <NavLink to={`/watchlists/${watchlist.id}`}
+                                className="list-nav-links"
+                                id="list-name">
+                                {watchlist.name}
+                            </NavLink>
+                        </div>
+                        <div>
+                            <UpdateWatchlistModal watchlistId={watchlist.id}/>
+                            <button
+                                className="update-delete-button"
+                                onClick={()=> dispatch(deleteSingleList(watchlist.id))}>
+                                    Delete
+                            </button>
+                        </div>
+                    </div>
                         {Object.values(watchlist.watched_stocks).map(stock => (
                             <div id="watched_stocks_container">
                                 <li key={stock.id} id="single_watched_stock">
-                                    <NavLink to={`/stocks/${stock.id}`}>
+                                    <NavLink to={`/stocks/${stock.id}`} className="list-nav-links">
                                         {stock.name}
                                     </NavLink>
                                 </li>
+                                <div>{stock.price}</div>
                             </div>
                         ))}
-                        <UpdateWatchlistModal watchlistId={watchlist.id}/>
-                        <button onClick={()=> dispatch(deleteSingleList(watchlist.id))}>Delete</button>
-                    </div>
+
                     <div id="list_items">
 
                     </div>
+
                 </div>
             ))}
             <CreateWatchlistForm />

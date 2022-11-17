@@ -23,7 +23,7 @@ export default function CreateWatchlistForm() {
 
         await dispatch(createWatchlist(newWatchlist, userId))
         await dispatch(getAllWatchlists(userId))
-        history.push("/watchlists")
+        history.push("/")
     }
 
     return (

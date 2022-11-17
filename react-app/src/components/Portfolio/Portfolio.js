@@ -8,6 +8,7 @@ import AddFundsForm from './AddFunds';
 import {fetchUserTransactions} from '../../store/transactions'
 import { useTransition } from 'react';
 import * as portfolioActions from '../../store/portfolio'
+import Watchlists from '../Watchlist/allWatchlists';
  const popularTopics = [
   "Newly Listed Crypto",
   "New OTC securities",
@@ -130,7 +131,9 @@ const Portfolio = () => {
       </div>
 
 
-      <div className='watchlist-wrapper'></div>
+      <div className='watchlist-wrapper'>
+        <Watchlists />
+      </div>
 
       </div>
       </div>

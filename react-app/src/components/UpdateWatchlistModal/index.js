@@ -9,7 +9,7 @@ function UpdateWatchlistModal({watchlistId}){
 
     return (
         <>
-            <button onClick={()=> setShowModal(true)}>Update</button>
+            <button className="update-delete-button" onClick={()=> setShowModal(true)}>Update</button>
             {showModal && (
                 <Modal onClose={()=>setShowModal(false)}>
                     < UpdateWatchlistForm
