@@ -5,44 +5,44 @@
 }
 
 .daily_movers_1 {
-    border: 1px solid white;
+    border: 1px groove gray;
     border-radius: 12px;
     width: 92%;
-    height: 215px;
-    background-image: url('../images/learn_testing_1.jpg');
+    height: 185px;
+    background-image: url('../images/daily_movers_testing_1.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
 }
 
 .daily_movers_2 {
-    border: 1px solid white;
+    border: 1px groove gray;
     border-radius: 12px;
     width: 92%;
-    height: 215px;
-    background-image: url('../images/learn_testing_2.jpg');
+    height: 185px;
+    background-image: url('../images/daily_movers_testing_2.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
 }
 
 .daily_movers_3 {
-    border: 1px solid white;
+    border: 1px groove gray;
     border-radius: 12px;
     width: 92%;
-    height: 215px;
-    background-image: url('../images/learn_testing_3.jpg');
+    height: 185px;
+    background-image: url('../images/daily_movers_testing_3.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
 }
 
 .daily_movers_4 {
-    border: 1px solid white;
+    border: 1px groove gray;
     border-radius: 12px;
     width: 92%;
-    height: 215px;
-    background-image: url('../images/learn_testing_4.jpg');
+    height: 185px;
+    background-image: url('../images/daily_movers_testing_4.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;

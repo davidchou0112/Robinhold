@@ -135,7 +135,10 @@ const Portfolio = () => {
           <div></div>
 
           <h2 className='portfolio_label'>Learn</h2>
-          <Learn />
+          <div className='portfolio_news'>
+            <Learn />
+          </div>
+
 
           <h2 className='portfolio_label'>News</h2>
           <div className='portfolio_news'>
