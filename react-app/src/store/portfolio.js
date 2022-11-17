@@ -35,6 +35,7 @@ const addBuyingPower = (user) => {
     if (response.ok) {
         console.log('-----------------after hitting backend')
         const newBuyingPower = await response.json()
+        dispatch(addBuyingPower(newBuyingPower))
         return newBuyingPower
     }
     else {
