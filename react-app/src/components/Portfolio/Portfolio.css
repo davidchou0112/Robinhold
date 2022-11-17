@@ -1,9 +1,9 @@
 * {
   color: white;
   background-color: black;
-} */
+}
 
-.body-wrapper {
+*/ .body-wrapper {
   background-color: black;
   display: flex;
   z-index: -1;
@@ -22,6 +22,7 @@
   color: white;
 
   /* z-index: 50; */
+  margin-left: 25px;
 }
 
 .errorList{
@@ -51,12 +52,34 @@
   font-size: 12px;
 }
 
+.portfolio_label {
+  border-bottom: 1px groove gray;
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+.portfolio_news {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 .buying-power-header {
   padding: 20px 0px 20px 0px;
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #3b4754;
   margin-bottom: 60px;
+}
+
+.daily_movers_label {
+  border-top: 1px groove gray;
+  padding-top: 15px;
+}
+
+.daily_movers_small {
+  margin-top: 5px;
+  margin-bottom: 10px;
+
 }
 
 .pf-chart-wrapper {
@@ -107,44 +130,46 @@
   /* border: white solid 1px; */
 }
 
-.buying-power-container{
+.buying-power-container {
   /* border: solid white 1px; */
   /* border-radius: 10px; */
 }
 
-.buying-power-wrapper:hover{
+.buying-power-wrapper:hover {
   cursor: pointer;
 }
 
 /* .add-funds-form-div{
   border: white solid 1px;
 } */
-.deposit-funds{
+
+
+.deposit-funds {
   width: 100%;
   height: 100%;
 
 }
 
-.form-break{
-    background-color: rgb(200, 200, 200);
-    width: 100%;
-    height:1px;
-    /* margin-left: -11px;
+.form-break {
+  background-color: rgb(200, 200, 200);
+  width: 100%;
+  height: 1px;
+  /* margin-left: -11px;
     margin-top: 10px; */
-    margin-bottom: 10px;
-}
-
-.flex-between{
-  margin-top: 17px;
-  margin-bottom: 17px;
-  background-color: rgb(30,33,36);
-}
-
-.addFundForm{
   margin-bottom: 10px;
 }
 
-.Deposit-fund-button{
+.flex-between {
+  margin-top: 17px;
+  margin-bottom: 17px;
+  background-color: rgb(30, 33, 36);
+}
+
+.addFundForm {
+  margin-bottom: 10px;
+}
+
+.Deposit-fund-button {
   width: 100%;
   background-color: #00C805;
   width: 100px;
@@ -153,18 +178,19 @@
   border-radius: 5px;
   border: none;
 }
+
 .Deposit-fund-button:hover {
   background-color: rgb(12, 128, 30);
 }
 
-.add-funds-container{
+.add-funds-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
 }
 
-.addFund-form{
+.addFund-form {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
