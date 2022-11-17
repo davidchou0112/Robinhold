@@ -11,6 +11,7 @@ import * as portfolioActions from '../../store/portfolio'
 import News from '../News/News';
 import Learn from './Learn';
 import DailyMovers from './DailyMovers';
+import Watchlists from '../Watchlist/allWatchlists';
 const popularTopics = [
   "Newly Listed Crypto",
   "New OTC securities",
@@ -152,7 +153,9 @@ const Portfolio = () => {
           <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small>
           <br></br>
         </div>
-        <div className='watchlist-wrapper'></div>
+        <div className='watchlist-wrapper'>
+        <Watchlists />
+      </div>
       </div>
     </div>
   )

@@ -47,7 +47,7 @@ export default function SingleWatchlist() {
                     {watched_stocks.map(stock => (
                         <tr key={stock.id}>
                             <NavLink to={`/stocks/${stock.id}`}>
-                                <td>{stock.id}</td>
+                                <td>{stock.name}</td>
                             </NavLink>
                             <td>{stock.symbol}</td>
                             <td>{stock.price}</td>

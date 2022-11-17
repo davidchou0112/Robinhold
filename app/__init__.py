@@ -331,7 +331,7 @@ def delete_from_watchlist(watchlist_id, stock_id):
     # stock = watched_stocks.query.get(watchlist_id,stock_id).filter(Stock.id == stock_id)
     # stock = Stock.query.all()
     print('~stock from seed~' , stock)
-    
+
     watchlist = Watchlist.query.get(watchlist_id)
     print('~watchlist from seed~' , watchlist)
 
