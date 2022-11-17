@@ -8,6 +8,7 @@ import './singleStock.css'
 import Watchlists from '../Watchlist/allWatchlists';
 import AddToWatchlist from '../Watchlist/addToWatchlist';
 import TestingGraph from '../Portfolio/testingGraph'
+import News from '../News/News';
 const SingleStock = () => {
     const dispatch = useDispatch();
     const { stockId } = useParams();
@@ -102,18 +103,18 @@ const SingleStock = () => {
                 </div>
 
                 <h2 className='header_label'>News</h2>
-                <div className='stock_description'>
-                    <a href='https://finance.yahoo.com/quote/TSLA/'>Yahoo News (using 'a' tag)</a>
+                <div className='stock_description' id='news_list'>
+                    <News />
                 </div>
 
                 <h2 className='header_label'>Analyst ratings</h2>
                 <div className='stock_description'>
-                    Insert Data Here
+                    <div className='analyst_rating'></div>
                 </div>
 
                 <h2 className='header_label'>Earnings</h2>
                 <div className='stock_description'>
-                    Insert Data Here
+                    <div className='earnings'></div>
                 </div>
 
                 <h2 className='header_label'>Shareholder Q&As</h2>

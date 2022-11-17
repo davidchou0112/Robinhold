@@ -1,4 +1,3 @@
-
 .header__wrapper {
   color: white;
   display: flex;
@@ -224,7 +223,7 @@
   background-color: lightgrey;
 }
 
-#blacknow{
+#blacknow {
   background-color: black;
 }
 
@@ -232,10 +231,15 @@
   background-color: transparent;
 }
 
-#search_icon{
+#search_icon {
   margin: 5px;
 }
 
-.search_wrapper{
+.search_wrapper {
   position: absolute;
+}
+
+.home_page {
+  background-color: white;
+  height: 500px;
 }

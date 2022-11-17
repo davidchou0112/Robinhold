@@ -1,11 +1,28 @@
+.analyst_rating {
+    background-image: url('../images/robinhold_analyst_ratings_testing.jpg');
+    background-repeat: no-repeat;
+    height: 350px;
+}
+
 .detail_label {
     font-size: 16px;
     font-weight: bold;
 }
 
+.earnings {
+    background-image: url('../images/robinhold_earnings_testing.jpg');
+    background-repeat: no-repeat;
+    height: 225px;
+    margin-left: 15px;
+}
+
 .header_label {
-    border-bottom: 1px solid black;
-    padding-bottom: 15px;
+    border-bottom: 1px groove gray;
+    padding-bottom: 5px;
+}
+
+#news_list {
+    padding-bottom: 8px;
 }
 
 .single_stock_wrapper {
