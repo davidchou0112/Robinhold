@@ -3,15 +3,13 @@ import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { createWatchlist, getAllWatchlists } from "../../store/watchlists"
 
-export default function CreateWatchlistForm() {
+export default function CreateWatchlistForm({setListform}) {
 
-    // console.log('here i am')
     const history = useHistory()
     const dispatch = useDispatch()
     const [name, setName] = useState("")
     const [errors, setErrors] = useState([])
     const userId = useSelector(state => state.session.user.id)
-    // console.log("userId is here", userId)
 
     const handleSubmit = async e => {
         e.preventDefault()
@@ -23,7 +21,7 @@ export default function CreateWatchlistForm() {
 
         await dispatch(createWatchlist(newWatchlist, userId))
         await dispatch(getAllWatchlists(userId))
-        history.push("/watchlists")
+        history.push("/")
     }
 
     return (
@@ -43,6 +41,7 @@ export default function CreateWatchlistForm() {
                     />
                 </div>
                 <div>
+                    <button onClick={()=>setListform(false)}>Cancel</button>
                     <button type="submit">Create Watchlist</button>
                 </div>
             </form>

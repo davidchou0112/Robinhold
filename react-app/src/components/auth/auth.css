@@ -110,11 +110,11 @@
     background-size: 100%;
     background-color: white;
     /* display: flex; */
-        /* flex-direction: column;
+    /* flex-direction: column;
         justify-content: center;
         align-items: center; */
-        /* background-size: cover; */
-        /* height: 550px;
+    /* background-size: cover; */
+    /* height: 550px;
         border-top: 1px solid black; */
 }
 
@@ -133,7 +133,7 @@
 }
 
 
-.login_session2{
-background-color: white;
-height:500px;
+.login_session2 {
+    background-color: white;
+    height: 500px;
 }

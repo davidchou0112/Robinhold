@@ -1,39 +1,104 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import { Line } from "react-chartjs-2";
+import * as stockActions from '../../store/stocks'
 
-
-function TestingGraph() {
+function TestingGraph(props) {
     const [graphData, setGraphData] = useState([]);
     const [isActive, setIsActive] = useState(false)
+    const dispatch = useDispatch()
+    const {stockId} = props
+    const stockObj = useSelector(state=>state.stocks.singleStock)
 
-    const API_KEY = 'FZ0Z77IPDL0DZW40';
-    let StockSymbol = 'AAPL';
-    let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=AAPL&outputsize=compact&apikey=${API_KEY}`;
+    useEffect(() => {
+      dispatch(stockActions.getSingleStock(stockId))
+    }, [])
 
-    let stockChartXValuesFunction = [];
-    let stockChartYValuesFunction = [];
+    useEffect(() => {
+      // createMockData();
+      fetchLiveStock()
+    }, []);
+
+    const StockSymbol = stockObj.symbol
 
 
-    const handleTpClick = async (e) => {
-      createMockData()
+    const handleTpClick = (timeSpan) => {
+      console.log(timeSpan)
+      fetchLiveStock(timeSpan)
+
+      // createMockData();
       setIsActive(current => !current)
     }
 
-    const createMockData = () => {
-      let data = [];
-      let value = 50;
-      for (var i = 0; i < 366; i++) {
-        let date = new Date();
-        date.setHours(0, 0, 0, 0);
-        date.setDate(i);
-        value += Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 10);
-        data.push({ x: date, y: value });
+
+
+    function fetchLiveStock(timeSpan) {
+      let dataArr = []
+      const API_KEY = 'FZ0Z77IPDL0DZW40';
+      const API_KEY2 = 'VKXG6NIW2LT1ELQ8'
+      let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=AAPL&outputsize=full&apikey=${API_KEY2}`;
+      let limit;
+      console.log(timeSpan)
+
+      switch (timeSpan) {
+        case 20:
+          limit = 20
+        case 60:
+          limit = 60
+        case 240:
+          limit = 240
+        case 720:
+          limit = 720
+        case 1200:
+          limit = 1200
+        default:
+        limit = 60;
       }
-      setGraphData(data);
+
+
+      fetch(API_Call)
+      .then(
+        function (response) {
+          return response.json()
+        }
+        )
+        .then(
+          function (data) {
+          // console.log('////////////////////rt', data)
+            let counter = 0;
+            for (var key in data['Time Series (Daily)']) {
+              if(counter >= limit) break;
+              let value = Number(data['Time Series (Daily)'][key]['1. open'])
+              let value2 = Number(data['Time Series (Daily)'][key]['3. low'])
+              let date = new Date(key)
+              date.setHours(0, 0, 0, 0);
+              dataArr.push({x: date, y: value})
+              // dataArr.push({x: date, y: value2})
+              counter++
+              }
+              // console.log('-------graphdataBEFORE-----------',dataArr)
+              setGraphData(dataArr)
+          }
+          )
+          console.log('-------graphdataFS------------', graphData)
+        }
+
+        const createMockData = () => {
+          let data = [];
+          let value = 50;
+          for (var i = 0; i < 366; i++) {
+            let date = new Date();
+            date.setHours(0, 0, 0, 0);
+            date.setDate(i);
+            value += Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 10);
+            // console.log('========date=========', date)
+            // console.log('========value=========', value)
+            data.push({ x: date, y: value });
+          }
+          setGraphData(data);
+          console.log('-------graphdata------------', graphData)
     };
-    useEffect(() => {
-      createMockData();
-    }, []);
+
 
     return (
       <div className="pf-graph">
@@ -89,13 +154,13 @@ function TestingGraph() {
         />
           <div className="timeperiod__container">
               <div className="timeperiod__buttons__container">
-                  <div className='timeperiod__button active' onClick={handleTpClick}>1D</div>
-                  <div className="timeperiod__button" onClick={handleTpClick}>1W</div>
-                  <div className="timeperiod__button" onClick={handleTpClick}>1M</div>
-                  <div className="timeperiod__button" onClick={handleTpClick}>3M</div>
-                  <div className="timeperiod__button" onClick={handleTpClick}>YTD</div>
-                  <div className="timeperiod__button" onClick={handleTpClick}>1Y</div>
-                  <div className="timeperiod__button" onClick={handleTpClick}>ALL</div>
+                  {/* <div className='timeperiod__button active'onClick={()=>handleTpClick('day')}>1D</div> */}
+                  {/* <div className="timeperiod__button" onClick={()=>handleTpClick('week')}>1W</div> */}
+                  <div className="timeperiod__button active" onClick={()=>handleTpClick(20)}>1M</div>
+                  <div className="timeperiod__button" onClick={()=>handleTpClick(60)}>3M</div>
+                  <div className="timeperiod__button" onClick={()=>handleTpClick(240)}>1Y</div>
+                  <div className="timeperiod__button" onClick={()=>handleTpClick(720)}>3Y</div>
+                  <div className="timeperiod__button" onClick={()=>handleTpClick(1200)}>5Y</div>
               </div>
           </div>
       </div>

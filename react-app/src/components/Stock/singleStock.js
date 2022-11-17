@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getSingleStock } from '../../store/stocks';
@@ -8,6 +8,7 @@ import './singleStock.css'
 import Watchlists from '../Watchlist/allWatchlists';
 import AddToWatchlist from '../Watchlist/addToWatchlist';
 import TestingGraph from '../Portfolio/testingGraph'
+import News from '../News/News';
 const SingleStock = () => {
     const dispatch = useDispatch();
     const { stockId } = useParams();
@@ -19,7 +20,8 @@ const SingleStock = () => {
 
     useEffect(() => {
         dispatch(getSingleStock(stockId))
-    }, [])
+        // .then(() => setIsLoaded(true))
+    }, [dispatch, stockId])
 
     return (
         <div className='single_stock_wrapper'>
@@ -27,7 +29,7 @@ const SingleStock = () => {
                 <h2>{singleStock.name}</h2>
                 <h1>${singleStock.price}</h1>
                 {/* <Stock /> */}
-                <TestingGraph />
+                <TestingGraph stockId={stockId}/>
                 <h2 className='header_label'>About (dynamic)</h2>
                 <div className='stock_description'>
                     <p>{singleStock.description}</p>
@@ -101,19 +103,19 @@ const SingleStock = () => {
                     Insert Data Here
                 </div>
 
-                <h2 className='header_label'>News</h2>
-                <div className='stock_description'>
-                    <a href='https://finance.yahoo.com/quote/TSLA/'>Yahoo News (using 'a' tag)</a>
+                <h2 className='header_label'>News (hard coded)</h2>
+                <div className='stock_description' id='news_list'>
+                    <News />
                 </div>
 
-                <h2 className='header_label'>Analyst ratings</h2>
+                <h2 className='header_label'>Analyst ratings (images)</h2>
                 <div className='stock_description'>
-                    Insert Data Here
+                    <div className='analyst_rating'></div>
                 </div>
 
-                <h2 className='header_label'>Earnings</h2>
+                <h2 className='header_label'>Earnings (images)</h2>
                 <div className='stock_description'>
-                    Insert Data Here
+                    <div className='earnings'></div>
                 </div>
 
                 <h2 className='header_label'>Shareholder Q&As</h2>
@@ -127,6 +129,7 @@ const SingleStock = () => {
                 </div>
 
                 <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small>
+
             </div>
 
             <div className='watchlist'>

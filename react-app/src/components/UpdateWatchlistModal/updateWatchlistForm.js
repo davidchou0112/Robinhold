@@ -25,7 +25,7 @@ export default function UpdateWatchlistForm({watchlistId,setShowModal}) {
         await dispatch(updateCurrWatchlist(watchlistId, newWatchlist))
         await dispatch(getAllWatchlists(userId))
         setShowModal(false)
-        history.push('/watchlists')
+        history.push('/')
 
     }
 

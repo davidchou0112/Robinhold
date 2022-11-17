@@ -327,14 +327,14 @@ def add_to_watchlist(watchlist_id, stock_id):
 @app.route('/watchlists/<int:watchlist_id>/<int:stock_id>', methods=['DELETE'])
 # @login_required
 def delete_from_watchlist(watchlist_id, stock_id):
-    # stock = Stock.query.get(stock_id)
+    stock = Stock.query.get(stock_id)
     # stock = watched_stocks.query.get(watchlist_id,stock_id).filter(Stock.id == stock_id)
-    stock = Stock.query.all()
+    # stock = Stock.query.all()
     print('~stock from seed~' , stock)
-    
+
     watchlist = Watchlist.query.get(watchlist_id)
     print('~watchlist from seed~' , watchlist)
 
-    db.session.delete(watched_stocks).filter(watchlist_id==watchlist_id and stock_id==stock_id)
+    db.session.delete(stock)
     db.session.commit()
     return 'stock deleted from watchlist'

@@ -1,0 +1,62 @@
+.all-lists-container {
+    /* border: solid white 2px; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: stretch; */
+    justify-content: space-evenly;
+}
+
+#list-general-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#list-header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* #list-drop-down {
+    position: relative;
+}
+
+#list-drop-down {
+    position: absolute;
+    top: calc(100% + .5rem)
+} */
+
+.list-nav-links {
+    text-decoration: none;
+}
+
+#list-name {
+
+
+}
+
+#list-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+
+#watched_stocks_container {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+#single_watched_stock {
+    list-style: none;
+}
+
+.update-delete-button {
+    cursor: pointer;
+}
