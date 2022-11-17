@@ -27,7 +27,7 @@ const SingleStock = () => {
                 <h2>{singleStock.name}</h2>
                 <h1>${singleStock.price}</h1>
                 {/* <Stock /> */}
-                <TestingGraph />
+                <TestingGraph stockId={stockId}/>
                 <h2 className='header_label'>About (dynamic)</h2>
                 <div className='stock_description'>
                     <p>{singleStock.description}</p>
