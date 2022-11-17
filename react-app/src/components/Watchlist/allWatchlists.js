@@ -20,19 +20,6 @@ export default function Watchlists() {
         dispatch(getAllWatchlists(userId))
     }, [dispatch, userId])
 
-    const openListForm = () => {
-        if(listForm) return
-        setListform(true)
-    }
-
-    useEffect(()=> {
-        if(!listForm) return
-        const closeListForm = ()=>{
-            setListform(false)
-        }
-        document.addEventListener("submit", closeListForm)
-        return () => document.removeEventListener("submit",closeListForm)
-    },[listForm])
 
     if(!allWatchlistsArr) return null
 
@@ -41,17 +28,14 @@ export default function Watchlists() {
             <div id="list-general-header">
                 <h3>Lists</h3>
                 <div id="list-drop-down">
-                    <button className="update-delete-button" onClick={()=>openListForm}>
+                    <button className="update-delete-button" onClick={()=>setListform(true)}>
                         <i class="fa-solid fa-plus"></i>
                     </button>
                     {listForm && (
                         <div>
-                            <CreateWatchlistForm />
+                            <CreateWatchlistForm setListform={setListform}/>
                         </div>
                     )}
-                    <div id="list-drop-down-menu">
-                        test
-                    </div>
                 </div>
             </div>
             {allWatchlistsArr.map(watchlist => (
@@ -90,7 +74,6 @@ export default function Watchlists() {
 
                 </div>
             ))}
-            <CreateWatchlistForm />
         </div>
     )
 }

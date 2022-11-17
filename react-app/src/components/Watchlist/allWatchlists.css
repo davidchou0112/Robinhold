@@ -8,6 +8,12 @@
     justify-content: space-evenly;
 }
 
+#list-general-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 #list-header-container {
     display: flex;
     flex-direction: row;
