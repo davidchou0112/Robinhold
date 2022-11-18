@@ -6,7 +6,6 @@ import UpdateWatchlistModal from "../UpdateWatchlistModal"
 import CreateWatchlistForm from "./createWatchlistForm"
 import "./allWatchlists.css"
 import AddToWatchlist from "./addToWatchlist"
-import { render } from "react-dom"
 
 export default function Watchlists() {
     const sessionUser = useSelector((state) => state.session.user)

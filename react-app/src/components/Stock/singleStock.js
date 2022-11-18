@@ -1,9 +1,8 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getSingleStock } from '../../store/stocks';
-import Stock from './Stock'
 import './singleStock.css'
 import Watchlists from '../Watchlist/allWatchlists';
 import AddToWatchlist from '../Watchlist/addToWatchlist';

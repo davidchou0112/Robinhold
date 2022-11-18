@@ -4,7 +4,7 @@ import { getSingleStock } from '../../store/stocks';
 import { useParams } from 'react-router-dom';
 import '../Stock/singleStock.css'
 import { createTransaction } from "../../store/transactions";
-import { getBuyingPower,addBuyingPowerThunk } from "../../store/portfolio";
+import { addBuyingPowerThunk } from "../../store/portfolio";
 import { fetchUserTransactions } from '../../store/transactions'
 
 
