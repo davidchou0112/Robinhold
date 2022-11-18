@@ -9,7 +9,9 @@ function UpdateWatchlistModal({watchlistId}){
 
     return (
         <>
-            <button className="update-delete-button" onClick={()=> setShowModal(true)}>Update</button>
+            <button className="watchlist-page-icon" onClick={()=> setShowModal(true)}>
+            <i class="fa-solid fa-pen"></i>
+            </button>
             {showModal && (
                 <Modal onClose={()=>setShowModal(false)}>
                     < UpdateWatchlistForm

@@ -62,9 +62,6 @@ function App() {
         <Route path='/watchlists/:watchlistId' extct={true}>
           <SingleWatchlist />
         </Route>
-        <Route path='/watchlists' extct={true}>
-          <Watchlists />
-        </Route>
         <Route path='/testing' exact={true}>
           <Stock />
         </Route>

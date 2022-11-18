@@ -1,0 +1,41 @@
+#create-form-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+#watchlist-create-btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 8px 0 8px 0;
+}
+
+#create-watchlist-name-input {
+    background-color: rgb(48,54,58);
+    height: 30px;
+    border-radius: 12px;
+}
+
+
+#create-watchlist-cancel-btn {
+    padding: 8px;
+    border: 1px solid #0dc80b;
+    border-radius: 20px;
+    color: #0dc80b;
+}
+
+#create-watchlist-cancel-btn:hover {
+    background-color: rgb(24, 66, 30);
+}
+
+#create-watchlist-submit-btn {
+    padding: 8px;
+    border-radius: 20px;
+    background-color: rgb(0, 200, 5);
+    color: rgb(30,33,36);
+}
+
+#create-watchlist-submit-btn:hover {
+    background-color: rgb(38, 208, 43);
+}
