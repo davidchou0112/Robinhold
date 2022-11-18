@@ -55,9 +55,9 @@ export default function Watchlists() {
                         <div>
                             <UpdateWatchlistModal watchlistId={watchlist.id} />
                             <button
-                                className="update-delete-button"
+                                className="watchlist-page-icon"
                                 onClick={() => dispatch(deleteSingleList(watchlist.id))}>
-                                Delete
+                                <i class="fa-solid fa-trash-can"></i>
                             </button>
                         </div>
                     </div>
