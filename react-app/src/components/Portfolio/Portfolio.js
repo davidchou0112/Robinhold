@@ -154,9 +154,9 @@ const Portfolio = () => {
           <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small>
           <br></br>
         </div>
-        <div className='watchlist-wrapper'>
+        {/* <div className='watchlist-wrapper'> */}
         <Watchlists />
-      </div>
+      {/* </div> */}
       </div>
     </div>
   )
