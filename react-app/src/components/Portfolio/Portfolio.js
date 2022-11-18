@@ -91,7 +91,7 @@ const Portfolio = () => {
           <div className="pf-left-container">
             <div className='portfolio-chart-container'>
               <div className='chart-header'>
-                <h1>${totalHolding}</h1>
+                <h1>${totalHolding.toFixed(2)}</h1>
                 <p>+$88.88(+0.068%) Today</p>
               </div>
               <div className='pf-chart-wrapper'>
@@ -105,7 +105,7 @@ const Portfolio = () => {
 
             <div className='buying-power-wrapper' onClick={clickBuyPower}>
               <h2>Buying Power</h2>
-              <h2>${buyingPower}</h2>
+              <h2>${buyingPower.toFixed(2)}</h2>
             </div>
 
             <div className="pf-form-break"></div>
@@ -116,12 +116,12 @@ const Portfolio = () => {
                 <div className='deposit-funds'>
                   <div className='flex-between'>
                     <div>Brokerage Cash</div>
-                    <div>${currentUser?.buying_power}</div>
+                    <div>${buyingPower.toFixed(2)}</div>
                   </div>
                   <div className="form-break"></div>
                   <div className='flex-between'>
                     <div>Buying Power</div>
-                    <div>${currentUser?.buying_power}</div>
+                    <div>${buyingPower.toFixed(2)}</div>
                   </div>
                   <div className="form-break"></div>
                   <div className='addFundForm'>
@@ -136,22 +136,22 @@ const Portfolio = () => {
           {/* <h2 className='portfolio_label'>Trending Lists</h2>
           <div>Insert Data Here</div> */}
 
-          {/* <h2 className='portfolio_label'>Learn (images)</h2>
+          <h2 className='portfolio_label'>Learn</h2>
           <div className='portfolio_news'>
             <Learn />
-          </div> */}
-
-
-          {/* <h2 className='portfolio_label'>News (hard coded)</h2> */}
-          <div className='portfolio_news'>
-            {/* <News /> */}
           </div>
 
-          {/* <h2 className='daily_movers_label'>Daily Movers (images)</h2>
+
+          <h2 className='portfolio_label'>News</h2>
+          <div className='portfolio_news'>
+            <News />
+          </div>
+
+          <h2 className='daily_movers_label'>Daily Movers</h2>
           <small className='daily_movers_small'>Stocks making the biggest moves today.</small>
-          <DailyMovers /> */}
+          <DailyMovers />
           <br></br>
-          {/* <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small> */}
+          <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small>
 
           <small>Robinhold is a clone of Robinhood. All figures and values are arbitrary. Do not make any financial decisions based on our projections</small>
 
