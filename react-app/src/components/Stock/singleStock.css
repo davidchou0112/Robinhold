@@ -28,10 +28,15 @@
 
 .single_stock_wrapper {
     /* margin: 20px; */
-    margin-left: 200px;
+    margin-left: 160px;
     width: 1400px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    padding-top: 20px;
+}
+
+.single_stock_graph {
+    height: 355px
 }
 
 .stock_details {

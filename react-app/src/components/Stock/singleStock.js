@@ -29,7 +29,9 @@ const SingleStock = () => {
                 <h2>{singleStock.name}</h2>
                 <h1>${singleStock.price}</h1>
                 {/* <Stock /> */}
-                <TestingGraph stockId={stockId}/>
+                <div className='single_stock_graph'>
+                    <TestingGraph stockId={stockId} />
+                </div>
                 <h2 className='header_label'>About (dynamic)</h2>
                 <div className='stock_description'>
                     <p>{singleStock.description}</p>
@@ -132,10 +134,8 @@ const SingleStock = () => {
 
             </div>
 
-            <div className='watchlist'>
-
-                {/* <Watchlists /> */}
-                <AddToWatchlist />
+            <div className='watchlist-wrapper'>
+                <Watchlists />
             </div>
         </div>
 
