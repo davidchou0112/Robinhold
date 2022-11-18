@@ -6,18 +6,16 @@ import { fromWatchList } from "../../store/actionWatchlist";
 export default function DeleteFromWatchlist() {
     const dispatch = useDispatch();
     const { stockId } = useParams();
-    console.log('stockId >> DeleteFromWatchlist >> : ', stockId)
+
     const userId = useSelector(state => state.session.user.id)
-    console.log('userId >> DeleteFromWatchlist >> : ', userId)
-    const watchlist = useSelector(state => state.session.user.watchlists)
-    console.log('watchlist >> DeleteFromWatchlist >> : ', watchlist)
+
+    // const watchlist = useSelector(state => state.session.user.watchlists)
+
 
     const deleteStock = async e => {
         e.preventDefault();
-        const updatedWatchlist = {
-            name: watchlist['1'].name
-        }
-        dispatch(fromWatchList(updatedWatchlist, userId, stockId))
+
+        await dispatch(fromWatchList(userId, stockId))
     }
 
     return (
@@ -25,3 +23,27 @@ export default function DeleteFromWatchlist() {
     )
 }
 
+
+
+// const userId = useSelector(state => state.session.user.id)
+
+// const watchlist = useSelector(state => state.watchlist.allWatchlists[watchlistId])
+
+
+// useEffect(() => {
+//     dispatch(getAllWatchlists(userId))
+// }, [dispatch, userId])
+
+// const stockToWatchlist = async e => {
+//     e.preventDefault();
+//     const updatedWatchlist = {
+//         watchlist_id: watchlist.id,
+//         stock_id: stockId,
+//     }
+//     await dispatch(toWatchList(stockId, watchlistId, updatedWatchlist))
+//     await dispatch(getAllWatchlists(userId))
+// }
+
+// return (
+//     <button className='add_button' onClick={stockToWatchlist} >Add Stock to List</button>
+// )

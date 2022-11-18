@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { NavLink } from "react-router-dom"
+import { NavLink, useParams } from "react-router-dom"
 import { deleteSingleList, getAllWatchlists } from "../../store/watchlists"
 import UpdateWatchlistModal from "../UpdateWatchlistModal"
 import CreateWatchlistForm from "./createWatchlistForm"
@@ -17,6 +17,8 @@ export default function Watchlists() {
     const userId = useSelector(state => state.session.user.id)
     const allWatchlistsArr = Object.values(allWatchlistsObj)
     console.log('~~~~~~~~~~~~~~~~~~~~~~~~', allWatchlistsArr)
+
+    const { stockId } = useParams();
 
     useEffect(() => {
         dispatch(getAllWatchlists(userId))
@@ -73,10 +75,15 @@ export default function Watchlists() {
                     ))}
 
                     {/* {sessionUser && !watchlist.length !== sessionUser?.id && (<AddToWatchlist />)} */}
-                    <AddToWatchlist watchlistId={watchlist.id} />
+                    {stockId && watchlist.id && (
+                        <AddToWatchlist watchlistId={watchlist.id} />
+                    )}
+
                     <div id="list_items">
 
                     </div>
+
+
 
                 </div>
             ))}
