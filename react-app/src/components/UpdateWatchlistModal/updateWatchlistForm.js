@@ -2,14 +2,15 @@ import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { getAllWatchlists, updateCurrWatchlist } from "../../store/watchlists"
+import "./updateWatchlistForm.css"
 
-
-export default function UpdateWatchlistForm({watchlistId,setShowModal}) {
+export default function UpdateWatchlistForm({watchlistId,watchlistName, setShowModal}) {
 
     const dispatch = useDispatch()
     const history = useHistory()
     const userId = useSelector(state=> state.session.user.id)
-    const [ name, setName ] = useState("")
+    const [ name, setName ] = useState(watchlistName)
+    console.log(watchlistName)
     const [ errors, setErrors ] = useState([])
 
     // console.log("~~~~~~~~~~~",watchlistId)
@@ -30,23 +31,25 @@ export default function UpdateWatchlistForm({watchlistId,setShowModal}) {
     }
 
     return (
-        <div className="update_watchlist_form_container">
-            <form onSubmit={onSubmit}>
+        <div className="update-watchlist-form-container">
+            <form onSubmit={onSubmit} id="update-watchlist-form">
                 <ul>
                     {errors.map(err => (
                         <li key={err}>{err}</li>
                     ))}
                 </ul>
-                <div>
-                    <input placeholder="Name"
+                <div id="update-form-inside">
+                    <input
                         required
                         type={'text'}
                         value={name}
                         onChange={e => setName(e.target.value)}
+                        id="updated-input"
                     />
-                </div>
-                <div>
-                    <button type="submit">Update Watchlist</button>
+                    <button type="submit"
+                        className="watchlist-page-button"
+                        id="watchlist-update-submit-btn"
+                    >Save</button>
                 </div>
             </form>
         </div>

@@ -64,17 +64,6 @@ def inject_csrf_token(response):
     return response
 
 
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def react_root(path):
-    """
-    This route will direct to the public directory in our
-    react builds in the production environment for favicon
-    or index.html requests
-    """
-    if path == 'favicon.ico':
-        return app.send_from_directory('public', 'favicon.ico')
-    return app.send_static_file('index.html')
 
 
 
@@ -109,6 +98,7 @@ def get_all_users():
         all_users.append(user.to_dict())
     return jsonify(all_users)
 
+
 # =========== Get single user by id ==========
 @app.route('/users/<int:id>')
 # @login_required
@@ -116,6 +106,7 @@ def get_user(id):
     # print(request, 'this is request')
     data = User.query.get(id).to_dict()
     return data
+
 
 # ========== Update Buying Power ===========
 # deposit/withdraw money should update buying power
@@ -239,7 +230,7 @@ def delete_watchlist(id):
 
 # ========== Get all transations ============
 @app.route("/users/<int:user_id>/transactions")
-@login_required
+# @login_required
 def get_user_transactions(user_id):
     all_transations = []
     data = Transaction.query.filter(Transaction.user_id == user_id).all()
@@ -250,20 +241,35 @@ def get_user_transactions(user_id):
 # ========= Create new transaction ==============
 # might need to work something that changes our buying power when stocks are
 # purchased/sold (PUT method somewhere? or even new route)
+# @app.route("/users/<int:user_id>/transactions", methods=["POST"])
+# # @login_required
+# def post_new_transaction(user_id):
+#     data = request.get_json()
+#     new_transaction = Transaction(
+#         user_id = user_id,
+#         stock_id = data["stock_id"],
+#         quantity = data["quantity"],
+#         is_purchased = data["is_purchased"],
+#         price = data["price"]
+#     )
+#     db.session.add(new_transaction)
+#     db.session.commit()
+#     return "testing post transaction"
+
 @app.route("/users/<int:user_id>/transactions", methods=["POST"])
-@login_required
+# @login_required
 def post_new_transaction(user_id):
     data = request.get_json()
     new_transaction = Transaction(
         user_id = user_id,
-        stock_id = data["stock_id"],
+        stock_symbol = data["stock_symbol"],
         quantity = data["quantity"],
-        is_purchased = True,
+        is_purchased = data["is_purchased"],
         price = data["price"]
     )
     db.session.add(new_transaction)
     db.session.commit()
-    return "testing post transaction"
+    return new_transaction.to_dict()
 
 # # ========= Update a transaction ==============
 # @app.route("/transactions/<int:id>", methods=["PUT"])
@@ -283,13 +289,13 @@ def post_new_transaction(user_id):
 
 
 # ========= Delete a transaction ==============
-@app.route("/transactions/<int:id>", methods=["DELETE"])
-@login_required
-def delete_transaction(id):
-    transaction = Transaction.query.get(id)
-    db.session.delete(transaction)
-    db.session.commit()
-    return "successfully delete transaction"
+# @app.route("/transactions/<int:id>", methods=["DELETE"])
+# @login_required
+# def delete_transaction(id):
+#     transaction = Transaction.query.get(id)
+#     db.session.delete(transaction)
+#     db.session.commit()
+#     return "successfully delete transaction"
 
 
 # # ============  Add stock into watchlist ===========
@@ -305,36 +311,78 @@ def delete_transaction(id):
 #     # need current user id
 #     return
 
-# ========== ADD STOCK TO WATCHLIST ==========
-@app.route('/watchlists/<int:watchlist_id>/<int:stock_id>', methods=['GET','POST'])
+# ========== ADD STOCK TO WATCHLIST ========== this okay backend
+# @app.route('/watchlists/<int:watchlist_id>/<int:stock_id>', methods=['POST'])
+@app.route('/watchlists/add', methods=['POST'])
 # @login_required
-def add_to_watchlist(watchlist_id, stock_id):
-    watchlist = Watchlist.query.get(watchlist_id)
-    stock = Stock.query.get(stock_id)
-    print('watchlist from seed' , watchlist)
+# def add_to_watchlist(watchlist_id, stock_id):
+def add_to_watchlist():
 
     data = request.get_json()
-
     new_list = watched_stocks.insert().values(
         watchlist_id = data['watchlist_id'],
         stock_id = data['stock_id'])
-
+    
+    watchlist_id = data['watchlist_id'] 
+    
+    watchlist = Watchlist.query.get(watchlist_id)
+    # stock = Stock.query.get(stock_id)
+    # print('----------------watchlist from seed------' , watchlist)
+    
+    
+    print('---------------------', data)
+    
     db.session.execute(new_list)
     db.session.commit()
-    return 'testing'
+    return watchlist.to_dict()
 
 # ========== DELETE STOCK FROM WATCHLIST ==========
-@app.route('/watchlists/<int:watchlist_id>/<int:stock_id>', methods=['DELETE'])
+@app.route('/watchlists/<int:watchlist_id>/<int:watched_stocks_id>', methods=['DELETE'])
 # @login_required
-def delete_from_watchlist(watchlist_id, stock_id):
-    stock = Stock.query.get(stock_id)
+def delete_from_watchlist(watchlist_id, watched_stocks_id):
+    # stock = watched_stocks.query.get(watched_stocks_id)
     # stock = watched_stocks.query.get(watchlist_id,stock_id).filter(Stock.id == stock_id)
     # stock = Stock.query.all()
-    print('~stock from seed~' , stock)
+    # print('~stock from seed~' , stock)
 
-    watchlist = Watchlist.query.get(watchlist_id)
-    print('~watchlist from seed~' , watchlist)
+    # watchlist = Watchlist.query.get(watchlist_id)
+    # print('~watchlist from seed~' , watchlist)
 
-    db.session.delete(stock)
+    # watchlist = Watchlist.query.get(watchlist_id)
+    # watchlist['watched_stocks'].pop(watched_stocks_id)
+
+    # db.session.execute(watchlist)
+    # stock = Stock.query.get(watched_stocks_id)
+
+    # new_list = watched_stocks.delete().where('watchlists.id' = 1)
+    # https://stackoverflow.com/questions/64687940/how-to-delete-a-specific-row-from-a-table-sqlalchemy-with-flask
+    db.session.query(watched_stocks).filter(watched_stocks.c.watchlist_id == watchlist_id, watched_stocks.c.stock_id == watched_stocks_id).delete()
+    # db.session.execute(new_list)
+    # db.session.delete(int(float('watched_stocks_id')))
     db.session.commit()
     return 'stock deleted from watchlist'
+
+
+
+
+
+
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def react_root(path):
+    """
+    This route will direct to the public directory in our
+    react builds in the production environment for favicon
+    or index.html requests
+    """
+    if path == 'favicon.ico':
+        return app.send_from_directory('public', 'favicon.ico')
+    return app.send_static_file('index.html')
+
+
+
+
+@app.errorhandler(404)
+def not_found(e):
+    return app.send_static_file('index.html')

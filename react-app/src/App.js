@@ -59,12 +59,9 @@ function App() {
         <Route path='/stocks' exact={true}>
           <AllStocks />
         </Route>
-        <Route path='/watchlists/:watchlistId' extct={true}>
+        {/* <Route path='/watchlists/:watchlistId' extct={true}>
           <SingleWatchlist />
-        </Route>
-        <Route path='/watchlists' extct={true}>
-          <Watchlists />
-        </Route>
+        </Route> */}
         <Route path='/testing' exact={true}>
           <Stock />
         </Route>

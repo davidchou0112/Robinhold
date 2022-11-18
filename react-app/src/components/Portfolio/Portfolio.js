@@ -12,6 +12,7 @@ import News from '../News/News';
 import Learn from './Learn';
 import DailyMovers from './DailyMovers';
 import Watchlists from '../Watchlist/allWatchlists';
+import { getBuyingPower } from '../../store/portfolio';
 const popularTopics = [
   "Newly Listed Crypto",
   "New OTC securities",
@@ -35,7 +36,7 @@ const popularTopics = [
 const CalculateShareTotal = (userTransactions) => {
   let totalShareVal = 0
   for (let i = 0; i < userTransactions.length; i++) {
-    let ele = useTransition[i]
+    let ele = userTransactions[i]
     totalShareVal += ele.price * ele.quantity
   }
   return totalShareVal
@@ -44,13 +45,14 @@ const CalculateShareTotal = (userTransactions) => {
 
 const Portfolio = () => {
   const [showBP, setShowBP] = useState(false);
-  const currentUser = useSelector(state => state.session.user)
   const dispatch = useDispatch()
-  const userTransactions = useSelector(state => Object.values(state.transaction))
+  const currentUser = useSelector(state => state.session.user)
+  const userTransactions = useSelector(state =>Object.values(state.transaction.transactions))
   const userId = Number(currentUser.id)
-  const buyingPower = Number(currentUser.buying_power)
+  const buyingPower = useSelector(state=>Number(state.portfolio.user.buying_power))
   useEffect(() => {
     dispatch(fetchUserTransactions(userId))
+    dispatch(getBuyingPower(userId))
   }, [dispatch, userId])
 
   let totalVal = 0
@@ -62,8 +64,7 @@ const Portfolio = () => {
   const totalHolding = buyingPower + totalVal
 
   const clickBuyPower = () => {
-    if (showBP) return
-    setShowBP(true)
+    setShowBP(wasOpened => !wasOpened)
   }
 
   const clickDeposit = async () => {
@@ -71,14 +72,14 @@ const Portfolio = () => {
   }
 
 
-  useEffect(() => {
-    if (!showBP) return;
-    const closeshowBP = () => {
-      setShowBP(false);
-    }
-    document.addEventListener('submit', closeshowBP);
-    return () => document.removeEventListener('submit', closeshowBP)
-  }, [showBP])
+  // useEffect(() => {
+  //   if (!showBP) return;
+  //   const closeshowBP = () => {
+  //     setShowBP(false);
+  //   }
+  //   document.addEventListener('submit', closeshowBP);
+  //   return () => document.removeEventListener('submit', closeshowBP)
+  // }, [showBP])
 
 
   return (
@@ -94,7 +95,7 @@ const Portfolio = () => {
                 <p>+$88.88(+0.068%) Today</p>
               </div>
               <div className='pf-chart-wrapper'>
-                <LineGraph />
+                <LineGraph totalHolding={totalHolding}/>
               </div>
             </div>
             {/* <div className="newsfeed__buying__section">
@@ -104,10 +105,10 @@ const Portfolio = () => {
 
             <div className='buying-power-wrapper' onClick={clickBuyPower}>
               <h2>Buying Power</h2>
-              <h2>${currentUser?.buying_power}</h2>
+              <h2>${buyingPower}</h2>
             </div>
 
-            <div className="form-break"></div>
+            <div className="pf-form-break"></div>
 
             {showBP && (
 
@@ -124,7 +125,7 @@ const Portfolio = () => {
                   </div>
                   <div className="form-break"></div>
                   <div className='addFundForm'>
-                    <AddFundsForm />
+                    <AddFundsForm setShowBP={setShowBP}/>
                     <div className='deposit-message'>Buying Power represents the total value of assets you can purchase.</div>
                   </div>
                 </div>
@@ -132,30 +133,33 @@ const Portfolio = () => {
             )}
           </div>
 
-          <h2 className='portfolio_label'>Trending Lists</h2>
-          <div>Insert Data Here</div>
+          {/* <h2 className='portfolio_label'>Trending Lists</h2>
+          <div>Insert Data Here</div> */}
 
-          <h2 className='portfolio_label'>Learn (images)</h2>
+          {/* <h2 className='portfolio_label'>Learn (images)</h2>
           <div className='portfolio_news'>
             <Learn />
-          </div>
+          </div> */}
 
 
-          <h2 className='portfolio_label'>News (hard coded)</h2>
+          {/* <h2 className='portfolio_label'>News (hard coded)</h2> */}
           <div className='portfolio_news'>
-            <News />
+            {/* <News /> */}
           </div>
 
-          <h2 className='daily_movers_label'>Daily Movers (images)</h2>
+          {/* <h2 className='daily_movers_label'>Daily Movers (images)</h2>
           <small className='daily_movers_small'>Stocks making the biggest moves today.</small>
-          <DailyMovers />
+          <DailyMovers /> */}
           <br></br>
-          <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small>
+          {/* <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small> */}
+
+          <small>Robinhold is a clone of Robinhood. All figures and values are arbitrary. Do not make any financial decisions based on our projections</small>
+
           <br></br>
         </div>
-        <div className='watchlist-wrapper'>
+        {/* <div className='watchlist-wrapper'> */}
         <Watchlists />
-      </div>
+      {/* </div> */}
       </div>
     </div>
   )

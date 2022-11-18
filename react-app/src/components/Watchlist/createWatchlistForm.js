@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { createWatchlist, getAllWatchlists } from "../../store/watchlists"
+import "./createWatchlistForm.css"
 
 export default function CreateWatchlistForm({setListform}) {
 
@@ -32,17 +33,20 @@ export default function CreateWatchlistForm({setListform}) {
                         <li key={err}>{err}</li>
                     ))}
                 </ul>
-                <div>
-                    <input placeholder="Name"
-                        required
-                        type={'text'}
-                        value={name}
-                        onChange={e => setName(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <button onClick={()=>setListform(false)}>Cancel</button>
-                    <button type="submit">Create Watchlist</button>
+                <div id="create-form-container">
+                    <div>
+                        <input placeholder="Name"
+                            required
+                            type={'text'}
+                            value={name}
+                            onChange={e => setName(e.target.value)}
+                            id="create-watchlist-name-input"
+                        />
+                    </div>
+                    <div id="watchlist-create-btn-container">
+                        <button className="watchlist-page-button" id="create-watchlist-cancel-btn" onClick={()=>setListform(false)}>Cancel</button>
+                        <button className="watchlist-page-button" id="create-watchlist-submit-btn" type="submit">Create List</button>
+                    </div>
                 </div>
             </form>
         </div>

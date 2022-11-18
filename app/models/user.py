@@ -11,7 +11,7 @@ watched_stocks = db.Table(
 
 if environment == "production":
     watched_stocks.schema = SCHEMA
-        
+
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -51,12 +51,19 @@ class User(db.Model, UserMixin):
             'lastname': self.lastname,
             'email': self.email,
             'buying_power': self.buying_power,
-            'watchlists': self.list_to_dict()
+            'watchlists': self.list_to_dict(),
+            'stocks':self.list_to_dict_stocks()
         }
 
     def list_to_dict(self):
         ls_dict = {}
         for ls in self.watchlists:
+            ls_dict[ls.to_dict()['id']] = ls.to_dict()
+        return ls_dict
+
+    def list_to_dict_stocks(self):
+        ls_dict = {}
+        for ls in self.stocks:
             ls_dict[ls.to_dict()['id']] = ls.to_dict()
         return ls_dict
 
@@ -79,7 +86,7 @@ class Stock(db.Model, UserMixin):
     founded = db.Column(db.Integer, nullable=False)
 
     stock_watched = db.relationship('Watchlist', secondary= watched_stocks, back_populates="watchlist_watched")
-    users = db.relationship("Transaction", back_populates="stock")
+    # users = db.relationship("Transaction", back_populates="stock")
 
 
     def to_dict(self):
@@ -139,7 +146,8 @@ class Transaction(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
-    stock_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("stocks.id")))
+    # stock_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("stocks.id")))
+    stock_symbol = db.Column(db.String(40), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
     is_purchased = db.Column(db.Boolean, nullable=False)
     # purchased = db.Column(db.Boolean, default=True)
@@ -148,13 +156,13 @@ class Transaction(db.Model, UserMixin):
     price = db.Column(db.Integer, nullable=False)
 
     user = db.relationship("User", back_populates="stocks")
-    stock = db.relationship("Stock", back_populates="users")
+    # stock = db.relationship("Stock", back_populates="users")
 
     def to_dict(self):
         return {
             'id': self.id,
             'user_id': self.user_id,
-            'stock_id': self.stock_id,
+            'stock_symbol': self.stock_symbol,
             'quantity': self.quantity,
             'is_purchased': self.is_purchased,
             'price': self.price
