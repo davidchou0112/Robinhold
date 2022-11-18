@@ -15,7 +15,7 @@ export default function AddToWatchlist({ watchlistId }) {
     const watchlist = useSelector(state => state.watchlist.allWatchlists[watchlistId])
     // console.log('watchlist.id >> AddToWatchlist >> : ', watchlist.id)
     // console.log('watchlist >> AddToWatchlist >> : ', watchlist)
-    
+
     useEffect(() => {
         dispatch(getAllWatchlists(userId))
     }, [dispatch, userId])
@@ -34,3 +34,4 @@ export default function AddToWatchlist({ watchlistId }) {
         <button className='add_button' onClick={stockToWatchlist} >Add Stock to List</button>
     )
 }
+
