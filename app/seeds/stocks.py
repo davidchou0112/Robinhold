@@ -6,7 +6,7 @@ def seed_stocks():
     tesla = Stock(
         name='Tesla', symbol='TSLA', price=190.09, description='Tesla, Inc. engages in the design, development, manufacture, and sale of fully electric vehicles and energy generation and storage systems. It also provides vehicle service centers, Supercharger stations, and self-driving capability.', ceo='Elon Reeve Musk', employees=99290, headquarter='Austin, Texas', founded=2003)
     apple = Stock(
-        name='Apple', symbol='APPL', price=149.13, description='Apple, Inc. engages in the design, manufacture, and sale of smartphones, personal computers, tablets, wearables and accessories, and other varieties of related services. It operates through the following geographical segments: Americas, Europe, Greater China, Japan, and Rest of Asia Pacific.', ceo='Timothy Donald Cook', employees=164000, headquarter='Cupertino, California', founded=1976)
+        name='Apple', symbol='AAPL', price=149.13, description='Apple, Inc. engages in the design, manufacture, and sale of smartphones, personal computers, tablets, wearables and accessories, and other varieties of related services. It operates through the following geographical segments: Americas, Europe, Greater China, Japan, and Rest of Asia Pacific.', ceo='Timothy Donald Cook', employees=164000, headquarter='Cupertino, California', founded=1976)
     google = Stock(
         name='Google', symbol='GOOGL', price=96.54, description='Alphabet, Inc. is a holding company, which engages in the business of acquisition and operation of different companies. It operates through the Google and Other Bets segments.', ceo='Sundar Pichai', employees=156500, headquarter='Mountain View, California', founded=2015)
     amc = Stock(

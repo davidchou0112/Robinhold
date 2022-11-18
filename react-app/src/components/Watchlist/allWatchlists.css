@@ -5,14 +5,15 @@
 
     display: flex;
     flex-direction: column;
-    /* align-items: stretch; */
     justify-content: space-evenly;
+    background-color: rgb(30, 33, 36);
 }
 
 #list-general-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
 }
 
 #list-header-container {
@@ -23,20 +24,19 @@
     padding-bottom: 5px;
 }
 
-/* #list-drop-down {
-    position: relative;
-}
-
-#list-drop-down {
-    position: absolute;
-    top: calc(100% + .5rem)
-} */
-
 .list-nav-links {
     text-decoration: none;
 }
 
-#list-name {}
+#list-name {
+    font-weight: bold;
+    font-size: large;
+    padding: 5px;
+}
+
+#list-name:hover {
+    color: #0dc80b;
+}
 
 #list-title {
     display: flex;
@@ -50,12 +50,25 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    height: 50px;
     padding: 5px;
 }
 
+#watched_stocks_container:hover {
+    border: solid 2px rgb(48,54,58);
+    border-radius: 12px;
+}
 
-#single_watched_stock {
+#stocks-in-list {
     list-style: none;
+    padding: 5px;
+}
+
+#watchlist-icons-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .stocks_in_list {
@@ -63,6 +76,15 @@
     padding-bottom: 15px;
 }
 
-.update-delete-button {
+.watchlist-page-icon {
     cursor: pointer;
+}
+
+
+.watchlist-page-button {
+    cursor: pointer;
+    /* padding: 5px; */
+    /* background-color: red; */
+    border-radius: 10px ;
+    /* border: 2px solid #0dc80b; */
 }

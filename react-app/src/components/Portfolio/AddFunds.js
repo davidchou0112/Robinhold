@@ -1,23 +1,25 @@
 import { useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addBuyingPowerThunk } from "../../store/portfolio";
-const AddFundsForm = () => {
+import { getBuyingPower,addBuyingPowerThunk } from "../../store/portfolio";
+const AddFundsForm = ({setShowBP}) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [showcConfirmation, setShowConfirmation] = useState(false);
   const [amount, setAmount] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const currentUser = useSelector((state) => state?.session?.user);
-  const buyingPower = useSelector((state) =>
-    Number(state?.session?.user?.buying_power)
-  );
   const [errors, setErrors] = useState([]);
+  useEffect(()=> {
+    dispatch(getBuyingPower(currentUser.id))
+  },[dispatch])
+  const buyingPower = useSelector(state=>Number(state?.portfolio?.user?.buying_power))
 
   const handleSubmitAF = async (e) => {
     e.preventDefault();
     setErrors([]);
     setSubmitted(true);
+    setShowBP(false)
     if (Number(amount) <= 0) {
       errors.push("Amount must be greater than 0");
       setErrors(errors);

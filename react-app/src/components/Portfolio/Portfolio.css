@@ -3,25 +3,23 @@
   background-color: black;
 }
 
-*/ .body-wrapper {
+.body-wrapper {
   background-color: black;
-  display: flex;
+  display: grid;
   z-index: -1;
-
+  place-items: center;
 }
 
 .body-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   background-color: black;
-  padding-top: 20px;
-  width: 1024px;
-  box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.7);
+  padding-top: 36px;
+  width: 70%;
+  /* box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.7); */
   color: white;
-
   /* z-index: 50; */
-  margin-left: 25px;
 
   position: relative;
   margin-left: 10%
@@ -49,9 +47,16 @@
 }
 
 .pf-left-container {
-  flex: 1;
+  /* flex: 1; */
   background-color: black;
+  flex-basis: auto;
   font-size: 12px;
+
+}
+
+.pf-graph{
+  height: 300px;
+  width: 700px;
 }
 
 .portfolio_label {

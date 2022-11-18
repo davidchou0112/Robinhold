@@ -1,14 +1,14 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getSingleStock } from '../../store/stocks';
-import Stock from './Stock'
 import './singleStock.css'
 import Watchlists from '../Watchlist/allWatchlists';
 import AddToWatchlist from '../Watchlist/addToWatchlist';
 import TestingGraph from '../Portfolio/testingGraph'
 import News from '../News/News';
+import TransactionContainer from '../transactions/createTransaction';
 const SingleStock = () => {
     const dispatch = useDispatch();
     const { stockId } = useParams();
@@ -25,14 +25,13 @@ const SingleStock = () => {
 
     return (
         <div className='single_stock_wrapper'>
-            <div>
+            <div className='left-side'>
                 <h2>{singleStock.name}</h2>
                 <h1>${singleStock.price}</h1>
-                {/* <Stock /> */}
-                <div className='single_stock_graph'>
-                    <TestingGraph stockId={stockId} />
-                </div>
-                <h2 className='header_label'>About (dynamic)</h2>
+                   <div className='stock-graph'>
+                    <TestingGraph stockId={stockId}/>
+                    </div>
+                <h2 className='header_label'>About</h2>
                 <div className='stock_description'>
                     <p>{singleStock.description}</p>
                 </div>
@@ -56,7 +55,7 @@ const SingleStock = () => {
                     </div>
                 </div>
 
-                <h2 className='header_label'>Key statistics (hard coded)</h2>
+                {/* <h2 className='header_label'>Key statistics (hard coded)</h2>
                 <div className='stock_details'>
                     <div>
                         <div className='detail_label'>Market cap</div>
@@ -103,13 +102,13 @@ const SingleStock = () => {
                 <h2 className='header_label'>Related lists</h2>
                 <div className='stock_description'>
                     Insert Data Here
-                </div>
+                </div> */}
 
-                <h2 className='header_label'>News (hard coded)</h2>
+                {/* <h2 className='header_label'>News (hard coded)</h2>
                 <div className='stock_description' id='news_list'>
                     <News />
-                </div>
-
+                </div> */}
+{/*
                 <h2 className='header_label'>Analyst ratings (images)</h2>
                 <div className='stock_description'>
                     <div className='analyst_rating'></div>
@@ -128,15 +127,22 @@ const SingleStock = () => {
                 <h2 className='header_label'>People also own</h2>
                 <div className='stock_description'>
                     Insert Data Here
+                </div> */}
+
+                {/* <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small> */}
+
+            </div>
+
+            <div className='right-side'>
+                <div className='transaction-wrapper'>
+                    <TransactionContainer />
                 </div>
-
-                <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small>
-
-            </div>
-
-            <div className='watchlist-wrapper'>
+            <div className='watchlist'>
                 <Watchlists />
+                <AddToWatchlist />
             </div>
+            </div>
+
         </div>
 
     )

@@ -28,15 +28,11 @@
 
 .single_stock_wrapper {
     /* margin: 20px; */
-    margin-left: 160px;
-    width: 1400px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    padding-top: 20px;
-}
-
-.single_stock_graph {
-    height: 355px
+    margin-top: 50px;
+    margin-left: 200px;
+    width: 900px;
+    display: flex;
+    /* grid-template-columns: repeat(2, 1fr); */
 }
 
 .stock_details {
@@ -58,4 +54,39 @@
 
 .watchlist {
     padding: 5px;
+}
+
+.top-portion{
+    display: flex;
+    flex-direction: row;
+}
+
+.stock-graph{
+    margin-right: 100px;
+}
+
+.transaction-wrapper{
+    margin-bottom: 100px;
+}
+
+
+.left-side{
+    margin-right: 350px;
+}
+
+.BS-button{
+    background-color: grey;
+    border: solid green 1px;
+}
+
+.trsc-type{
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    padding: 15px 0;
+    border: solid green 1px;
+}
+
+.trsc-type.active-trsc-type{
+    cursor: default;
+    border-bottom: 10px solid rgb(54, 112, 54);
 }
