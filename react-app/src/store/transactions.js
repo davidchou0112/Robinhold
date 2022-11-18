@@ -33,7 +33,7 @@ export const fetchUserTransactions = (userId) => async (dispatch) => {
 }
 
 export const createTransaction = (transaction, userId) => async (dispatch) => {
-    const res = await fetch(`/users/${userId}/watchlists`, {
+    const res = await fetch(`/users/${userId}/transactions`, {
         method: "POST",
         headers: {
             'Content-Type': "application/json"
@@ -41,6 +41,7 @@ export const createTransaction = (transaction, userId) => async (dispatch) => {
         body: JSON.stringify(transaction)
     })
     if (res.ok) {
+        console.log('got into thunk')
         const newTransaction = await res.json()
         dispatch(createNewTransaction(newTransaction, userId))
         return newTransaction

@@ -47,7 +47,7 @@ const Portfolio = () => {
   const [showBP, setShowBP] = useState(false);
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.session.user)
-  const userTransactions = useSelector(state => Object.values(state.transaction))
+  const userTransactions = useSelector(state =>Object.values(state.transaction.transactions))
   const userId = Number(currentUser.id)
   const buyingPower = useSelector(state=>Number(state.portfolio.user.buying_power))
   useEffect(() => {

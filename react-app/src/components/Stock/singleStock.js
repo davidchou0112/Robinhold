@@ -9,6 +9,7 @@ import Watchlists from '../Watchlist/allWatchlists';
 import AddToWatchlist from '../Watchlist/addToWatchlist';
 import TestingGraph from '../Portfolio/testingGraph'
 import News from '../News/News';
+import TransactionContainer from '../transactions/createTransaction';
 const SingleStock = () => {
     const dispatch = useDispatch();
     const { stockId } = useParams();
@@ -25,11 +26,12 @@ const SingleStock = () => {
 
     return (
         <div className='single_stock_wrapper'>
-            <div>
+            <div className='left-side'>
                 <h2>{singleStock.name}</h2>
                 <h1>${singleStock.price}</h1>
-                {/* <Stock /> */}
-                <TestingGraph stockId={stockId}/>
+                   <div className='stock-graph'>
+                    <TestingGraph stockId={stockId}/>
+                    </div>
                 <h2 className='header_label'>About (dynamic)</h2>
                 <div className='stock_description'>
                     <p>{singleStock.description}</p>
@@ -132,11 +134,16 @@ const SingleStock = () => {
 
             </div>
 
+            <div className='right-side'>
+                <div className='transaction-wrapper'>
+                    <TransactionContainer />
+                </div>
             <div className='watchlist'>
-
-                {/* <Watchlists /> */}
+                <Watchlists />
                 <AddToWatchlist />
             </div>
+            </div>
+
         </div>
 
     )
