@@ -311,37 +311,54 @@ def post_new_transaction(user_id):
 #     # need current user id
 #     return
 
-# ========== ADD STOCK TO WATCHLIST ==========
-@app.route('/watchlists/<int:watchlist_id>/<int:stock_id>', methods=['GET','POST'])
+# ========== ADD STOCK TO WATCHLIST ========== this okay backend
+# @app.route('/watchlists/<int:watchlist_id>/<int:stock_id>', methods=['POST'])
+@app.route('/watchlists/add', methods=['POST'])
 # @login_required
-def add_to_watchlist(watchlist_id, stock_id):
-    watchlist = Watchlist.query.get(watchlist_id)
-    stock = Stock.query.get(stock_id)
-    print('watchlist from seed' , watchlist)
+# def add_to_watchlist(watchlist_id, stock_id):
+def add_to_watchlist():
 
     data = request.get_json()
-
     new_list = watched_stocks.insert().values(
         watchlist_id = data['watchlist_id'],
         stock_id = data['stock_id'])
-
+    
+    watchlist_id = data['watchlist_id'] 
+    
+    watchlist = Watchlist.query.get(watchlist_id)
+    # stock = Stock.query.get(stock_id)
+    # print('----------------watchlist from seed------' , watchlist)
+    
+    
+    print('---------------------', data)
+    
     db.session.execute(new_list)
     db.session.commit()
-    return 'testing'
+    return watchlist.to_dict()
 
 # ========== DELETE STOCK FROM WATCHLIST ==========
-@app.route('/watchlists/<int:watchlist_id>/<int:stock_id>', methods=['DELETE'])
+@app.route('/watchlists/<int:watchlist_id>/<int:watched_stocks_id>', methods=['DELETE'])
 # @login_required
-def delete_from_watchlist(watchlist_id, stock_id):
-    stock = Stock.query.get(stock_id)
+def delete_from_watchlist(watchlist_id, watched_stocks_id):
+    # stock = watched_stocks.query.get(watched_stocks_id)
     # stock = watched_stocks.query.get(watchlist_id,stock_id).filter(Stock.id == stock_id)
     # stock = Stock.query.all()
-    print('~stock from seed~' , stock)
+    # print('~stock from seed~' , stock)
 
-    watchlist = Watchlist.query.get(watchlist_id)
-    print('~watchlist from seed~' , watchlist)
+    # watchlist = Watchlist.query.get(watchlist_id)
+    # print('~watchlist from seed~' , watchlist)
 
-    db.session.delete(stock)
+    # watchlist = Watchlist.query.get(watchlist_id)
+    # watchlist['watched_stocks'].pop(watched_stocks_id)
+
+    # db.session.execute(watchlist)
+    # stock = Stock.query.get(watched_stocks_id)
+
+    # new_list = watched_stocks.delete().where('watchlists.id' = 1)
+    # https://stackoverflow.com/questions/64687940/how-to-delete-a-specific-row-from-a-table-sqlalchemy-with-flask
+    db.session.query(watched_stocks).filter(watched_stocks.c.watchlist_id == watchlist_id, watched_stocks.c.stock_id == watched_stocks_id).delete()
+    # db.session.execute(new_list)
+    # db.session.delete(int(float('watched_stocks_id')))
     db.session.commit()
     return 'stock deleted from watchlist'
 
