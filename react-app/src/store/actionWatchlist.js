@@ -10,12 +10,12 @@ const addToWatchlist = (stock) => {
     }
 }
 
-const deleteFromWatchlist = (userId, stockId, watchlist) => {
+const deleteFromWatchlist = (userId, stockId) => {
     return {
         type: DELETE_FROM_WATCHLIST,
         userId,
-        stockId,
-        watchlist
+        stockId
+
     }
 }
 
@@ -37,7 +37,7 @@ export const toWatchList = (stockId, watchlistId, updatedWatchlist) => async (di
     }
 }
 
-export const fromWatchList = (userId, stockId, watchlist) => async (dispatch) => {
+export const fromWatchList = (userId, stockId) => async (dispatch) => {
     const response = await fetch(`/stocks/${stockId}`, {
         method: 'DELETE'
     })
