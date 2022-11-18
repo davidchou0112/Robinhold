@@ -108,7 +108,7 @@ const Portfolio = () => {
               <h2>${buyingPower}</h2>
             </div>
 
-            <div className="form-break"></div>
+            <div className="pf-form-break"></div>
 
             {showBP && (
 
