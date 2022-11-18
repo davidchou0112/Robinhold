@@ -80,13 +80,38 @@
 }
 
 .trsc-type{
+    display: flex;
+    justify-content: center;
     cursor: pointer;
+    width: 100px;
+    height: 10px;
     border-bottom: 2px solid transparent;
     padding: 15px 0;
-    border: solid green 1px;
+    /* border: solid green 1px; */
+    border-radius: 5px;
 }
 
 .trsc-type.active-trsc-type{
     cursor: default;
-    border-bottom: 10px solid rgb(54, 112, 54);
+    /* border-bottom: 10px solid rgb(54, 112, 54); */
+    background-color: grey;
 }
+
+
+.submit-order {
+    width: 100%;
+    background-color: #00C805;
+    width: 100px;
+    height: 35px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+  }
+
+  .buy-sell-tab{
+    display: flex;
+    flex-direction: row;
+    border: solid green 1px;
+    border-radius: 5px;
+    width: 200px;
+  }

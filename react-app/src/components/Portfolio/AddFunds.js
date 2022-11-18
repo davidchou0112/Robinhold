@@ -2,6 +2,7 @@ import { useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getBuyingPower,addBuyingPowerThunk } from "../../store/portfolio";
+import './Portfolio.css'
 const AddFundsForm = ({setShowBP}) => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -17,13 +18,15 @@ const AddFundsForm = ({setShowBP}) => {
 
   const handleSubmitAF = async (e) => {
     e.preventDefault();
+    let ErrorArr = []
     setErrors([]);
-    setSubmitted(true);
-    setShowBP(false)
     if (Number(amount) <= 0) {
-      errors.push("Amount must be greater than 0");
-      setErrors(errors);
+      ErrorArr.push("Amount must be greater than 0");
+      setSubmitted(true);
+      setErrors(ErrorArr)
     } else {
+      setSubmitted(true);
+      setShowBP(false)
       const finalAmount = buyingPower + Number(amount);
       const payload = { buying_power: finalAmount };
       await dispatch(addBuyingPowerThunk(payload, currentUser.id));
@@ -37,10 +40,10 @@ const AddFundsForm = ({setShowBP}) => {
 
   return (
     <div className="add-funds-container">
+      <form className="addFund-form" onSubmit={handleSubmitAF}>
       <div className="errorList">
         {submitted && errors?.map((error) => <div key={error}>{error}</div>)}
       </div>
-      <form className="addFund-form" onSubmit={handleSubmitAF}>
         <label>From</label>
         <input type="text" value="Rothschild's Family Trust" disabled />
         <label> Amount</label>

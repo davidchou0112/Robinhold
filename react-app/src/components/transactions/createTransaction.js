@@ -105,7 +105,7 @@ const TransactionContainer = () => {
           }
         </div>
         <div>
-          <div>
+          <div className="buy-sell-tab">
             {displayBuy &&
             <div className={`trsc-type ${transactionType === 'buy' ? 'active-trsc-type' : ''}`}
                  onClick={()=>setTransactionType('buy')}
@@ -124,7 +124,10 @@ const TransactionContainer = () => {
           </div>
           <form onSubmit={handleTransaction}>
             <div>
-              <div>buy or sell</div>
+              <div>
+                {transactionType==='buy'? 'buy shares' : 'sell shares'}
+                {/* buy or sell */}
+              </div>
 
               {/* <select>
                 <option>USD</option>
@@ -156,7 +159,7 @@ const TransactionContainer = () => {
 
             {/* <button>Review Order</button> */}
 
-            <button id="submit-buy-order" >
+            <button className="submit-order">
               Submit
             </button>
 
@@ -165,7 +168,7 @@ const TransactionContainer = () => {
             </button> */}
           </form>
 
-      
+
         </div>
       </div>
     </>
