@@ -88,3 +88,7 @@
     border-radius: 10px ;
     /* border: 2px solid #0dc80b; */
 }
+
+#single_watched_stock{
+    list-style: none;
+}
