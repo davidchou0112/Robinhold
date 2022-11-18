@@ -55,7 +55,7 @@ const SingleStock = () => {
                     </div>
                 </div>
 
-                {/* <h2 className='header_label'>Key statistics (hard coded)</h2>
+                <h2 className='header_label'>Key statistics </h2>
                 <div className='stock_details'>
                     <div>
                         <div className='detail_label'>Market cap</div>
@@ -99,27 +99,27 @@ const SingleStock = () => {
                     </div>
                 </div>
 
-                <h2 className='header_label'>Related lists</h2>
+                {/* <h2 className='header_label'>Related lists</h2>
                 <div className='stock_description'>
                     Insert Data Here
                 </div> */}
 
-                {/* <h2 className='header_label'>News (hard coded)</h2>
+                <h2 className='header_label'>News</h2>
                 <div className='stock_description' id='news_list'>
                     <News />
-                </div> */}
-{/*
-                <h2 className='header_label'>Analyst ratings (images)</h2>
+                </div>
+
+                <h2 className='header_label'>Analyst ratings </h2>
                 <div className='stock_description'>
                     <div className='analyst_rating'></div>
                 </div>
 
-                <h2 className='header_label'>Earnings (images)</h2>
+                <h2 className='header_label'>Earnings</h2>
                 <div className='stock_description'>
                     <div className='earnings'></div>
                 </div>
 
-                <h2 className='header_label'>Shareholder Q&As</h2>
+                {/* <h2 className='header_label'>Shareholder Q&As</h2>
                 <div className='stock_description'>
                     Insert Data Here
                 </div>
@@ -129,7 +129,7 @@ const SingleStock = () => {
                     Insert Data Here
                 </div> */}
 
-                {/* <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small> */}
+                <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small>
 
             </div>
 
@@ -139,7 +139,7 @@ const SingleStock = () => {
                 </div>
             <div className='watchlist'>
                 <Watchlists />
-                <AddToWatchlist />
+                {/* <AddToWatchlist /> */}
             </div>
             </div>
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { NavLink } from "react-router-dom"
+import { NavLink, useParams } from "react-router-dom"
 import { deleteSingleList, getAllWatchlists } from "../../store/watchlists"
 import UpdateWatchlistModal from "../UpdateWatchlistModal"
 import CreateWatchlistForm from "./createWatchlistForm"
@@ -17,10 +17,18 @@ export default function Watchlists() {
     const userId = useSelector(state => state.session.user.id)
     const allWatchlistsArr = Object.values(allWatchlistsObj)
     console.log('~~~~~~~~~~~~~~~~~~~~~~~~', allWatchlistsArr)
+    const [showWLButton, setShowWLButton] = useState(true)
+    const { stockId } = useParams();
 
     useEffect(() => {
         dispatch(getAllWatchlists(userId))
     }, [dispatch, userId])
+
+    function findMatchStock() {
+        Object.values(watchlist.watched_stocks).forEach((ele)=> {
+            if(ele.id === stockId) setShowWLButton(false)
+        })
+    }
 
 
     if (!allWatchlistsArr) return null
@@ -46,18 +54,19 @@ export default function Watchlists() {
                 <div className='stocks_in_list' key={watchlist.id} >
                     <div id="list-header-container">
                         <div>
-                            <NavLink to={`/watchlists/${watchlist.id}`}
+                            {watchlist.name}
+                            {/* <NavLink to={`/watchlists/${watchlist.id}`}
                                 className="list-nav-links"
                                 id="list-name">
                                 {watchlist.name}
-                            </NavLink>
+                            </NavLink> */}
                         </div>
                         <div>
                             <UpdateWatchlistModal watchlistId={watchlist.id} />
                             <button
-                                className="update-delete-button"
+                                className="watchlist-page-icon"
                                 onClick={() => dispatch(deleteSingleList(watchlist.id))}>
-                                Delete
+                                <i class="fa-solid fa-trash-can"></i>
                             </button>
                         </div>
                     </div>
@@ -70,13 +79,24 @@ export default function Watchlists() {
                             </li>
                             <div>{stock.price}</div>
                         </div>
-                    ))}
+                    ))
+                }
+                {/* {Object.values(watchlist.watched_stocks).forEach((ele)=> {
+                     if(ele.id === stockId) setShowWLButton(false)
+                })} */}
+
 
                     {/* {sessionUser && !watchlist.length !== sessionUser?.id && (<AddToWatchlist />)} */}
-                    <AddToWatchlist watchlistId={watchlist.id} />
+
+                    {!Object.keys(watchlist.watched_stocks).includes(stockId) && stockId && stockId && watchlist.id && (
+                        <AddToWatchlist watchlistId={watchlist.id} />
+                    )}
+
                     <div id="list_items">
 
                     </div>
+
+
 
                 </div>
             ))}
