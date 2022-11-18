@@ -54,15 +54,18 @@ export default function SingleWatchlist() {
                 </thead>
                 <tbody>
                     {watched_stocks.map(stock => (
-                        <tr key={stock.id} className="table-row-container" id="each-single-stock">
-                            <div className="single-watchlist-table-name-column">
-                                <td>{stock.name}</td>
-                            </div>
-                            <div className="table-symbol-price-columns">
-                                <td>{stock.symbol}</td>
-                                <td>${stock.price}</td>
-                            </div>
-                        </tr>
+                        <a href={`/stocks/${stock.id}`} id="single-watched-stock-column">
+                            <tr key={stock.id} className="table-row-container" id="each-single-stock">
+                                    <div className="single-watchlist-table-name-column">
+                                        <td>{stock.name}</td>
+                                    </div>
+                                    <div className="table-symbol-price-columns">
+                                        <td>{stock.symbol}</td>
+                                        <td>${stock.price}</td>
+                                    </div>
+                            </tr>
+
+                        </a>
                     ))}
                 </tbody>
             </table>

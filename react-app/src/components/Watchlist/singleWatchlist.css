@@ -53,3 +53,11 @@ td {
     padding: 15px 15px 15px 0;
 
 }
+
+#single-watched-stock-column {
+    text-decoration: none;
+}
+
+#single-watched-stock-column:hover {
+    font-weight: bold;
+}
