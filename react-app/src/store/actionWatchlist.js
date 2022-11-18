@@ -39,15 +39,11 @@ export const toWatchList = (stockId, watchlistId, updatedWatchlist) => async (di
 
 export const fromWatchList = (userId, stockId, watchlist) => async (dispatch) => {
     const response = await fetch(`/stocks/${stockId}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': "application/json"
-        },
-        body: JSON.stringify(watchlist)
+        method: 'DELETE'
     })
     if (response.ok) {
-        const newWatchlist = await response.json()
-        dispatch(deleteFromWatchlist(newWatchlist, userId, stockId))
+        // const newWatchlist = await response.json()
+        await dispatch(deleteFromWatchlist(userId, stockId))
     }
 }
 

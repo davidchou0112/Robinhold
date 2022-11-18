@@ -51,9 +51,9 @@ const NavBar = () => {
         <SearchBar />
       </div>
       <div className='navbar__right'>
-        {/* <NavLink className='navbar_link' to='/' exact={true} activeClassName='active'>
+        <NavLink className='navbar_link' to='/' exact={true} activeClassName='active'>
           Portfolio
-        </NavLink> */}
+        </NavLink>
         {/* <NavLink className='navbar_link' to='/watchlists' exact={true} activeClassName='active'>
           Watchlists
         </NavLink> */}

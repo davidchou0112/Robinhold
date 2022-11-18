@@ -139,7 +139,7 @@ const SingleStock = () => {
                 </div>
             <div className='watchlist'>
                 <Watchlists />
-                <AddToWatchlist />
+                {/* <AddToWatchlist /> */}
             </div>
             </div>
 
