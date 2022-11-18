@@ -3,50 +3,47 @@ const ADD_TO_WATCHLIST = 'actionWatchlist/addToWatchlist';
 const DELETE_FROM_WATCHLIST = 'actionWatchlist/deleteFromWatchlist'
 
 // ========== REGULAR ACTION CREATOR ==========
-const addToWatchlist = (userId, stockId, watchlist) => {
+const addToWatchlist = (stock) => {
     return {
         type: ADD_TO_WATCHLIST,
-        userId,
-        stockId,
-        watchlist
+        stock
     }
 }
 
-const deleteFromWatchlist = (userId, stockId, watchlist) => {
+const deleteFromWatchlist = (userId, stockId) => {
     return {
         type: DELETE_FROM_WATCHLIST,
         userId,
-        stockId,
-        watchlist
+        stockId
+
     }
 }
 
 // ========== THUNK ===========
-export const toWatchList = (userId, stockId, watchlist) => async (dispatch) => {
-    const response = await fetch(`/stocks/${stockId}`, {
+export const toWatchList = (stockId, watchlistId, updatedWatchlist) => async (dispatch) => {
+    // const response = await fetch(`/watchlists/${watchlistId}/${stockId}`, {
+    const response = await fetch(`/watchlists/add`, {
+
         method: 'POST',
         headers: {
             'Content-Type': "application/json"
         },
-        body: JSON.stringify(watchlist)
+        body: JSON.stringify(updatedWatchlist)
     })
     if (response.ok) {
-        const newWatchlist = await response.json()
-        dispatch(addToWatchlist(newWatchlist, userId, stockId))
+        const stock = await response.json()
+        dispatch(addToWatchlist(stock))
+        // return stock
     }
 }
 
-export const fromWatchList = (userId, stockId, watchlist) => async (dispatch) => {
+export const fromWatchList = (userId, stockId) => async (dispatch) => {
     const response = await fetch(`/stocks/${stockId}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': "application/json"
-        },
-        body: JSON.stringify(watchlist)
+        method: 'DELETE'
     })
     if (response.ok) {
-        const newWatchlist = await response.json()
-        dispatch(deleteFromWatchlist(newWatchlist, userId, stockId))
+        // const newWatchlist = await response.json()
+        await dispatch(deleteFromWatchlist(userId, stockId))
     }
 }
 
@@ -60,10 +57,9 @@ const addedToWatchlist = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TO_WATCHLIST:
             return {
-                ...state,
                 allWatchlists: {
                     ...state.allWatchlists,
-                    ...action.watchlist
+                    ...action.stock
                 },
                 singleWatchlist: {}
             }

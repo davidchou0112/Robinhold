@@ -3,23 +3,24 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Line } from "react-chartjs-2";
 import * as stockActions from '../../store/stocks'
 
-function TestingGraph(props) {
+function TestingGraph() {
     const [graphData, setGraphData] = useState([]);
+    // const []
     const [isActive, setIsActive] = useState(false)
     const dispatch = useDispatch()
-    const {stockId} = props
     const stockObj = useSelector(state=>state.stocks.singleStock)
+    const stockId = stockObj.id
+    const StockSymbol = stockObj.symbol
 
     useEffect(() => {
       dispatch(stockActions.getSingleStock(stockId))
-    }, [])
-
-    useEffect(() => {
-      // createMockData();
       fetchLiveStock()
-    }, []);
+    }, [dispatch, stockId])
 
-    const StockSymbol = stockObj.symbol
+    // useEffect(() => {
+    //   // createMockData();
+    // }, []);
+
 
 
     const handleTpClick = (timeSpan) => {
@@ -36,9 +37,9 @@ function TestingGraph(props) {
       let dataArr = []
       const API_KEY = 'FZ0Z77IPDL0DZW40';
       const API_KEY2 = 'VKXG6NIW2LT1ELQ8'
-      let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=AAPL&outputsize=full&apikey=${API_KEY2}`;
+      let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${StockSymbol}&outputsize=full&apikey=${API_KEY2}`;
       let limit;
-      console.log(timeSpan)
+      // console.log(timeSpan)
 
       switch (timeSpan) {
         case 20:
@@ -64,10 +65,10 @@ function TestingGraph(props) {
         )
         .then(
           function (data) {
-          // console.log('////////////////////rt', data)
+          console.log('////////////////////rt', data)
             let counter = 0;
             for (var key in data['Time Series (Daily)']) {
-              if(counter >= limit) break;
+              if(counter >= 1200) break;
               let value = Number(data['Time Series (Daily)'][key]['1. open'])
               let value2 = Number(data['Time Series (Daily)'][key]['3. low'])
               let date = new Date(key)
@@ -152,17 +153,17 @@ function TestingGraph(props) {
             },
           }}
         />
-          <div className="timeperiod__container">
+          {/* <div className="timeperiod__container">
               <div className="timeperiod__buttons__container">
-                  {/* <div className='timeperiod__button active'onClick={()=>handleTpClick('day')}>1D</div> */}
-                  {/* <div className="timeperiod__button" onClick={()=>handleTpClick('week')}>1W</div> */}
+                  <div className='timeperiod__button active'onClick={()=>handleTpClick('day')}>1D</div>
+                  <div className="timeperiod__button" onClick={()=>handleTpClick('week')}>1W</div>
                   <div className="timeperiod__button active" onClick={()=>handleTpClick(20)}>1M</div>
                   <div className="timeperiod__button" onClick={()=>handleTpClick(60)}>3M</div>
                   <div className="timeperiod__button" onClick={()=>handleTpClick(240)}>1Y</div>
                   <div className="timeperiod__button" onClick={()=>handleTpClick(720)}>3Y</div>
                   <div className="timeperiod__button" onClick={()=>handleTpClick(1200)}>5Y</div>
               </div>
-          </div>
+          </div> */}
       </div>
 
     );

@@ -1,27 +1,32 @@
 import { useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addBuyingPowerThunk } from "../../store/portfolio";
-const AddFundsForm = () => {
+import { getBuyingPower,addBuyingPowerThunk } from "../../store/portfolio";
+import './Portfolio.css'
+const AddFundsForm = ({setShowBP}) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [showcConfirmation, setShowConfirmation] = useState(false);
   const [amount, setAmount] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const currentUser = useSelector((state) => state?.session?.user);
-  const buyingPower = useSelector((state) =>
-    Number(state?.session?.user?.buying_power)
-  );
   const [errors, setErrors] = useState([]);
+  useEffect(()=> {
+    dispatch(getBuyingPower(currentUser.id))
+  },[dispatch])
+  const buyingPower = useSelector(state=>Number(state?.portfolio?.user?.buying_power))
 
   const handleSubmitAF = async (e) => {
     e.preventDefault();
+    let ErrorArr = []
     setErrors([]);
-    setSubmitted(true);
     if (Number(amount) <= 0) {
-      errors.push("Amount must be greater than 0");
-      setErrors(errors);
+      ErrorArr.push("Amount must be greater than 0");
+      setSubmitted(true);
+      setErrors(ErrorArr)
     } else {
+      setSubmitted(true);
+      setShowBP(false)
       const finalAmount = buyingPower + Number(amount);
       const payload = { buying_power: finalAmount };
       await dispatch(addBuyingPowerThunk(payload, currentUser.id));
@@ -35,10 +40,10 @@ const AddFundsForm = () => {
 
   return (
     <div className="add-funds-container">
+      <form className="addFund-form" onSubmit={handleSubmitAF}>
       <div className="errorList">
         {submitted && errors?.map((error) => <div key={error}>{error}</div>)}
       </div>
-      <form className="addFund-form" onSubmit={handleSubmitAF}>
         <label>From</label>
         <input type="text" value="Rothschild's Family Trust" disabled />
         <label> Amount</label>
