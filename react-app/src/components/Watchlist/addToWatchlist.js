@@ -18,8 +18,8 @@ export default function AddToWatchlist({ watchlistId }) {
     const stockToWatchlist = async e => {
         e.preventDefault();
         const updatedWatchlist = {
-            watchlistId: watchlist.id,
-            stockId: stockId,
+            watchlist_id: watchlist.id,
+            stock_id: stockId,
         }
         dispatch(toWatchList(stockId, watchlistId, updatedWatchlist))
     }

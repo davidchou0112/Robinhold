@@ -306,18 +306,25 @@ def delete_transaction(id):
 #     return
 
 # ========== ADD STOCK TO WATCHLIST ========== this okay backend
-@app.route('/watchlists/<int:watchlist_id>/<int:stock_id>', methods=['POST'])
+# @app.route('/watchlists/<int:watchlist_id>/<int:stock_id>', methods=['POST'])
+@app.route('/watchlists/add', methods=['POST'])
 # @login_required
-def add_to_watchlist(watchlist_id, stock_id):
-    watchlist = Watchlist.query.get(watchlist_id)
-    stock = Stock.query.get(stock_id)
-    print('----------------watchlist from seed------' , watchlist)
-    
+# def add_to_watchlist(watchlist_id, stock_id):
+def add_to_watchlist():
+
     data = request.get_json()
-    print('---------------------', data)
     new_list = watched_stocks.insert().values(
-        watchlist_id = data['watchlistId'],
-        stock_id = data['stockId'])
+        watchlist_id = data['watchlist_id'],
+        stock_id = data['stock_id'])
+    
+    watchlist_id = data['watchlist_id'] 
+    
+    watchlist = Watchlist.query.get(watchlist_id)
+    # stock = Stock.query.get(stock_id)
+    # print('----------------watchlist from seed------' , watchlist)
+    
+    
+    print('---------------------', data)
     
     db.session.execute(new_list)
     db.session.commit()
@@ -335,10 +342,16 @@ def delete_from_watchlist(watchlist_id, watched_stocks_id):
     # watchlist = Watchlist.query.get(watchlist_id)
     # print('~watchlist from seed~' , watchlist)
 
-    # watchlist = Watchlist.query.get(watchlist_id).to_dict()
+    # watchlist = Watchlist.query.get(watchlist_id)
     # watchlist['watched_stocks'].pop(watched_stocks_id)
 
     # db.session.execute(watchlist)
-    db.session.delete(int(float('watched_stocks_id')))
+    # stock = Stock.query.get(watched_stocks_id)
+
+    # new_list = watched_stocks.delete().where('watchlists.id' = 1)
+    # https://stackoverflow.com/questions/64687940/how-to-delete-a-specific-row-from-a-table-sqlalchemy-with-flask
+    db.session.query(watched_stocks).filter(watched_stocks.c.watchlist_id == watchlist_id, watched_stocks.c.stock_id == watched_stocks_id).delete()
+    # db.session.execute(new_list)
+    # db.session.delete(int(float('watched_stocks_id')))
     db.session.commit()
     return 'stock deleted from watchlist'
