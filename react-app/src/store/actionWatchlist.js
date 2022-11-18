@@ -37,8 +37,9 @@ export const toWatchList = (stockId, watchlistId, updatedWatchlist) => async (di
     }
 }
 
-export const fromWatchList = (userId, stockId) => async (dispatch) => {
-    const response = await fetch(`/stocks/${stockId}`, {
+export const fromWatchList = (userId, watchlistId, stockId) => async (dispatch) => {
+    // const response = await fetch(`/watchlists/${stockId}`, {
+    const response = await fetch(`/watchlists/${watchlistId}/${stockId}`, {
         method: 'DELETE'
     })
     if (response.ok) {

@@ -9,6 +9,8 @@ export default function SingleWatchlist() {
     const history = useHistory()
     const { watchlistId } = useParams()
     const watchlistObj = useSelector(state => state.session.user.watchlists[watchlistId])
+    // const watchlistObj = useSelector(state => state.watchlist.allWatchlists[watchlistId])
+
     const watched_stocks = Object.values(watchlistObj.watched_stocks)
     const userId = useSelector(state => state.session.user.id)
 
@@ -27,17 +29,22 @@ export default function SingleWatchlist() {
         }
     }
 
+
     const deleteStockFromList = async (stockId) => {
         console.log('got here')
-        const deletedStock = await dispatch(fromWatchList(userId, stockId))
-        if(deletedStock) {
-            window.alert('item deleted successfully')
-        }
+        // const deletedStock = await dispatch(fromWatchList(userId, stockId))
+        // if(deletedStock) {
+        //     window.alert('item deleted successfully')
+        // }
+
     }
 
     useEffect(() => {
         dispatch(getSingleWatchlist(watchlistId))
     }, [dispatch, watchlistId])
+
+    if (!watched_stocks) return null
+
 
     return (
         <div id="single-watchlist-container">
@@ -57,13 +64,13 @@ export default function SingleWatchlist() {
                         <div className="table-symbol-price-columns">
                             <th>Symbol</th>
                             <th id="price-in-single-list">Price</th>
-                            <th>Delete</th>
                         </div>
                     </tr>
+                            <th>Delete</th>
                 </thead>
                 <tbody>
                     {watched_stocks.map(stock => (
-                        <a href={`/stocks/${stock.id}`} id="single-watched-stock-column">
+                        // <a href={`/stocks/${stock.id}`} id="single-watched-stock-column">
                             <tr key={stock.id} className="table-row-container" id="each-single-stock">
                                     <div className="single-watchlist-table-name-column">
                                         <td>{stock.name}</td>
@@ -71,11 +78,17 @@ export default function SingleWatchlist() {
                                     <div className="table-symbol-price-columns">
                                         <td>{stock.symbol}</td>
                                         <td>${stock.price}</td>
-                                        <td><button  value ={stock.id}onClick={(e)=>deleteStockFromList(e.target.value)}><i class="fa-solid fa-x"></i></button></td>
+                                        <td><button onClick={async ()=> {
+                                            await dispatch(fromWatchList(userId, watchlistObj.id, stock.id))
+                                            // dispatch(getSingleWatchlist(watchlistId))
+                                            history.push(`/`)
+                                            }} >
+                                                <i class="fa-solid fa-x"></i></button></td>
+
+
                                     </div>
                             </tr>
-
-                        </a>
+                        // </a>
                     ))}
                 </tbody>
             </table>
