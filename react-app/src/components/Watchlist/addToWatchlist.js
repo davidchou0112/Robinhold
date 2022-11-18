@@ -12,8 +12,8 @@ export default function AddToWatchlist({ watchlistId }) {
     // console.log('userId >> AddToWatchlist >> : ', userId)
     // const watchlist = useSelector(state => state.session.user.watchlists[1].watched_stocks)
     const watchlist = useSelector(state => state.watchlist.allWatchlists[watchlistId])
-    console.log('watchlist.id >> AddToWatchlist >> : ', watchlist.id)
-    console.log('watchlist >> AddToWatchlist >> : ', watchlist)
+    // console.log('watchlist.id >> AddToWatchlist >> : ', watchlist.id)
+    // console.log('watchlist >> AddToWatchlist >> : ', watchlist)
 
     const stockToWatchlist = async e => {
         e.preventDefault();
@@ -28,4 +28,3 @@ export default function AddToWatchlist({ watchlistId }) {
         <button className='add_button' onClick={stockToWatchlist} >Add Stock to List</button>
     )
 }
-

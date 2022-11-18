@@ -31,7 +31,7 @@ const SingleStock = () => {
                    <div className='stock-graph'>
                     <TestingGraph stockId={stockId}/>
                     </div>
-                <h2 className='header_label'>About (dynamic)</h2>
+                <h2 className='header_label'>About</h2>
                 <div className='stock_description'>
                     <p>{singleStock.description}</p>
                 </div>
@@ -55,7 +55,7 @@ const SingleStock = () => {
                     </div>
                 </div>
 
-                <h2 className='header_label'>Key statistics (hard coded)</h2>
+                {/* <h2 className='header_label'>Key statistics (hard coded)</h2>
                 <div className='stock_details'>
                     <div>
                         <div className='detail_label'>Market cap</div>
@@ -102,13 +102,13 @@ const SingleStock = () => {
                 <h2 className='header_label'>Related lists</h2>
                 <div className='stock_description'>
                     Insert Data Here
-                </div>
+                </div> */}
 
-                <h2 className='header_label'>News (hard coded)</h2>
+                {/* <h2 className='header_label'>News (hard coded)</h2>
                 <div className='stock_description' id='news_list'>
                     <News />
-                </div>
-
+                </div> */}
+{/*
                 <h2 className='header_label'>Analyst ratings (images)</h2>
                 <div className='stock_description'>
                     <div className='analyst_rating'></div>
@@ -127,9 +127,9 @@ const SingleStock = () => {
                 <h2 className='header_label'>People also own</h2>
                 <div className='stock_description'>
                     Insert Data Here
-                </div>
+                </div> */}
 
-                <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small>
+                {/* <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small> */}
 
             </div>
 

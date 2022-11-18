@@ -133,25 +133,28 @@ const Portfolio = () => {
             )}
           </div>
 
-          <h2 className='portfolio_label'>Trending Lists</h2>
-          <div>Insert Data Here</div>
+          {/* <h2 className='portfolio_label'>Trending Lists</h2>
+          <div>Insert Data Here</div> */}
 
-          <h2 className='portfolio_label'>Learn (images)</h2>
+          {/* <h2 className='portfolio_label'>Learn (images)</h2>
           <div className='portfolio_news'>
             <Learn />
-          </div>
+          </div> */}
 
 
-          <h2 className='portfolio_label'>News (hard coded)</h2>
+          {/* <h2 className='portfolio_label'>News (hard coded)</h2> */}
           <div className='portfolio_news'>
-            <News />
+            {/* <News /> */}
           </div>
 
-          <h2 className='daily_movers_label'>Daily Movers (images)</h2>
+          {/* <h2 className='daily_movers_label'>Daily Movers (images)</h2>
           <small className='daily_movers_small'>Stocks making the biggest moves today.</small>
-          <DailyMovers />
+          <DailyMovers /> */}
           <br></br>
-          <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small>
+          {/* <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small> */}
+
+          <small>Robinhold is a clone of Robinhood. All figures and values are arbitrary. Do not make any financial decisions based on our projections</small>
+
           <br></br>
         </div>
         {/* <div className='watchlist-wrapper'> */}

@@ -237,9 +237,19 @@
 
 .search_wrapper {
   position: absolute;
+  margin-top: -30px;
 }
 
 .home_page {
   background-color: white;
   height: 500px;
+}
+
+#blacknow{
+  height: 100px;
+}
+
+#logo_black{
+  background-color: black;
+  margin: 15px;
 }

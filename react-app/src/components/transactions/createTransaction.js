@@ -145,7 +145,7 @@ const TransactionContainer = () => {
             <div>
               <div>Est. Price {stockPrice * amount} </div>
 
-              <div>current buying power {buyingPower}</div>
+              <div>current buying power {buyingPower} available</div>
             </div>
 
             <div>
@@ -165,7 +165,7 @@ const TransactionContainer = () => {
             </button> */}
           </form>
 
-          <div> available</div>
+      
         </div>
       </div>
     </>
