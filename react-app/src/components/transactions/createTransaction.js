@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleStock } from "../../store/stocks";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import "../Stock/singleStock.css";
 import { createTransaction } from "../../store/transactions";
 import { addBuyingPowerThunk } from "../../store/portfolio";
 import { fetchUserTransactions } from "../../store/transactions";
+import { getBuyingPower } from '../../store/portfolio';
 
 const TransactionContainer = () => {
   const dispatch = useDispatch();
+  const history = useHistory()
   const { stockId } = useParams();
   const [errors, setErrors] = useState([]);
   const [inputActive, setInputActive] = useState(false)
@@ -32,9 +34,10 @@ const TransactionContainer = () => {
   useEffect(() => {
     dispatch(getSingleStock(stockId));
     dispatch(fetchUserTransactions(userId));
-  }, [dispatch, stockId]);
+    dispatch(getBuyingPower(userId))
+  }, [dispatch, stockId, userId]);
 
-  const handleTransaction = (e) => {
+  const handleTransaction = async (e) => {
     let ErrorArr = [];
     e.preventDefault();
     setIsSubmitted(true);
@@ -87,11 +90,13 @@ const TransactionContainer = () => {
             is_purchased: isPurchased,
             price: Number(stockPrice),
           };
-          dispatch(createTransaction(newTransaction, Number(userId)));
-          dispatch(addBuyingPowerThunk(newBuyingPower, userId));
+          await dispatch(createTransaction(newTransaction, Number(userId)));
+          await dispatch(addBuyingPowerThunk(newBuyingPower, userId))
         }
       }
     }
+      window.alert('Transaction submitted')
+      history.push(`/`)
   };
 
   return (
@@ -152,7 +157,7 @@ const TransactionContainer = () => {
               <div className="grey-background">Est. Price {stockPrice * amount} </div>
               {/* <div className="form-break"></div> */}
 
-              <div className="grey-background">${buyingPower} available</div>
+              <div className="grey-background">${buyingPower.toFixed(2)} available</div>
             </div>
             <button className="submit-order">Submit Order</button>
           </form>
