@@ -12,9 +12,10 @@
 }
 
 #create-watchlist-name-input {
-    background-color: rgb(48,54,58);
+    /* background-color: rgb(48,54,58); */
     height: 30px;
     border-radius: 12px;
+    border: solid green 1px;
 }
 
 

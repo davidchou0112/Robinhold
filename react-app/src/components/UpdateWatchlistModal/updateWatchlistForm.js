@@ -4,12 +4,13 @@ import { useHistory } from "react-router-dom"
 import { getAllWatchlists, updateCurrWatchlist } from "../../store/watchlists"
 import "./updateWatchlistForm.css"
 
-export default function UpdateWatchlistForm({watchlistId,setShowModal}) {
+export default function UpdateWatchlistForm({watchlistId,watchlistName, setShowModal}) {
 
     const dispatch = useDispatch()
     const history = useHistory()
     const userId = useSelector(state=> state.session.user.id)
-    const [ name, setName ] = useState("")
+    const [ name, setName ] = useState(watchlistName)
+    console.log(watchlistName)
     const [ errors, setErrors ] = useState([])
 
     // console.log("~~~~~~~~~~~",watchlistId)
@@ -38,7 +39,7 @@ export default function UpdateWatchlistForm({watchlistId,setShowModal}) {
                     ))}
                 </ul>
                 <div id="update-form-inside">
-                    <input placeholder="Name"
+                    <input
                         required
                         type={'text'}
                         value={name}

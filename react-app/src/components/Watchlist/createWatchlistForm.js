@@ -34,7 +34,7 @@ export default function CreateWatchlistForm({setListform}) {
                     ))}
                 </ul>
                 <div id="create-form-container">
-                    <div id="create-form-sub">
+                    <div>
                         <input placeholder="Name"
                             required
                             type={'text'}

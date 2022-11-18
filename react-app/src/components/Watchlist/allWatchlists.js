@@ -51,7 +51,7 @@ export default function Watchlists() {
                             {watchlist.name}
                         </NavLink>
                         <div id="watchlist-icons-container">
-                            <UpdateWatchlistModal watchlistId={watchlist.id}/>
+                            <UpdateWatchlistModal watchlistId={watchlist.id} watchlistName={watchlist.name}/>
                             <button
                                 className="watchlist-page-icon"
                                 onClick={()=> dispatch(deleteSingleList(watchlist.id))}>
