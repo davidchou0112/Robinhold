@@ -72,11 +72,11 @@ const LoginForm = () => {
                   onChange={updatePassword}
                 />
                 <br></br>
-                <small className='bblackfwhite'>
+                {/* <small className='bblackfwhite'> */}
                   {/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
                   <i class="far fa-eye" id="togglePassword"></i> */}
-                  <input type='checkbox' /> Keep me logged in for up to 30 days (still need to make this function)
-                </small>
+                  {/* <input type='checkbox' /> Keep me logged in for up to 30 days (still need to make this function)
+                </small> */}
               </div>
 
               <div className='button_field'>

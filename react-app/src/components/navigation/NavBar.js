@@ -42,16 +42,21 @@ const NavBar = () => {
           <img className='header__logo' id='blacknow' src={Logo} alt='logo' />
         </NavLink>
       </div>
+
       <div>
+        <div>
+        <h6>Note: due to API fetch limitations, please do not refresh</h6>
+        <h6>or go to different stock pages more than 5 times per minute.</h6>
+      </div>
         <SearchBar />
       </div>
       <div className='navbar__right'>
         <NavLink className='navbar_link' to='/' exact={true} activeClassName='active'>
           Portfolio
         </NavLink>
-        <NavLink className='navbar_link' to='/watchlists' exact={true} activeClassName='active'>
+        {/* <NavLink className='navbar_link' to='/watchlists' exact={true} activeClassName='active'>
           Watchlists
-        </NavLink>
+        </NavLink> */}
         <NavLink className='navbar_link' to='/account' exact={true} activeClassName='active'>
           Account
         </NavLink>

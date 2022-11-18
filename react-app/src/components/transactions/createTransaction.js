@@ -48,7 +48,7 @@ const TransactionContainer = () => {
             setErrors(ErrorArr)
         }
         else {
-            buyingPower += totalPrice
+            buyingPower -= totalPrice
             const newBuyingPower = {buying_power: buyingPower}
             const newTransaction = {
                 user_id: Number(userId),
@@ -124,27 +124,28 @@ const TransactionContainer = () => {
           </div>
           <form onSubmit={handleTransaction}>
             <div>
-              <div>buy or sell in</div>
+              <div>buy or sell</div>
 
-              <select>
+              {/* <select>
                 <option>USD</option>
                 <option>Shares</option>
-              </select>
+              </select> */}
             </div>
 
             <div>
-              <div>Amount</div>
+
               <input
                 type='number'
                 value={amount}
                 onChange={(e)=>setAmount(e.target.value)}
               />
+              <div>Shares</div>
             </div>
 
             <div>
-              <div>Est. Price</div>
+              <div>Est. Price {stockPrice * amount} </div>
 
-              <div>current asset {buyingPower}</div>
+              <div>current buying power {buyingPower}</div>
             </div>
 
             <div>
