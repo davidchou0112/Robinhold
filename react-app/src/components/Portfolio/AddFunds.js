@@ -44,8 +44,8 @@ const AddFundsForm = ({setShowBP}) => {
       <div className="errorList">
         {submitted && errors?.map((error) => <div key={error}>{error}</div>)}
       </div>
-        <label>From</label>
-        <input type="text" value="Rothschild's Family Trust" disabled />
+        <label>From :Rothschild's Family Trust</label>
+        <div></div>
         <label> Amount</label>
         <input
           type="number"

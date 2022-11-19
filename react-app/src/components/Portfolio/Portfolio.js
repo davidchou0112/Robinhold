@@ -136,10 +136,10 @@ const Portfolio = () => {
           {/* <h2 className='portfolio_label'>Trending Lists</h2>
           <div>Insert Data Here</div> */}
 
-          <h2 className='portfolio_label'>Learn</h2>
+          {/* <h2 className='portfolio_label'>Learn</h2>
           <div className='portfolio_news'>
             <Learn />
-          </div>
+          </div> */}
 
 
           <h2 className='portfolio_label'>News</h2>

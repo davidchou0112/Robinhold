@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { getAllWatchlists, updateCurrWatchlist } from "../../store/watchlists"
@@ -14,6 +14,9 @@ export default function UpdateWatchlistForm({watchlistId,watchlistName, setShowM
     const [ errors, setErrors ] = useState([])
 
     // console.log("~~~~~~~~~~~",watchlistId)
+    // useEffect(()=> {
+    //     setName(watchlistName)
+    // },[watchlistName])
 
     const onSubmit = async e => {
         e.preventDefault()
@@ -32,19 +35,22 @@ export default function UpdateWatchlistForm({watchlistId,watchlistName, setShowM
 
     return (
         <div className="update-watchlist-form-container">
+            {/* <h3>Edit List name</h3> */}
             <form onSubmit={onSubmit} id="update-watchlist-form">
                 <ul>
                     {errors.map(err => (
                         <li key={err}>{err}</li>
-                    ))}
+                        ))}
                 </ul>
                 <div id="update-form-inside">
+                        <label id='formLabel'>Edit List Name</label>
                     <input
                         required
                         type={'text'}
                         value={name}
                         onChange={e => setName(e.target.value)}
                         id="updated-input"
+                        placeholder="edit the list name here"
                     />
                     <button type="submit"
                         className="watchlist-page-button"
