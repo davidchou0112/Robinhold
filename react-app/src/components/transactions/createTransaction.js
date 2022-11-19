@@ -20,7 +20,7 @@ const TransactionContainer = () => {
   const singleStock = useSelector((state) => state.stocks.singleStock);
   const userId = useSelector((state) => state.session.user.id);
   let buyingPower = useSelector((state) =>
-    Number(state.session.user.buying_power)
+    Number(state.portfolio.user.buying_power)
   );
   const stockSymbol = singleStock.symbol;
   const stockPrice = singleStock.price;
@@ -47,9 +47,11 @@ const TransactionContainer = () => {
       if (amount <= 0) {
         ErrorArr.push("must be greater than 0");
         setErrors(ErrorArr);
+        return;
       } else if (buyingPower < totalPrice) {
         ErrorArr.push("Not enough funds");
         setErrors(ErrorArr);
+        return;
       } else {
         buyingPower -= totalPrice;
         const newBuyingPower = { buying_power: buyingPower };
@@ -79,6 +81,7 @@ const TransactionContainer = () => {
         if (matchingStockVal < totalPrice) {
           ErrorArr.push("Not enough asset for this transaction");
           setErrors(ErrorArr);
+          return;
         } else {
           buyingPower += totalPrice;
 
@@ -96,7 +99,7 @@ const TransactionContainer = () => {
       }
     }
       window.alert('Transaction submitted')
-      history.push(`/`)
+      // history.push(`/`)
   };
 
   return (
@@ -129,7 +132,7 @@ const TransactionContainer = () => {
         <div className="trsc-container">
           <div className="errorList">
             {isSubmitted &&
-              errors?.map((error) => <div key={error}>{error}</div>)}
+              errors?.map((error) => <div className="errorList" key={error}>{error}</div>)}
           </div>
           <form className="trsc-form-container" onSubmit={handleTransaction}>
             <div className="grey-background">

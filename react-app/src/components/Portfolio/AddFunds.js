@@ -42,12 +42,11 @@ const AddFundsForm = ({setShowBP}) => {
     <div className="add-funds-container">
       <form className="addFund-form" onSubmit={handleSubmitAF}>
       <div className="errorList">
-        {submitted && errors?.map((error) => <div key={error}>{error}</div>)}
+        {submitted && errors?.map((error) => <div className="errorList" key={error}>{error}</div>)}
       </div>
-        <label>From :Rothschild's Family Trust</label>
-        <div></div>
-        <label> Amount</label>
-        <input
+        <label className="grey-background-label">From :Rothschild's Family Trust</label>
+        <label className="grey-background-label"> Amount</label>
+        <input className="grey-background-label"
           type="number"
           placeholder="$0.00"
           id="add-amount"

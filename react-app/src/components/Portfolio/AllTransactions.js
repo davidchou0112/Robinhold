@@ -32,7 +32,10 @@ export default function AllTransactions() {
                 <div className='stocks_in_list'>
                     <div id="list-header-container">
                         <div>
-                            Stock Symbol
+                            Stock
+                        </div>
+                        <div>
+                            Price per Share
                         </div>
                     </div>
                     {userTransactions.map(transaction => (
@@ -40,7 +43,8 @@ export default function AllTransactions() {
                             <li key={transaction.id} id="single_watched_stock">
                                     {transaction.stock_symbol}
                             </li>
-                            <div>{transaction.price}</div>
+
+                            <div>${transaction.price}</div>
                         </div>
                     ))}
                 </div>

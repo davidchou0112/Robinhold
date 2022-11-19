@@ -86,13 +86,13 @@ function LineGraph(props) {
       let date = new Date();
       date.setHours(0, 0, 0, 0);
       date.setDate(i);
-      value += Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 10);
-      value += Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 10);
-      value -= Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 10);
-      value -= Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 10);
-      value += Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 10);
-      value += Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 10);
-      value -= Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 10);
+      value += Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 100);
+      value += Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 100);
+      value -= Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 100);
+      value -= Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 100);
+      value += Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 100);
+      value += Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 100);
+      value -= Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 100);
       data.push({ x: date, y: value });
     }
     setGraphData(data);
@@ -101,11 +101,11 @@ function LineGraph(props) {
   const createMockDataALL = () => {
     let data = [];
     let value = totalHolding;
-    for (var i = 0; i < 366; i++) {
+    for (var i = 0; i < 1000; i++) {
       let date = new Date();
       date.setHours(0, 0, 0, 0);
       date.setDate(i);
-      value += Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 10);
+      value += Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 1000);
       data.push({ x: date, y: value });
     }
     setGraphData(data);

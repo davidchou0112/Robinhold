@@ -33,7 +33,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* border: solid 1px red; */
+  background-color: #1e2124;
 }
 
 
@@ -95,6 +95,13 @@
   width: 100%;
   max-height: 305px
     /* margin-right: 100px; */
+}
+
+#add-amount{
+  border: solid 1px grey;
+  width: 50px;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 /* --------------------time period-------------------------- */
@@ -159,6 +166,7 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
+  font-size: 13.5px;
 
 }
 
@@ -179,6 +187,7 @@
 
 .addFundForm {
   margin-bottom: 10px;
+  margin-top: 20px;
 }
 
 .Deposit-fund-button {
@@ -189,6 +198,7 @@
   font-weight: bold;
   border-radius: 5px;
   border: none;
+  margin-bottom: 5px;
 }
 
 .Deposit-fund-button:hover {
@@ -197,18 +207,33 @@
 
 .add-funds-container {
   display: flex;
-  /* justify-content: center; */
+  flex-direction: column;
   /* align-items: center; */
-  height: 100%;
+  width: 200px;
+  border-radius: 3px;
+  background-color: #1e2124;
+  border: 0.5px solid rgb(200, 200, 200, 0.5);
+}
+
+.grey-background-label{
+  background-color: #1e2124;
+  margin-top: 15px;
+  /* text-align: center; */
+
 }
 
 .addFund-form {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 400px;
+  width: 200px;
   margin: auto;
+  background-color: #1e2124;
+  align-items: center;
+}
 
+.deposit-message{
+  margin-top: 10px;
 }
 
 /* ---------------------RIGHT SIDE----------------------- */
