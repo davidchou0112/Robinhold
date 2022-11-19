@@ -3,6 +3,15 @@ const LOAD_SINGLEWATCHLIST = "watchlists/loadSingleWatchlist"
 const CREATE_WATCHLIST = "watchlists/createWatchlist"
 const UPDATE_WATCHLIST = "watchlists/updateWatchlist"
 const DELETE_WATCHLIST = "watchlists/deleteWatchlists"
+const ADD_TO_WATCHLIST = 'actionWatchlist/addToWatchlist';
+
+
+const addToWatchlist = (stock) => {
+    return {
+        type: ADD_TO_WATCHLIST,
+        stock
+    }
+}
 
 const loadWatchlists = (watchlists) => {
     return {
@@ -36,6 +45,23 @@ const updateWatchlist = (watchlist) => {
     return {
         type: UPDATE_WATCHLIST,
         watchlist
+    }
+}
+
+export const toWatchList = (stockId, watchlistId, updatedWatchlist) => async (dispatch) => {
+    // const response = await fetch(`/watchlists/${watchlistId}/${stockId}`, {
+    const response = await fetch(`/watchlists/add`, {
+
+        method: 'POST',
+        headers: {
+            'Content-Type': "application/json"
+        },
+        body: JSON.stringify(updatedWatchlist)
+    })
+    if (response.ok) {
+        const stock = await response.json()
+        dispatch(addToWatchlist(stock))
+        // return stock
     }
 }
 
@@ -109,6 +135,14 @@ const initialState = { allWatchlists: {}, singleWatchlist: {} }
 const watchlistsReducer = (state = initialState, action) => {
     let newState = {};
     switch (action.type) {
+        case ADD_TO_WATCHLIST:
+            return {
+                allWatchlists: {
+                    ...state.allWatchlists,
+                    ...action.stock
+                },
+                singleWatchlist: {}
+            }
         case LOAD_WATCHLISTS:
             newState = { ...state, allWatchlists: {}, singleWatchlist: {} }
             Object.values(action.watchlists).map(watchlist => (

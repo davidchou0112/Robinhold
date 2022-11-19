@@ -8,15 +8,12 @@ import "./allWatchlists.css"
 import AddToWatchlist from "./addToWatchlist"
 
 export default function Watchlists() {
-    const sessionUser = useSelector((state) => state.session.user)
-    console.log('sessionUser', sessionUser)
+
     const [listForm, setListform] = useState(false)
     const dispatch = useDispatch()
     const allWatchlistsObj = useSelector(state => state.watchlist.allWatchlists)
-    console.log(`111111111111`, allWatchlistsObj)
     const userId = useSelector(state => state.session.user.id)
     const allWatchlistsArr = Object.values(allWatchlistsObj)
-    console.log('~~~~~~~~~~~~~~~~~~~~~~~~', allWatchlistsArr)
 
     const { stockId } = useParams();
 
@@ -26,9 +23,7 @@ export default function Watchlists() {
 
 
     if (!allWatchlistsArr) return null
-    let watchlist;
-    // if (sessionUser) watchlist = Object.values(sessionUser).filter(watchlist => watchlist.watchlistId === sessionUser.watchlists.id['1'].watched_stocks['1'])
-    console.log('watchlist', watchlist)
+
     return (
         <div className="all-lists-container">
             <div id="list-general-header">
@@ -75,16 +70,9 @@ export default function Watchlists() {
                     ))}
 
                     {/* {sessionUser && !watchlist.length !== sessionUser?.id && (<AddToWatchlist />)} */}
-                    {stockId && watchlist.id && (
+                    { !Object.keys(watchlist.watched_stocks).includes(stockId) && stockId && watchlist.id && (
                         <AddToWatchlist watchlistId={watchlist.id} />
                     )}
-
-                    <div id="list_items">
-
-                    </div>
-
-
-
                 </div>
             ))}
         </div>
