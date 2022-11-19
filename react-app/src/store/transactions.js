@@ -24,7 +24,7 @@ const createNewTransaction = (transaction) => {
 
 export const fetchUserTransactions = (userId) => async (dispatch) => {
     // console.log('response-------------')
-    const response = await fetch(`/users/${userId}/transactions`)
+    const response = await fetch(`/api/users/${userId}/transactions`)
     const data = await response.json()
     if(response.ok) {
         dispatch(getUserTransaction(data))
@@ -33,7 +33,7 @@ export const fetchUserTransactions = (userId) => async (dispatch) => {
 }
 
 export const createTransaction = (transaction, userId) => async (dispatch) => {
-    const res = await fetch(`/users/${userId}/transactions`, {
+    const res = await fetch(`/api/users/${userId}/transactions`, {
         method: "POST",
         headers: {
             'Content-Type': "application/json"

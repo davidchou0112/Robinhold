@@ -13,6 +13,7 @@ import Learn from './Learn';
 import DailyMovers from './DailyMovers';
 import Watchlists from '../Watchlist/allWatchlists';
 import { getBuyingPower } from '../../store/portfolio';
+import AllTransactions from './AllTransactions';
 const popularTopics = [
   "Newly Listed Crypto",
   "New OTC securities",
@@ -158,7 +159,11 @@ const Portfolio = () => {
           <br></br>
         </div>
         {/* <div className='watchlist-wrapper'> */}
+
         <Watchlists />
+
+        {/* <AllTransactions /> */}
+
       {/* </div> */}
       </div>
     </div>

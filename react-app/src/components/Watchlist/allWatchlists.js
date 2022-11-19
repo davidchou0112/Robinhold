@@ -6,7 +6,7 @@ import UpdateWatchlistModal from "../UpdateWatchlistModal"
 import CreateWatchlistForm from "./createWatchlistForm"
 import "./allWatchlists.css"
 import AddToWatchlist from "./addToWatchlist"
-
+import AllTransactions from "../Portfolio/AllTransactions"
 export default function Watchlists() {
     const sessionUser = useSelector((state) => state.session.user)
     console.log('sessionUser', sessionUser)
@@ -36,6 +36,8 @@ export default function Watchlists() {
     // if (sessionUser) watchlist = Object.values(sessionUser).filter(watchlist => watchlist.watchlistId === sessionUser.watchlists.id['1'].watched_stocks['1'])
     console.log('watchlist', watchlist)
     return (
+        <>
+        <div className="all-lists-wrapper">
         <div className="all-lists-container">
             <div id="list-general-header">
                 <h3>Lists</h3>
@@ -101,5 +103,9 @@ export default function Watchlists() {
                 </div>
             ))}
         </div>
+        <AllTransactions />
+        </div>
+        </>
+
     )
 }

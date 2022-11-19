@@ -227,6 +227,11 @@
   height: 300px;
 }
 
+/* .right-side-lists{
+  display: flex;
+  flex-direction: column;
+} */
+
 /* .portfolio-chart-container {
   display: flex;
   flex-direction: column;

@@ -1,13 +1,27 @@
 .all-lists-container {
-    /* border: solid white 2px; */
+    border: solid grey 1px;
     width: 350px;
     height: 100%;
-
+    border-radius: 5px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    background-color: rgb(30, 33, 36);
+    margin-bottom: 50px;
+    /* background-color: rgb(30, 33, 36); */
 }
+.all-lists-wrapper {
+    /* border: solid grey 1px; */
+    width: 350px;
+    height: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* background-color: rgb(30, 33, 36); */
+}
+
 
 #list-general-header {
     display: flex;
@@ -47,6 +61,16 @@
 
 #watched_stocks_container {
     cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 5px;
+}
+
+#watched_trsc_container {
+    /* cursor: pointer; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;

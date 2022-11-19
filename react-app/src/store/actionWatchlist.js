@@ -22,7 +22,7 @@ const deleteFromWatchlist = (userId, stockId) => {
 // ========== THUNK ===========
 export const toWatchList = (stockId, watchlistId, updatedWatchlist) => async (dispatch) => {
     // const response = await fetch(`/watchlists/${watchlistId}/${stockId}`, {
-    const response = await fetch(`/watchlists/add`, {
+    const response = await fetch(`/api/watchlists/add`, {
 
         method: 'POST',
         headers: {
@@ -38,7 +38,7 @@ export const toWatchList = (stockId, watchlistId, updatedWatchlist) => async (di
 }
 
 export const fromWatchList = (userId, stockId) => async (dispatch) => {
-    const response = await fetch(`/stocks/${stockId}`, {
+    const response = await fetch(`/api/stocks/${stockId}`, {
         method: 'DELETE'
     })
     if (response.ok) {

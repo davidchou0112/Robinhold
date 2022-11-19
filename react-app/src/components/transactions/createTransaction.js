@@ -145,7 +145,7 @@ const TransactionContainer = () => {
                 className="grey-background"
                 type="number"
                 value={amount}
-                placeholder='$0.00'
+                placeholder='0.00'
                 onChange={(e) => setAmount(e.target.value)}
                 required
               />
@@ -154,7 +154,7 @@ const TransactionContainer = () => {
           <div className="form-break"></div>
 
             <div className="grey-background">
-              <div className="grey-background">Est. Price {stockPrice * amount} </div>
+              <div className="grey-background">Est. Price {(stockPrice * amount).toFixed(2)} </div>
               {/* <div className="form-break"></div> */}
 
               <div className="grey-background">${buyingPower.toFixed(2)} available</div>
