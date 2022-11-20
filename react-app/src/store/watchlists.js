@@ -4,6 +4,26 @@ const CREATE_WATCHLIST = "watchlists/createWatchlist"
 const UPDATE_WATCHLIST = "watchlists/updateWatchlist"
 const DELETE_WATCHLIST = "watchlists/deleteWatchlists"
 
+const ADD_TO_WATCHLIST = "watchlists/addStocktoList"
+const DELETE_FROM_WATCHLIST = "watchlist/removeStockFromList"
+
+const addToWatchlist = (stock, watchlistId) => {
+    return {
+        type: ADD_TO_WATCHLIST,
+        stock,
+        watchlistId
+    }
+}
+
+const deleteFromWatchlist = (userId, stockId) => {
+    return {
+        type: DELETE_FROM_WATCHLIST,
+        userId,
+        stockId
+
+    }
+}
+
 const loadWatchlists = (watchlists) => {
     return {
         type: LOAD_WATCHLISTS,
@@ -38,6 +58,34 @@ const updateWatchlist = (watchlist) => {
         watchlist
     }
 }
+
+export const toWatchList = (stockId, watchlistId, updatedWatchlist) => async (dispatch) => {
+    // const response = await fetch(`/watchlists/${watchlistId}/${stockId}`, {
+    const response = await fetch(`/watchlists/add`, {
+
+        method: 'POST',
+        headers: {
+            'Content-Type': "application/json"
+        },
+        body: JSON.stringify(updatedWatchlist)
+    })
+    if (response.ok) {
+        const stock = await response.json()
+        dispatch(addToWatchlist(stock, watchlistId))
+        // return stock
+    }
+}
+
+export const fromWatchList = (userId, watchlistId, stockId) => async (dispatch) => {
+        // const response = await fetch(`/stocks/${stockId}`, {
+        const response = await fetch(`/watchlists/${watchlistId}/${stockId}`, {
+            method: 'DELETE'
+        })
+        if (response.ok) {
+            // const newWatchlist = await response.json()
+            await dispatch(deleteFromWatchlist(userId, stockId))
+        }
+    }
 
 
 // ================= Thunk ==================
@@ -109,6 +157,32 @@ const initialState = { allWatchlists: {}, singleWatchlist: {} }
 const watchlistsReducer = (state = initialState, action) => {
     let newState = {};
     switch (action.type) {
+        // ======================
+        case ADD_TO_WATCHLIST:
+            newState = {
+                allWatchlists: {
+                    ...state.allWatchlists,
+                }
+            }
+            newState.allWatchlists[action.watchlistId].watched_stocks[action.stock.id] = action.stock
+            return newState
+            // return {
+            //     allWatchlists: {
+            //         ...state.allWatchlists,
+            //         allWatchlists[action.watchlistId]
+            //     },
+            //     singleWatchlist: {}
+            // }
+
+        case DELETE_FROM_WATCHLIST:
+            newState = {
+                allWatchlists: { ...state.allWatchlists },
+                singleWatchlist: {...state.singleWatchlist}
+            }
+            delete newState.singleWatchlist.watched_stocks[action.stockId]
+            return newState
+        // =========================
+
         case LOAD_WATCHLISTS:
             newState = { ...state, allWatchlists: {}, singleWatchlist: {} }
             Object.values(action.watchlists).map(watchlist => (
