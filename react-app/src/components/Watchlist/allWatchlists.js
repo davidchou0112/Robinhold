@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { NavLink, useParams } from "react-router-dom"
+import { NavLink, useParams, Link } from "react-router-dom"
 import { deleteSingleList, getAllWatchlists } from "../../store/watchlists"
 import UpdateWatchlistModal from "../UpdateWatchlistModal"
 import CreateWatchlistForm from "./createWatchlistForm"
@@ -10,7 +10,6 @@ import AddToWatchlist from "./addToWatchlist"
 export default function Watchlists() {
 
     const [listForm, setListform] = useState(false)
-    const [loaded, setLoaded] = useState(false)
 
     const dispatch = useDispatch()
     const allWatchlistsObj = useSelector(state => state.watchlist.allWatchlists)
@@ -25,7 +24,7 @@ export default function Watchlists() {
 
     if (!allWatchlistsObj) return null
     const allWatchlistsArr = Object.values(allWatchlistsObj)
-    console.log("===============",allWatchlistsArr)
+
     return (
         <div className="all-lists-container">
             <div id="list-general-header">
@@ -34,13 +33,13 @@ export default function Watchlists() {
                     <button className="update-delete-button" onClick={() => setListform(true)}>
                         <i class="fa-solid fa-plus"></i>
                     </button>
-                    {listForm && (
-                        <div>
-                            <CreateWatchlistForm setListform={setListform} />
-                        </div>
-                    )}
                 </div>
             </div >
+            {listForm && (
+                <div>
+                    <CreateWatchlistForm setListform={setListform} />
+                </div>
+            )}
             {allWatchlistsArr.map(watchlist => (
                 <div className='stocks_in_list' key={watchlist.id} >
                     <div id="list-header-container">
@@ -61,14 +60,12 @@ export default function Watchlists() {
                         </div>
                     </div>
                     {watchlist.watched_stocks && Object.values(watchlist.watched_stocks)?.map(stock => (
-                        <div id="watched_stocks_container">
-                            <li key={stock.id} id="single_watched_stock">
-                                <NavLink to={`/stocks/${stock.id}`} className="list-nav-links">
-                                    {stock.name}
-                                </NavLink>
-                            </li>
-                            <div>{stock.price}</div>
-                        </div>
+                        <Link to={`/stocks/${stock.id}`} id="link-to-single-stock">
+                            <div id="watched_stocks_container">
+                                <div>{stock.name}</div>
+                                <div>{stock.price}</div>
+                            </div>
+                        </Link>
                     ))}
 
                     {/* {sessionUser && !watchlist.length !== sessionUser?.id && (<AddToWatchlist />)} */}

@@ -81,16 +81,14 @@ Returns the details of a stock specified by its id
 
 ## Watchlists
 
-### Get all Watchlists of the Current User
+### Get all Watchlists by User ID
 
 Returns all the watchlists of the current user
 
 * Require Authentication: True
 * Request
   * Method: GET
-  *  ================
   * URL: /api/watchlists/current
-  *  ================
   * Body: none
 
 * Successful Response
@@ -155,8 +153,7 @@ Create a new watchlist
       "name": "My new list"
     }
     ```
-
-<!-- * Error Response: Body validation errors
+* Error Response: Body validation errors
   * Status Code: 400
   * Headers:
     * Content-Type: application/json
@@ -170,4 +167,191 @@ Create a new watchlist
         "name": "Name of watchlist is required"
       }
     }
-    ``` -->
+    ```
+
+### Update a Watchlist
+Updates and returns an existing watchlist.
+* Require Authentication: true
+* Require proper authorization: Spot must belong to the current user
+* Request
+  * Method: PUT
+  * URL: /api/spots/:spotId
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+    ```json
+    ```
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+    ```json
+    ```
+
+* Error Response: Body validation error
+  * Status Code: 400
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+      ```json
+      {
+        "message": "Watchlist not found",
+        "statusCode": 404,
+      }
+
+      ```
+### Delete a Watchlist
+Deletes an existing watchlist.
+
+* Require Authentication: true
+* Request
+  * Method: DELETE
+  * URL: /api/watchlists/:watchlist_id
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "successfully delete watchlist",
+      "statusCode": 200
+    }
+    ```
+
+### Add stock to watchlist
+Add a stock to an existing watchlist
+* Require Authentication: true
+* Request
+  * Method: POST
+  * URL: /api/watchlists/add
+  * Body: none
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+
+### Remove a stock from watchlist
+Remove a stock from an existing watchlist
+* Require Authentication: true
+* Require proper authorization: Review must belong to the current user
+* Request
+  * Method: DELETE
+  * URL: /api/reviews/:reviewId
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Stock deleted from watchlist",
+      "statusCode": 200
+    }
+    ```
+
+## Stocks
+
+### Get all stocks
+* Require Authentication: true
+* Request
+  * Method: GET
+  * URL: /api/stocks
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+    ```json
+
+    ```
+### Get details of a Stock from an id
+
+Returns the details of a stock specified by its id.
+
+* Require Authentication: true
+* Request
+  * Method: GET
+  * URL: /api/stocks/:stockId
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+      ```json
+
+    ```
+
+* Error response: Couldn't find a Stock with the specified id
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Stock couldn't be found",
+      "statusCode": 404
+    }
+    ```
+
+## Transactions
+
+## Get all Transactions by User Id
+
+Returns all the transactions of user.
+
+* Require Authentication: true
+* Request
+  * Method: GET
+  * URL: /api/users/:userId/transactions
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+    ```json
+
+    ```
+
+## Create a transaction
+
+Create and return a new transaction
+* Require Authentication: true
+* Request
+  * Method: POST
+  * URL: /api/users/:userId/transactions
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+      ```json
+      {
+        "stock_symbol": "BA",
+        "quantity": 1,
+        "is_purchased": true,
+        "price": 89
+      }
+
+      ```
+* Successful Response
+  * Status Code: 201
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+      ```json
+
+      ```

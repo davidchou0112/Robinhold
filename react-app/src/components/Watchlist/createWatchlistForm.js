@@ -14,15 +14,20 @@ export default function CreateWatchlistForm({setListform}) {
 
     const handleSubmit = async e => {
         e.preventDefault()
-        setName("")
-        setErrors([])
-        const newWatchlist = {
-            name
-        }
+        
+        if(name.length <= 40){
+            setName("")
+            setErrors([])
+            const newWatchlist = {
+                name
+            }
 
-        await dispatch(createWatchlist(newWatchlist, userId))
-        await dispatch(getAllWatchlists(userId))
-        history.push("/")
+            await dispatch(createWatchlist(newWatchlist, userId))
+            await dispatch(getAllWatchlists(userId))
+            history.push("/")
+        } else {
+            return setErrors(["Your list name must be less than 40 characters."])
+        }
     }
 
     return (

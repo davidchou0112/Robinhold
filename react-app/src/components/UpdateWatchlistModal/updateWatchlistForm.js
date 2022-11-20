@@ -10,24 +10,25 @@ export default function UpdateWatchlistForm({watchlistId,watchlistName, setShowM
     const history = useHistory()
     const userId = useSelector(state=> state.session.user.id)
     const [ name, setName ] = useState(watchlistName)
-    console.log(watchlistName)
+
     const [ errors, setErrors ] = useState([])
 
     // console.log("~~~~~~~~~~~",watchlistId)
 
     const onSubmit = async e => {
         e.preventDefault()
-        setErrors([])
+        if(name.length <= 40){
+            setErrors([])
 
-        const newWatchlist = {
-            name
+            const newWatchlist = {
+                name
+            }
+            await dispatch(updateCurrWatchlist(watchlistId, newWatchlist))
+            await dispatch(getAllWatchlists(userId))
+            setShowModal(false)
+            history.push('/')
         }
-
-        await dispatch(updateCurrWatchlist(watchlistId, newWatchlist))
-        await dispatch(getAllWatchlists(userId))
-        setShowModal(false)
-        history.push('/')
-
+        return setErrors(["Watchlist name must less than 40 charactors."])
     }
 
     return (

@@ -3,7 +3,7 @@ const LOAD_SINGLEWATCHLIST = "watchlists/loadSingleWatchlist"
 const CREATE_WATCHLIST = "watchlists/createWatchlist"
 const UPDATE_WATCHLIST = "watchlists/updateWatchlist"
 const DELETE_WATCHLIST = "watchlists/deleteWatchlists"
-// const ADD_TO_WATCHLIST = 'actionWatchlist/addToWatchlist';
+
 const ADD_TO_WATCHLIST = "watchlists/addStocktoList"
 const DELETE_FROM_WATCHLIST = "watchlist/removeStockFromList"
 

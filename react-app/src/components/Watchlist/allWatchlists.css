@@ -44,6 +44,10 @@
     justify-content: space-evenly;
 }
 
+#link-to-single-stock{
+    text-decoration: none;
+}
+
 
 #watched_stocks_container {
     cursor: pointer;
