@@ -10,10 +10,11 @@ import AddToWatchlist from "./addToWatchlist"
 export default function Watchlists() {
 
     const [listForm, setListform] = useState(false)
+    const [loaded, setLoaded] = useState(false)
+
     const dispatch = useDispatch()
     const allWatchlistsObj = useSelector(state => state.watchlist.allWatchlists)
     const userId = useSelector(state => state.session.user.id)
-    const allWatchlistsArr = Object.values(allWatchlistsObj)
 
     const { stockId } = useParams();
 
@@ -22,8 +23,9 @@ export default function Watchlists() {
     }, [dispatch, userId])
 
 
-    if (!allWatchlistsArr) return null
-
+    if (!allWatchlistsObj) return null
+    const allWatchlistsArr = Object.values(allWatchlistsObj)
+    console.log("===============",allWatchlistsArr)
     return (
         <div className="all-lists-container">
             <div id="list-general-header">
@@ -58,7 +60,7 @@ export default function Watchlists() {
                             </button>
                         </div>
                     </div>
-                    {Object.values(watchlist.watched_stocks).map(stock => (
+                    {watchlist.watched_stocks && Object.values(watchlist.watched_stocks)?.map(stock => (
                         <div id="watched_stocks_container">
                             <li key={stock.id} id="single_watched_stock">
                                 <NavLink to={`/stocks/${stock.id}`} className="list-nav-links">
