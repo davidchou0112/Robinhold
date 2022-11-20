@@ -6,7 +6,7 @@ import UpdateWatchlistModal from "../UpdateWatchlistModal"
 import CreateWatchlistForm from "./createWatchlistForm"
 import "./allWatchlists.css"
 import AddToWatchlist from "./addToWatchlist"
-
+import AllTransactions from "../Portfolio/AllTransactions"
 export default function Watchlists() {
     const sessionUser = useSelector((state) => state.session.user)
     console.log('sessionUser', sessionUser)
@@ -17,12 +17,18 @@ export default function Watchlists() {
     const userId = useSelector(state => state.session.user.id)
     const allWatchlistsArr = Object.values(allWatchlistsObj)
     console.log('~~~~~~~~~~~~~~~~~~~~~~~~', allWatchlistsArr)
-
+    const [showWLButton, setShowWLButton] = useState(true)
     const { stockId } = useParams();
 
     useEffect(() => {
         dispatch(getAllWatchlists(userId))
     }, [dispatch, userId])
+
+    function findMatchStock() {
+        Object.values(watchlist.watched_stocks).forEach((ele)=> {
+            if(ele.id === stockId) setShowWLButton(false)
+        })
+    }
 
 
     if (!allWatchlistsArr) return null
@@ -30,6 +36,8 @@ export default function Watchlists() {
     // if (sessionUser) watchlist = Object.values(sessionUser).filter(watchlist => watchlist.watchlistId === sessionUser.watchlists.id['1'].watched_stocks['1'])
     console.log('watchlist', watchlist)
     return (
+        <>
+        <div className="all-lists-wrapper">
         <div className="all-lists-container">
             <div id="list-general-header">
                 <h3>Lists</h3>
@@ -48,11 +56,12 @@ export default function Watchlists() {
                 <div className='stocks_in_list' key={watchlist.id} >
                     <div id="list-header-container">
                         <div>
-                            <NavLink to={`/watchlists/${watchlist.id}`}
+                            {watchlist.name}
+                            {/* <NavLink to={`/watchlists/${watchlist.id}`}
                                 className="list-nav-links"
                                 id="list-name">
                                 {watchlist.name}
-                            </NavLink>
+                            </NavLink> */}
                         </div>
                         <div>
                             <UpdateWatchlistModal watchlistId={watchlist.id} />
@@ -72,10 +81,16 @@ export default function Watchlists() {
                             </li>
                             <div>{stock.price}</div>
                         </div>
-                    ))}
+                    ))
+                }
+                {/* {Object.values(watchlist.watched_stocks).forEach((ele)=> {
+                     if(ele.id === stockId) setShowWLButton(false)
+                })} */}
+
 
                     {/* {sessionUser && !watchlist.length !== sessionUser?.id && (<AddToWatchlist />)} */}
-                    {stockId && watchlist.id && (
+
+                    {!Object.keys(watchlist.watched_stocks).includes(stockId) && stockId && stockId && watchlist.id && (
                         <AddToWatchlist watchlistId={watchlist.id} />
                     )}
 
@@ -88,5 +103,9 @@ export default function Watchlists() {
                 </div>
             ))}
         </div>
+        <AllTransactions />
+        </div>
+        </>
+
     )
 }

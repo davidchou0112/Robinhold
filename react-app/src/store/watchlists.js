@@ -43,7 +43,7 @@ const updateWatchlist = (watchlist) => {
 // ================= Thunk ==================
 export const getAllWatchlists = (userId) => async (dispatch) => {
     // =============  not sure about path ==============
-    const res = await fetch(`/users/${userId}/watchlists`)
+    const res = await fetch(`/api/users/${userId}/watchlists`)
     const data = await res.json()
     if (res.ok) {
         dispatch(loadWatchlists(data))
@@ -51,7 +51,7 @@ export const getAllWatchlists = (userId) => async (dispatch) => {
 }
 
 export const getSingleWatchlist = (id) => async (dispatch) => {
-    const res = await fetch(`/watchlists/${id}`)
+    const res = await fetch(`/api/watchlists/${id}`)
     const data = await res.json()
     if (res.ok) {
         dispatch(loadSingleWatchlist(data))
@@ -60,7 +60,7 @@ export const getSingleWatchlist = (id) => async (dispatch) => {
 
 // -------------- Create new watchlist ---------------------
 export const createWatchlist = (watchlist, userId) => async (dispatch) => {
-    const res = await fetch(`/users/${userId}/watchlists`, {
+    const res = await fetch(`/api/users/${userId}/watchlists`, {
         method: "POST",
         headers: {
             'Content-Type': "application/json"
@@ -76,7 +76,7 @@ export const createWatchlist = (watchlist, userId) => async (dispatch) => {
 
 //------------- Update watchlist -----------------
 export const updateCurrWatchlist = (id, watchlist) => async (dispatch) => {
-    const res = await fetch(`/watchlists/${id}`, {
+    const res = await fetch(`/api/watchlists/${id}`, {
         method: "PUT",
         headers: {
             'Content-Type': "application/json"
@@ -95,7 +95,7 @@ export const updateCurrWatchlist = (id, watchlist) => async (dispatch) => {
 
 //  ------------- Delete Watchlist ---------------
 export const deleteSingleList = (watchlistId) => async (dispatch) => {
-    const res = await fetch(`/watchlists/${watchlistId}`, {
+    const res = await fetch(`/api/watchlists/${watchlistId}`, {
         method: "DELETE"
     })
     if (res.ok) {
