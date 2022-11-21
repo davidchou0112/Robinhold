@@ -322,16 +322,16 @@ def add_to_watchlist():
     new_list = watched_stocks.insert().values(
         watchlist_id = data['watchlist_id'],
         stock_id = data['stock_id'])
-    
-    watchlist_id = data['watchlist_id'] 
-    
+
+    watchlist_id = data['watchlist_id']
+
     watchlist = Watchlist.query.get(watchlist_id)
     # stock = Stock.query.get(stock_id)
     # print('----------------watchlist from seed------' , watchlist)
-    
-    
+
+
     print('---------------------', data)
-    
+
     db.session.execute(new_list)
     db.session.commit()
     return watchlist.to_dict()

@@ -37,6 +37,7 @@
 // //     }
 // // }
 
+<<<<<<< HEAD
 // export const fromWatchList = (userId, stockId) => async (dispatch) => {
 //     const response = await fetch(`/stocks/${stockId}`, {
 //         method: 'DELETE'
@@ -46,6 +47,18 @@
 //         await dispatch(deleteFromWatchlist(userId, stockId))
 //     }
 // }
+=======
+export const fromWatchList = (userId, watchlistId, stockId) => async (dispatch) => {
+    // const response = await fetch(`/watchlists/${stockId}`, {
+    const response = await fetch(`/watchlists/${watchlistId}/${stockId}`, {
+        method: 'DELETE'
+    })
+    if (response.ok) {
+        // const newWatchlist = await response.json()
+        await dispatch(deleteFromWatchlist(userId, stockId))
+    }
+}
+>>>>>>> 1ef9e845e3ce4c3b6a4432bcbb380d4d1d0743a2
 
 // // export const
 
