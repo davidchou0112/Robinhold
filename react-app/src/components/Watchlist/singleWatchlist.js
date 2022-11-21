@@ -115,12 +115,10 @@ export default function SingleWatchlist() {
   const userId = useSelector(state => state.session.user.id)
 
   const handleDelete = async () => {
-    const deleted = await dispatch(deleteSingleList(watchlistObj.id))
+    dispatch(deleteSingleList(watchlistObj.id))
     dispatch(getAllWatchlists(userId))
-    // console.log("=====================",deleted)
-    if (deleted) {
-      history.push("/")
-    }
+    history.push("/")
+
   }
 
   useEffect(() => {
