@@ -44,7 +44,7 @@ export default function SingleWatchlist() {
                     {watched_stocks.length} items
                 </div>
                 <table id="singleWatchlist-table">
-                    <thead >
+                    <thead>
                         <tr className="singleWatchlist-tr">
                             <th align="left" className="singleWatchlist-table-header">Name</th>
                             <th align="left" className="singleWatchlist-table-header">Symbol</th>
