@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
-import { toWatchList } from "../../store/actionWatchlist"
-import { getAllWatchlists } from "../../store/watchlists"
+import { toWatchList, getAllWatchlists } from "../../store/watchlists"
 import './addToWatchlist.css'
 
 export default function AddToWatchlist({ watchlistId }) {
     const dispatch = useDispatch();
     const { stockId } = useParams();
-    console.log('stockId >> AddToWatchlist >> : ', stockId)
+    // console.log('stockId >> AddToWatchlist >> : ', stockId)
     const userId = useSelector(state => state.session.user.id)
     // console.log('userId >> AddToWatchlist >> : ', userId)
     // const watchlist = useSelector(state => state.session.user.watchlists[1].watched_stocks)

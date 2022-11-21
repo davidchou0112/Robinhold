@@ -1,9 +1,9 @@
 import { useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getBuyingPower,addBuyingPowerThunk } from "../../store/portfolio";
+import { getBuyingPower, addBuyingPowerThunk } from "../../store/portfolio";
 import './Portfolio.css'
-const AddFundsForm = ({setShowBP}) => {
+const AddFundsForm = ({ setShowBP }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [showcConfirmation, setShowConfirmation] = useState(false);
@@ -11,10 +11,10 @@ const AddFundsForm = ({setShowBP}) => {
   const [submitted, setSubmitted] = useState(false);
   const currentUser = useSelector((state) => state?.session?.user);
   const [errors, setErrors] = useState([]);
-  useEffect(()=> {
+  useEffect(() => {
     dispatch(getBuyingPower(currentUser.id))
-  },[dispatch])
-  const buyingPower = useSelector(state=>Number(state?.portfolio?.user?.buying_power))
+  }, [dispatch])
+  const buyingPower = useSelector(state => Number(state?.portfolio?.user?.buying_power))
 
   const handleSubmitAF = async (e) => {
     e.preventDefault();
@@ -41,13 +41,12 @@ const AddFundsForm = ({setShowBP}) => {
   return (
     <div className="add-funds-container">
       <form className="addFund-form" onSubmit={handleSubmitAF}>
-      <div className="errorList">
-        {submitted && errors?.map((error) => <div key={error}>{error}</div>)}
-      </div>
-        <label>From</label>
-        <input type="text" value="Rothschild's Family Trust" disabled />
-        <label> Amount</label>
-        <input
+        <div className="errorList">
+          {submitted && errors?.map((error) => <div className="errorList" key={error}>{error}</div>)}
+        </div>
+        <label className="grey-background-label">From: Rothschild's Family Trust</label>
+        <label className="grey-background-label">Amount</label>
+        <input className="grey-background-label"
           type="number"
           placeholder="$0.00"
           id="add-amount"

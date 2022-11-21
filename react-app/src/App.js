@@ -18,6 +18,7 @@ import SingleStock from './components/Stock/singleStock';
 import SingleWatchlist from './components/Watchlist/singleWatchlist';
 import LineGraph from './components/Portfolio/LineGraph';
 import Stock from './components/Stock/Stock';
+import TeamIntro from './components/Portfolio/TeamIntro';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -44,28 +45,36 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
+        {/* <ProtectedRoute path='/users' exact={true} >
           <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        </ProtectedRoute> */}
+        {/* <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         <Route path='/' exact={true} >
           <MainPage />
         </Route>
         <Route path='/stocks/:stockId' exact={true}>
           <SingleStock />
         </Route>
-        <Route path='/stocks' exact={true}>
+        {/* <Route path='/stocks' exact={true}>
           <AllStocks />
-        </Route>
-        {/* <Route path='/watchlists/:watchlistId' extct={true}>
+        </Route> */}
+        <Route path='/watchlists/:watchlistId' exact={true}>
           <SingleWatchlist />
+        </Route>
+        {/* <Route path='/testing' exact={true}>
+          <Stock />
         </Route> */}
         <Route path='/testing' exact={true}>
           <Stock />
         </Route>
+        <Route path='/team' exact={true}>
+          <TeamIntro />
+        </Route>
       </Switch>
+      <Route>
+      </Route>
     </BrowserRouter>
   );
 }

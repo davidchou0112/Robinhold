@@ -12,7 +12,7 @@ import TransactionContainer from '../transactions/createTransaction';
 const SingleStock = () => {
     const dispatch = useDispatch();
     const { stockId } = useParams();
-    console.log('this is stockId__:', stockId)
+    // console.log('this is stockId__:', stockId)
 
     const singleStock = useSelector(state => state.stocks.singleStock)
     // console.log('this is state__:', useSelector(state => state))
@@ -28,9 +28,9 @@ const SingleStock = () => {
             <div className='left-side'>
                 <h2>{singleStock.name}</h2>
                 <h1>${singleStock.price}</h1>
-                   <div className='stock-graph'>
-                    <TestingGraph stockId={stockId}/>
-                    </div>
+                <div className='stock-graph'>
+                    <TestingGraph stockId={stockId} />
+                </div>
                 <h2 className='header_label'>About</h2>
                 <div className='stock_description'>
                     <p>{singleStock.description}</p>
@@ -129,18 +129,20 @@ const SingleStock = () => {
                     Insert Data Here
                 </div> */}
 
-                <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small>
-
+                {/* <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small> */}
+                <small>Robinhold is a clone of Robinhood. All figures and values are arbitrary. Do not make any financial decisions based on our projections.</small>
+                <br></br>
+                <br></br>
             </div>
 
             <div className='right-side'>
                 <div className='transaction-wrapper'>
                     <TransactionContainer />
                 </div>
-            <div className='watchlist'>
-                <Watchlists />
-                {/* <AddToWatchlist /> */}
-            </div>
+                <div className='watchlist'>
+                    <Watchlists />
+                    {/* <AddToWatchlist /> */}
+                </div>
             </div>
 
         </div>

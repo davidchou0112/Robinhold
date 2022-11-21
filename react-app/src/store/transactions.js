@@ -1,5 +1,5 @@
 // --------------------------constannts-----------------------------
-const GET_USER_TRANSACTION  = 'portfolio/getUserTransaction'
+const GET_USER_TRANSACTION = 'portfolio/getUserTransaction'
 const CREATE_TRANSACTION = "portfolio/createUserTransaction"
 
 // ------------------------actions-------------------------------
@@ -24,16 +24,16 @@ const createNewTransaction = (transaction) => {
 
 export const fetchUserTransactions = (userId) => async (dispatch) => {
     // console.log('response-------------')
-    const response = await fetch(`/users/${userId}/transactions`)
+    const response = await fetch(`/api/users/${userId}/transactions`)
     const data = await response.json()
-    if(response.ok) {
+    if (response.ok) {
         dispatch(getUserTransaction(data))
         // return transactions
     }
 }
 
 export const createTransaction = (transaction, userId) => async (dispatch) => {
-    const res = await fetch(`/users/${userId}/transactions`, {
+    const res = await fetch(`/api/users/${userId}/transactions`, {
         method: "POST",
         headers: {
             'Content-Type': "application/json"
@@ -41,7 +41,7 @@ export const createTransaction = (transaction, userId) => async (dispatch) => {
         body: JSON.stringify(transaction)
     })
     if (res.ok) {
-        console.log('got into thunk')
+        // console.log('got into thunk')
         const newTransaction = await res.json()
         dispatch(createNewTransaction(newTransaction, userId))
         return newTransaction
@@ -55,11 +55,11 @@ const initialState = { transactions: {} }
 
 const transactionReducer = (state = initialState, action) => {
     let newState = {};
-    switch(action.type) {
+    switch (action.type) {
         case GET_USER_TRANSACTION:
-            newState = {...state}
-            Object.values(action.transactions).map(transaction => (newState.transactions[transaction.id] = {...transaction}))
-        return newState
+            newState = { ...state }
+            Object.values(action.transactions).map(transaction => (newState.transactions[transaction.id] = { ...transaction }))
+            return newState
 
         case CREATE_TRANSACTION:
             newState = { ...state }

@@ -20,7 +20,7 @@ const TransactionContainer = () => {
   const singleStock = useSelector((state) => state.stocks.singleStock);
   const userId = useSelector((state) => state.session.user.id);
   let buyingPower = useSelector((state) =>
-    Number(state.session.user.buying_power)
+    Number(state.portfolio.user.buying_power)
   );
   const stockSymbol = singleStock.symbol;
   const stockPrice = singleStock.price;
@@ -47,9 +47,11 @@ const TransactionContainer = () => {
       if (amount <= 0) {
         ErrorArr.push("must be greater than 0");
         setErrors(ErrorArr);
+        return;
       } else if (buyingPower < totalPrice) {
         ErrorArr.push("Not enough funds");
         setErrors(ErrorArr);
+        return;
       } else {
         buyingPower -= totalPrice;
         const newBuyingPower = { buying_power: buyingPower };
@@ -79,6 +81,7 @@ const TransactionContainer = () => {
         if (matchingStockVal < totalPrice) {
           ErrorArr.push("Not enough asset for this transaction");
           setErrors(ErrorArr);
+          return;
         } else {
           buyingPower += totalPrice;
 
@@ -95,49 +98,47 @@ const TransactionContainer = () => {
         }
       }
     }
-      window.alert('Transaction submitted')
-      history.push(`/`)
+    window.alert('Transaction submitted')
+    // history.push(`/`)
   };
 
   return (
     <>
       <div className="trsc-wrapper">
-          <div className="buy-sell-tab">
-            {displayBuy && (
-              <div
-                className={`trsc-type ${
-                  transactionType === "buy" ? "active-trsc-type" : ""
+        <div className="buy-sell-tab">
+          {displayBuy && (
+            <div
+              className={`trsc-type ${transactionType === "buy" ? "active-trsc-type" : ""
                 }`}
-                onClick={() => setTransactionType("buy")}
-              >
-                Buy
-              </div>
-            )}
+              onClick={() => setTransactionType("buy")}
+            >
+              Buy
+            </div>
+          )}
 
-            {displaySell && (
-              <div
-                className={`trsc-type ${
-                  transactionType === "sell" ? "active-trsc-type" : ""
+          {displaySell && (
+            <div
+              className={`trsc-type ${transactionType === "sell" ? "active-trsc-type" : ""
                 }`}
-                onClick={() => setTransactionType("sell")}
-              >
-                Sell
-              </div>
-            )}
-          </div>
-          <div className="form-break"></div>
+              onClick={() => setTransactionType("sell")}
+            >
+              Sell
+            </div>
+          )}
+        </div>
+        <div className="form-break"></div>
         <div className="trsc-container">
           <div className="errorList">
             {isSubmitted &&
-              errors?.map((error) => <div key={error}>{error}</div>)}
+              errors?.map((error) => <div className="errorList" key={error}>{error}</div>)}
           </div>
           <form className="trsc-form-container" onSubmit={handleTransaction}>
             <div className="grey-background">
               <div className="grey-background">
-                {transactionType === "buy" ? "buy shares" : "sell shares"}
+                {transactionType === "buy" ? "Buy Shares" : "Sell Shares"}
               </div>
             </div>
-          {/* <div className="form-break"></div> */}
+            {/* <div className="form-break"></div> */}
             <div className="grey-background"
             >
               <input
@@ -145,16 +146,16 @@ const TransactionContainer = () => {
                 className="grey-background"
                 type="number"
                 value={amount}
-                placeholder='$0.00'
+                placeholder='0.00'
                 onChange={(e) => setAmount(e.target.value)}
                 required
               />
             </div>
             <div className="grey-background">Shares</div>
-          <div className="form-break"></div>
+            <div className="form-break"></div>
 
             <div className="grey-background">
-              <div className="grey-background">Est. Price {stockPrice * amount} </div>
+              <div className="grey-background">Est. Price {(stockPrice * amount).toFixed(2)} </div>
               {/* <div className="form-break"></div> */}
 
               <div className="grey-background">${buyingPower.toFixed(2)} available</div>
