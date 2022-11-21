@@ -157,7 +157,7 @@ def get_user_watchlists(user_id):
     data = Watchlist.query.filter(Watchlist.user_id==user_id).all()
     for lst in data:
         all_watchlists.append(lst.to_dict())
-        print(all_watchlists)
+        # print(all_watchlists)
     return jsonify(all_watchlists)
 
 # =============== Get watchlist by id ===============
@@ -165,7 +165,7 @@ def get_user_watchlists(user_id):
 # @login_required
 def get_watchlist_by_id(id):
     watchlist = Watchlist.query.get(id)
-    print(watchlist)
+    # print(watchlist)
     if not watchlist:
         return {
             "message": "Watchlist not found",
@@ -330,7 +330,7 @@ def add_to_watchlist():
     # print('----------------watchlist from seed------' , watchlist)
 
 
-    print('---------------------', data)
+    # print('---------------------', data)
 
     db.session.execute(new_list)
     db.session.commit()

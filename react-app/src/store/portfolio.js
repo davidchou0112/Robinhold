@@ -30,20 +30,20 @@ export const getBuyingPower = (userId) => async dispatch => {
 }
 
  export const addBuyingPowerThunk = (payload, userId) => async dispatch => {
-    console.log('---------before hitting backend')
+    // console.log('---------before hitting backend')
     const response = await fetch(`/api/users/${userId}`, {
         method: 'PUT',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
     })
     if (response.ok) {
-        console.log('-----------------after hitting backend')
+        // console.log('-----------------after hitting backend')
         const newBuyingPower = await response.json()
         dispatch(addBuyingPower(newBuyingPower))
         return newBuyingPower
     }
     else {
-        console.log('------------something wrong')
+        // console.log('------------something wrong')
     }
 }
 

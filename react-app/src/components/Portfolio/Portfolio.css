@@ -41,11 +41,12 @@
 /* ------------LEFT SIDE---------------- */
 
 .portfolio-wrapper {
-  flex: 0.7;
+  /* flex: 0.7; */
   display: flex;
   flex-direction: column;
   background-color: black;
   margin-right: 100px;
+  width: 700px
 }
 
 .pf-left-container {
@@ -56,7 +57,7 @@
 
 }
 
-.pf-graph{
+.pf-graph {
   height: 300px;
   width: 700px;
 }
@@ -97,7 +98,7 @@
     /* margin-right: 100px; */
 }
 
-#add-amount{
+#add-amount {
   border: solid 1px grey;
   width: 50px;
   border-radius: 5px;
@@ -146,6 +147,10 @@
   border-radius: 5px;
   /* border: white solid 1px; */
 }
+
+/* .bp_label {
+  font-family: ;
+} */
 
 .buying-power-container {
   /* border: solid white 1px; */
@@ -215,7 +220,7 @@
   border: 0.5px solid rgb(200, 200, 200, 0.5);
 }
 
-.grey-background-label{
+.grey-background-label {
   background-color: #1e2124;
   margin-top: 15px;
   /* text-align: center; */
@@ -232,7 +237,7 @@
   align-items: center;
 }
 
-.deposit-message{
+.deposit-message {
   margin-top: 10px;
 }
 

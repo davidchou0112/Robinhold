@@ -10,6 +10,7 @@
     margin-bottom: 50px;
     /* background-color: rgb(30, 33, 36); */
 }
+
 .all-lists-wrapper {
     /* border: solid grey 1px; */
     width: 350px;
@@ -40,6 +41,7 @@
 
 .list-nav-links {
     text-decoration: none;
+    width: fit-content;
 }
 
 #list-name {
@@ -80,7 +82,7 @@
 }
 
 #watched_stocks_container:hover {
-    border: solid 2px rgb(48,54,58);
+    border: solid 2px rgb(48, 54, 58);
     border-radius: 12px;
 }
 
@@ -109,10 +111,15 @@
     cursor: pointer;
     /* padding: 5px; */
     /* background-color: red; */
-    border-radius: 10px ;
+    border-radius: 10px;
     /* border: 2px solid #0dc80b; */
 }
 
-#single_watched_stock{
+#single_watched_stock {
     list-style: none;
+}
+
+
+#link-to-single-stock {
+    text-decoration: none;
 }

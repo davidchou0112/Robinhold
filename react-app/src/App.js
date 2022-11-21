@@ -44,28 +44,30 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
+        {/* <ProtectedRoute path='/users' exact={true} >
           <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        </ProtectedRoute> */}
+        {/* <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         <Route path='/' exact={true} >
           <MainPage />
         </Route>
         <Route path='/stocks/:stockId' exact={true}>
           <SingleStock />
         </Route>
-        <Route path='/stocks' exact={true}>
+        {/* <Route path='/stocks' exact={true}>
           <AllStocks />
-        </Route>
-        {/* <Route path='/watchlists/:watchlistId' extct={true}>
-          <SingleWatchlist />
         </Route> */}
-        <Route path='/testing' exact={true}>
-          <Stock />
+        <Route path='/watchlists/:watchlistId' exact={true}>
+          <SingleWatchlist />
         </Route>
+        {/* <Route path='/testing' exact={true}>
+          <Stock />
+        </Route> */}
       </Switch>
+      <Route>
+      </Route>
     </BrowserRouter>
   );
 }

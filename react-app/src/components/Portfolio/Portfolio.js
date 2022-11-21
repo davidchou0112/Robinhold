@@ -48,9 +48,9 @@ const Portfolio = () => {
   const [showBP, setShowBP] = useState(false);
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.session.user)
-  const userTransactions = useSelector(state =>Object.values(state.transaction.transactions))
+  const userTransactions = useSelector(state => Object.values(state.transaction.transactions))
   const userId = Number(currentUser.id)
-  const buyingPower = useSelector(state=>Number(state.portfolio.user.buying_power))
+  const buyingPower = useSelector(state => Number(state.portfolio.user.buying_power))
   useEffect(() => {
     dispatch(fetchUserTransactions(userId))
     dispatch(getBuyingPower(userId))
@@ -60,7 +60,7 @@ const Portfolio = () => {
   userTransactions.forEach(transaction => {
     totalVal += transaction.price * transaction.quantity
   })
-  console.log('......', totalVal)
+  // console.log('......', totalVal)
 
   const totalHolding = buyingPower + totalVal
 
@@ -96,7 +96,7 @@ const Portfolio = () => {
                 <p>+$88.88(+0.068%) Today</p>
               </div>
               <div className='pf-chart-wrapper'>
-                <LineGraph totalHolding={totalHolding}/>
+                <LineGraph totalHolding={totalHolding} />
               </div>
             </div>
             {/* <div className="newsfeed__buying__section">
@@ -105,7 +105,8 @@ const Portfolio = () => {
       </div> */}
 
             <div className='buying-power-wrapper' onClick={clickBuyPower}>
-              <h2>Buying Power</h2>
+              <h2> Buying Power</h2>
+              <i class="fa-solid fa-caret-down"></i>
               <h2>${buyingPower.toFixed(2)}</h2>
             </div>
 
@@ -116,17 +117,17 @@ const Portfolio = () => {
               <div className='buying-power-container'>
                 <div className='deposit-funds'>
                   <div className='flex-between'>
-                    <div>Brokerage Cash</div>
+                    <div >Brokerage Cash</div>
                     <div>${buyingPower.toFixed(2)}</div>
                   </div>
                   <div className="form-break"></div>
                   <div className='flex-between'>
-                    <div>Buying Power</div>
+                    <div >Buying Power</div>
                     <div>${buyingPower.toFixed(2)}</div>
                   </div>
                   <div className="form-break"></div>
                   <div className='addFundForm'>
-                    <AddFundsForm setShowBP={setShowBP}/>
+                    <AddFundsForm setShowBP={setShowBP} />
                     <div className='deposit-message'>Buying Power represents the total value of assets you can purchase.</div>
                   </div>
                 </div>
@@ -152,9 +153,9 @@ const Portfolio = () => {
           <small className='daily_movers_small'>Stocks making the biggest moves today.</small>
           <DailyMovers />
           <br></br>
-          <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small>
+          {/* <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small> */}
 
-          <small>Robinhold is a clone of Robinhood. All figures and values are arbitrary. Do not make any financial decisions based on our projections</small>
+          <small>Robinhold is a clone of Robinhood. All figures and values are arbitrary. Do not make any financial decisions based on our projections.</small>
 
           <br></br>
         </div>
@@ -164,7 +165,7 @@ const Portfolio = () => {
 
         {/* <AllTransactions /> */}
 
-      {/* </div> */}
+        {/* </div> */}
       </div>
     </div>
   )

@@ -27,12 +27,21 @@
 }
 
 .single_stock_wrapper {
-    /* margin: 20px; */
-    margin-top: 50px;
-    margin-left: 200px;
-    width: 900px;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: black;
+    padding-top: 36px;
+    width: 70%;
+    color: white;
+    position: relative;
+    margin-left: 15%; */
     display: flex;
-    /* grid-template-columns: repeat(2, 1fr); */
+    flex-direction: row;
+    background-color: black;
+    margin-right: 100px;
+    width: 700px;
+    margin-left: 12%;
 }
 
 .stock_details {
@@ -56,30 +65,32 @@
     padding: 5px;
 }
 
-.top-portion{
+.top-portion {
     display: flex;
     flex-direction: row;
 }
 
-.stock-graph{
+.stock-graph {
     margin-right: 100px;
 }
 
-.transaction-wrapper{
+.transaction-wrapper {
     margin-bottom: 100px;
+    margin-left: 18px
 }
 
 
-.left-side{
-    margin-right: 350px;
+.left-side {
+    margin-right: 13%;
+    width: 700px;
 }
 
-.BS-button{
+.BS-button {
     background-color: grey;
     border: solid green 1px;
 }
 
-.trsc-type{
+.trsc-type {
     display: flex;
     justify-content: center;
     cursor: pointer;
@@ -93,7 +104,7 @@
 
 }
 
-.trsc-type.active-trsc-type{
+.trsc-type.active-trsc-type {
     cursor: default;
     border-bottom: 2px solid rgb(66, 147, 66);
     /* background-color: grey; */
@@ -109,9 +120,9 @@
     font-weight: bold;
     border-radius: 5px;
     border: none;
-  }
+}
 
-  .buy-sell-tab{
+.buy-sell-tab {
     display: flex;
     flex-direction: row;
     /* border: solid green 1px; */
@@ -119,27 +130,27 @@
     width: 200px;
     background-color: #1e2124;
 
-  }
+}
 
-  .trsc-wrapper{
+.trsc-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 5px;
     background-color: #1e2124;
     border: 0.5px solid rgb(200, 200, 200, 0.5);
-  }
+}
 
-  .trsc-container{
+.trsc-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 5px;
     background-color: #1e2124;
     border: 0.5px solid #1e2124;
-  }
+}
 
-  .trsc-form-container{
+.trsc-form-container {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -148,29 +159,29 @@
     font-size: 15px;
     background-color: #1e2124;
 
-  }
+}
 
-  .grey-background{
+.grey-background {
     background-color: #1e2124;
     margin-top: 15px;
     text-align: center;
-  }
+}
 
-  #trsc-input{
+#trsc-input {
     width: 75px;
     height: 25px;
     border-radius: 4px;
     border: 1px rgb(200, 200, 200, 0.5) solid;
-  }
+}
 
-  #trsc-input:focus{
-    border-color:rgba(17, 203, 20, 0.772);
-  }
+#trsc-input:focus {
+    border-color: rgba(17, 203, 20, 0.772);
+}
 
-  .form-break {
+.form-break {
     background-color: rgb(200, 200, 200, 0.5);
     width: 360px;
     height: 1px;
     margin-top: 15px;
     margin-bottom: 10px;
-  }
+}
