@@ -46,6 +46,7 @@ const CalculateShareTotal = (userTransactions) => {
 
 const Portfolio = () => {
   const [showBP, setShowBP] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false)
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.session.user)
   const userTransactions = useSelector(state => Object.values(state.transaction.transactions))
@@ -54,6 +55,7 @@ const Portfolio = () => {
   useEffect(() => {
     dispatch(fetchUserTransactions(userId))
     dispatch(getBuyingPower(userId))
+      .then(() => setIsLoaded(true))
   }, [dispatch, userId])
 
   let totalVal = 0
@@ -68,9 +70,9 @@ const Portfolio = () => {
     setShowBP(wasOpened => !wasOpened)
   }
 
-  const clickDeposit = async () => {
+  // const clickDeposit = async () => {
 
-  }
+  // }
 
 
   // useEffect(() => {
@@ -83,7 +85,7 @@ const Portfolio = () => {
   // }, [showBP])
 
 
-  return (
+  return isLoaded && (
     <div className='body-wrapper'>
       <div className='body-container'>
 

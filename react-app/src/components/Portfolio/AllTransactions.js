@@ -16,15 +16,18 @@ export default function AllTransactions() {
     const [showWLButton, setShowWLButton] = useState(true)
     const { stockId } = useParams();
     const userTransactions = useSelector(state => Object.values(state.transaction.transactions))
+    const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
         dispatch(fetchUserTransactions(userId))
+            .then(() => setIsLoaded(true))
+
     }, [dispatch, userId])
 
 
 
 
-    return (
+    return isLoaded && (
         <div className="all-lists-container">
             <div id="list-general-header">
                 <h3>User Transcations</h3>
