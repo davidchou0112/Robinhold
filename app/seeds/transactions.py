@@ -4,13 +4,13 @@ from app.models import db, Transaction, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_transactions():
     transc1 = Transaction(
-        user_id=1, stock_symbol='AAPL', quantity=10, is_purchased=True, price=180)
+        user_id=1, stock_symbol='AAPL', quantity=10, is_purchased=True, price=180.12)
     transc2 = Transaction(
-        user_id=2, stock_symbol='AAPL', quantity=5, is_purchased=True, price=150)
+        user_id=2, stock_symbol='AAPL', quantity=5, is_purchased=True, price=150.54)
     transc3 = Transaction(
-        user_id=3, stock_symbol='AAPL', quantity=6, is_purchased=True, price=160)
+        user_id=3, stock_symbol='AAPL', quantity=6, is_purchased=True, price=160.75)
     transc4 = Transaction(
-        user_id=1, stock_symbol='TSLA', quantity=6, is_purchased=True, price=200)
+        user_id=1, stock_symbol='TSLA', quantity=6, is_purchased=True, price=200.19)
 
     db.session.add(transc1)
     db.session.add(transc2)

@@ -33,7 +33,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* border: solid 1px red; */
+  background-color: #1e2124;
 }
 
 
@@ -41,11 +41,12 @@
 /* ------------LEFT SIDE---------------- */
 
 .portfolio-wrapper {
-  flex: 0.7;
+  /* flex: 0.7; */
   display: flex;
   flex-direction: column;
   background-color: black;
   margin-right: 100px;
+  width: 700px
 }
 
 .pf-left-container {
@@ -56,7 +57,7 @@
 
 }
 
-.pf-graph{
+.pf-graph {
   height: 300px;
   width: 700px;
 }
@@ -97,6 +98,13 @@
     /* margin-right: 100px; */
 }
 
+#add-amount {
+  border: solid 1px grey;
+  width: 50px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
 /* --------------------time period-------------------------- */
 .timeperiod__container {
   display: flex;
@@ -135,10 +143,14 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 40px;
+  margin-top: 100px;
   border-radius: 5px;
   /* border: white solid 1px; */
 }
+
+/* .bp_label {
+  font-family: ;
+} */
 
 .buying-power-container {
   /* border: solid white 1px; */
@@ -155,12 +167,15 @@
 
 
 .deposit-funds {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
+  font-size: 13.5px;
 
 }
 
-.form-break {
+.pf-form-break {
   background-color: rgb(200, 200, 200);
   width: 100%;
   height: 1px;
@@ -177,6 +192,7 @@
 
 .addFundForm {
   margin-bottom: 10px;
+  margin-top: 20px;
 }
 
 .Deposit-fund-button {
@@ -187,6 +203,7 @@
   font-weight: bold;
   border-radius: 5px;
   border: none;
+  margin-bottom: 5px;
 }
 
 .Deposit-fund-button:hover {
@@ -195,18 +212,33 @@
 
 .add-funds-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+  flex-direction: column;
+  /* align-items: center; */
+  width: 200px;
+  border-radius: 3px;
+  background-color: #1e2124;
+  border: 0.5px solid rgb(200, 200, 200, 0.5);
+}
+
+.grey-background-label {
+  background-color: #1e2124;
+  margin-top: 15px;
+  /* text-align: center; */
+
 }
 
 .addFund-form {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 400px;
+  width: 200px;
   margin: auto;
+  background-color: #1e2124;
+  align-items: center;
+}
 
+.deposit-message {
+  margin-top: 10px;
 }
 
 /* ---------------------RIGHT SIDE----------------------- */
@@ -214,16 +246,17 @@
   flex: 0.3;
   display: flex;
   flex-direction: column;
-  padding: 30px 30px 30px 30px;
-  border: solid white 1px;
   height: fit-content;
-  position: fixed;
-  margin-left: 55%;
 }
 
 .pf-graph {
   height: 300px;
 }
+
+/* .right-side-lists{
+  display: flex;
+  flex-direction: column;
+} */
 
 /* .portfolio-chart-container {
   display: flex;

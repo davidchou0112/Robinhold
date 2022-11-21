@@ -1,3 +1,43 @@
+/* #single-watchlist-container {
+    border: white solid 3px;
+    width: 50%;
+    margin: auto;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+#singleWatchlist-title-ctn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+#singleWatchlist-table {
+    /* border: white 2px solid; */
+    /* margin-top: 50px;
+} */
+
+#singleWatchlist-tr {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.singleWatchlist-table-header {
+    font-size: large;
+    padding: 10px;
+}
+
+#single-watched-stock-column:hover {
+    font-weight: bold;
+} */
+
+
+
 #singleWatchlist-page-container {
     margin: auto;
     width: 60%;
@@ -31,4 +71,9 @@
 
 .singleWatchlist-table-row {
     padding: 10px;
+}
+
+.transaction_quantity {
+    /* justify-content: center; */
+    align-items: center;
 }

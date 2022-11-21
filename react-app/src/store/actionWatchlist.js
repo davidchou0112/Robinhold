@@ -1,4 +1,5 @@
 // // ========== CONSTANTS ==========
+<<<<<<< HEAD
 // // const ADD_TO_WATCHLIST = 'actionWatchlist/addToWatchlist';
 // const DELETE_FROM_WATCHLIST = 'actionWatchlist/deleteFromWatchlist'
 
@@ -9,6 +10,18 @@
 // //         stock
 // //     }
 // // }
+=======
+// const ADD_TO_WATCHLIST = 'actionWatchlist/addToWatchlist';
+// const DELETE_FROM_WATCHLIST = 'actionWatchlist/deleteFromWatchlist'
+
+// // ========== REGULAR ACTION CREATOR ==========
+// const addToWatchlist = (stock) => {
+//     return {
+//         type: ADD_TO_WATCHLIST,
+//         stock
+//     }
+// }
+>>>>>>> 49942a7252e54842aecce56f968701646e4a268d
 
 // const deleteFromWatchlist = (userId, stockId) => {
 //     return {
@@ -19,6 +32,7 @@
 //     }
 // }
 
+<<<<<<< HEAD
 // // // ========== THUNK ===========
 // // export const toWatchList = (stockId, watchlistId, updatedWatchlist) => async (dispatch) => {
 // //     // const response = await fetch(`/watchlists/${watchlistId}/${stockId}`, {
@@ -40,6 +54,28 @@
 <<<<<<< HEAD
 // export const fromWatchList = (userId, stockId) => async (dispatch) => {
 //     const response = await fetch(`/stocks/${stockId}`, {
+=======
+// // ========== THUNK ===========
+// export const toWatchList = (stockId, watchlistId, updatedWatchlist) => async (dispatch) => {
+//     // const response = await fetch(`/watchlists/${watchlistId}/${stockId}`, {
+//     const response = await fetch(`/api/watchlists/add`, {
+
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': "application/json"
+//         },
+//         body: JSON.stringify(updatedWatchlist)
+//     })
+//     if (response.ok) {
+//         const stock = await response.json()
+//         dispatch(addToWatchlist(stock))
+//         // return stock
+//     }
+// }
+
+// export const fromWatchList = (userId, stockId) => async (dispatch) => {
+//     const response = await fetch(`/api/stocks/${stockId}`, {
+>>>>>>> 49942a7252e54842aecce56f968701646e4a268d
 //         method: 'DELETE'
 //     })
 //     if (response.ok) {
@@ -47,6 +83,7 @@
 //         await dispatch(deleteFromWatchlist(userId, stockId))
 //     }
 // }
+<<<<<<< HEAD
 =======
 export const fromWatchList = (userId, watchlistId, stockId) => async (dispatch) => {
     // const response = await fetch(`/watchlists/${stockId}`, {
@@ -59,6 +96,8 @@ export const fromWatchList = (userId, watchlistId, stockId) => async (dispatch) 
     }
 }
 >>>>>>> 1ef9e845e3ce4c3b6a4432bcbb380d4d1d0743a2
+=======
+>>>>>>> 49942a7252e54842aecce56f968701646e4a268d
 
 // // export const
 
@@ -68,6 +107,7 @@ export const fromWatchList = (userId, watchlistId, stockId) => async (dispatch) 
 
 //     let newState = {};
 //     switch (action.type) {
+<<<<<<< HEAD
 //         // case ADD_TO_WATCHLIST:
 //         //     return {
 //         //         allWatchlists: {
@@ -76,6 +116,16 @@ export const fromWatchList = (userId, watchlistId, stockId) => async (dispatch) 
 //         //         },
 //         //         singleWatchlist: {}
 //         //     }
+=======
+//         case ADD_TO_WATCHLIST:
+//             return {
+//                 allWatchlists: {
+//                     ...state.allWatchlists,
+//                     ...action.stock
+//                 },
+//                 singleWatchlist: {}
+//             }
+>>>>>>> 49942a7252e54842aecce56f968701646e4a268d
 
 //         case DELETE_FROM_WATCHLIST:
 //             newState = {

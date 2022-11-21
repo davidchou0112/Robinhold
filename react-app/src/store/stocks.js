@@ -24,7 +24,7 @@ const displaySingleStock = (singleStock) => {
 // ========= THUNK ACTION CREATOR ==========
 // all stocks
 export const getAllStocks = () => async dispatch => {
-    const response = await fetch(`/stocks`);
+    const response = await fetch(`/api/stocks`);
     // console.log(response, 'this is response')
     if (response.ok) {
         const data = await response.json();
@@ -37,7 +37,7 @@ export const getAllStocks = () => async dispatch => {
 
 // single stock
 export const getSingleStock = (stockId) => async dispatch => {
-    const response = await fetch(`/stocks/${stockId}`);
+    const response = await fetch(`/api/stocks/${stockId}`);
     if (response.ok) {
         const data = await response.json();
         // console.log('this is data__:', data)

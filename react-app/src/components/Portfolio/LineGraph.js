@@ -42,7 +42,7 @@ function LineGraph(props) {
   const createMockData = () => {
     let data = [];
     let value = totalHolding;
-    for (var i = 0; i < 366; i++) {
+    for (var i = 0; i < 60; i++) {
       let date = new Date();
       date.setHours(0, 0, 0, 0);
       date.setDate(i);
@@ -64,7 +64,7 @@ function LineGraph(props) {
   const createMockDataDW = () => {
     let data = [];
     let value = totalHolding;
-    for (var i = 0; i < 366; i++) {
+    for (var i = 0; i < 60; i++) {
       let date = new Date();
       date.setHours(0, 0, 0, 0);
       date.setDate(i);
@@ -82,17 +82,17 @@ function LineGraph(props) {
   const createMockDataYTD = () => {
     let data = [];
     let value = totalHolding;
-    for (var i = 0; i < 366; i++) {
+    for (var i = 0; i < 400; i++) {
       let date = new Date();
       date.setHours(0, 0, 0, 0);
       date.setDate(i);
-      value += Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 10);
-      value += Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 10);
-      value -= Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 10);
-      value -= Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 10);
-      value += Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 10);
-      value += Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 10);
-      value -= Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 10);
+      value += Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 100);
+      value += Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 100);
+      value -= Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 100);
+      value -= Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 100);
+      value += Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 100);
+      value += Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 100);
+      value -= Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 100);
       data.push({ x: date, y: value });
     }
     setGraphData(data);
@@ -101,11 +101,11 @@ function LineGraph(props) {
   const createMockDataALL = () => {
     let data = [];
     let value = totalHolding;
-    for (var i = 0; i < 366; i++) {
+    for (var i = 0; i < 1000; i++) {
       let date = new Date();
       date.setHours(0, 0, 0, 0);
       date.setDate(i);
-      value += Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 10);
+      value += Math.round((Math.random() < 0.5 ? 9 : 0) * Math.random() * 1000);
       data.push({ x: date, y: value });
     }
     setGraphData(data);
@@ -170,10 +170,10 @@ function LineGraph(props) {
       />
         <div className="timeperiod__container">
             <div className="timeperiod__buttons__container">
-                <div className='timeperiod__button active' onClick={handleTpClick}>1D</div>
+                {/* <div className='timeperiod__button active' onClick={handleTpClick}>1D</div>
                 <div className="timeperiod__button" onClick={handleTpClick}>1W</div>
-                <div className="timeperiod__button" onClick={handleTpClick}>1M</div>
-                <div className="timeperiod__button" onClick={handleTpClickDW}>3M</div>
+                <div className="timeperiod__button" onClick={handleTpClick}>1M</div> */}
+                <div className="timeperiod__button active" onClick={handleTpClickDW}>3M</div>
                 <div className="timeperiod__button" onClick={handleTpClickYTD}>YTD</div>
                 <div className="timeperiod__button" onClick={handleTpClick1Y}>1Y</div>
                 <div className="timeperiod__button" onClick={handleTpClickALL}>ALL</div>

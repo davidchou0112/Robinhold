@@ -89,7 +89,7 @@ def api_help():
 #     return user_watchlist.to_dict()
 
 # ============ Get all users =============
-@app.route('/users')
+@app.route('/api/users')
 # @login_required
 def get_all_users():
     all_users = []
@@ -100,7 +100,7 @@ def get_all_users():
 
 
 # =========== Get single user by id ==========
-@app.route('/users/<int:id>')
+@app.route('/api/users/<int:id>')
 # @login_required
 def get_user(id):
     # print(request, 'this is request')
@@ -111,7 +111,7 @@ def get_user(id):
 # ========== Update Buying Power ===========
 # deposit/withdraw money should update buying power
 # buying/selling stock should update buying power
-@app.route('/users/<int:id>', methods=['PUT'])
+@app.route('/api/users/<int:id>', methods=['PUT'])
 # @login_required
 def update_buying_power(id):
     user = User.query.get(id)
@@ -127,7 +127,7 @@ def update_buying_power(id):
 
 
 # ============== Get all stocks ==============
-@app.route("/stocks")
+@app.route("/api/stocks")
 @login_required
 def get_stocks():
     all_stocks = []
@@ -137,7 +137,7 @@ def get_stocks():
     return jsonify(all_stocks)
 
 # ======== Get single stock by stock_id ==========
-@app.route("/stocks/<int:stock_id>")
+@app.route("/api/stocks/<int:stock_id>")
 @login_required
 def get_single_stock(stock_id):
     stock = Stock.query.get(stock_id)
@@ -150,22 +150,22 @@ def get_single_stock(stock_id):
 
 # ========== Get user's watchlists ==============
 # route could be "api/watchlists/current" and how to get current user id
-@app.route("/users/<int:user_id>/watchlists")
+@app.route("/api/users/<int:user_id>/watchlists")
 # @login_required
 def get_user_watchlists(user_id):
     all_watchlists = []
     data = Watchlist.query.filter(Watchlist.user_id==user_id).all()
     for lst in data:
         all_watchlists.append(lst.to_dict())
-        print(all_watchlists)
+        # print(all_watchlists)
     return jsonify(all_watchlists)
 
 # =============== Get watchlist by id ===============
-@app.route("/watchlists/<int:id>")
+@app.route("/api/watchlists/<int:id>")
 # @login_required
 def get_watchlist_by_id(id):
     watchlist = Watchlist.query.get(id)
-    print(watchlist)
+    # print(watchlist)
     if not watchlist:
         return {
             "message": "Watchlist not found",
@@ -176,7 +176,7 @@ def get_watchlist_by_id(id):
 
 
 # ========== Update a watchlist ===============
-@app.route("/watchlists/<int:id>",methods=["PUT"])
+@app.route("/api/watchlists/<int:id>",methods=["PUT"])
 # @login_required
 def update_watchlist(id):
     watchlist = Watchlist.query.get(id)
@@ -191,7 +191,7 @@ def update_watchlist(id):
     return watchlist.to_dict()
 
 # ========= Create new watchlist ==============
-@app.route("/users/<int:user_id>/watchlists", methods=["POST"])
+@app.route("/api/users/<int:user_id>/watchlists", methods=["POST"])
 # @login_required
 def post_new_watchlist(user_id):
     # ----------- Attempt 1 -------------could work
@@ -219,7 +219,7 @@ def post_new_watchlist(user_id):
 #         return "new creating testing"
 
 # ========= Delete a watchlist ==============
-@app.route("/watchlists/<int:id>",methods=["DELETE"])
+@app.route("/api/watchlists/<int:id>",methods=["DELETE"])
 @login_required
 def delete_watchlist(id):
     watchlist = Watchlist.query.get(id)
@@ -229,7 +229,7 @@ def delete_watchlist(id):
 
 
 # ========== Get all transations ============
-@app.route("/users/<int:user_id>/transactions")
+@app.route("/api/users/<int:user_id>/transactions")
 # @login_required
 def get_user_transactions(user_id):
     all_transations = []
@@ -256,7 +256,7 @@ def get_user_transactions(user_id):
 #     db.session.commit()
 #     return "testing post transaction"
 
-@app.route("/users/<int:user_id>/transactions", methods=["POST"])
+@app.route("/api/users/<int:user_id>/transactions", methods=["POST"])
 # @login_required
 def post_new_transaction(user_id):
     data = request.get_json()
@@ -313,7 +313,7 @@ def post_new_transaction(user_id):
 
 # ========== ADD STOCK TO WATCHLIST ========== this okay backend
 # @app.route('/watchlists/<int:watchlist_id>/<int:stock_id>', methods=['POST'])
-@app.route('/watchlists/add', methods=['POST'])
+@app.route('/api/watchlists/add', methods=['POST'])
 # @login_required
 # def add_to_watchlist(watchlist_id, stock_id):
 def add_to_watchlist():
@@ -330,14 +330,14 @@ def add_to_watchlist():
     # print('----------------watchlist from seed------' , watchlist)
 
 
-    print('---------------------', data)
+    # print('---------------------', data)
 
     db.session.execute(new_list)
     db.session.commit()
     return watchlist.to_dict()
 
 # ========== DELETE STOCK FROM WATCHLIST ==========
-@app.route('/watchlists/<int:watchlist_id>/<int:watched_stocks_id>', methods=['DELETE'])
+@app.route('/api/watchlists/<int:watchlist_id>/<int:watched_stocks_id>', methods=['DELETE'])
 # @login_required
 def delete_from_watchlist(watchlist_id, watched_stocks_id):
     # stock = watched_stocks.query.get(watched_stocks_id)
