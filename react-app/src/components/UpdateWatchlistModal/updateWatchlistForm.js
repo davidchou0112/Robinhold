@@ -82,7 +82,7 @@ export default function UpdateWatchlistForm({ watchlistId, watchlistName, setSho
 
     const onSubmit = async e => {
         e.preventDefault()
-        if (name.length <= 40) {
+        if (name.length <= 25) {
             setErrors([])
 
             const newWatchlist = {
@@ -93,7 +93,7 @@ export default function UpdateWatchlistForm({ watchlistId, watchlistName, setSho
             setShowModal(false)
             history.push('/')
         }
-        return setErrors(["Watchlist name must less than 40 charactors."])
+        return setErrors(["Watchlist name must less than 26 charactors."])
     }
 
     return (

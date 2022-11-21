@@ -123,3 +123,7 @@
 #link-to-single-stock {
     text-decoration: none;
 }
+
+.update-delete-button{
+    cursor: pointer;
+}

@@ -196,6 +196,7 @@
 }
 
 .Deposit-fund-button {
+  cursor: pointer;
   width: 100%;
   background-color: #00C805;
   width: 100px;
