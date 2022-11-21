@@ -54,9 +54,9 @@ const NavBar = () => {
         <NavLink className='navbar_link' to='/' exact={true} activeClassName='active'>
           Portfolio
         </NavLink>
-        {/* <NavLink className='navbar_link' to='/watchlists' exact={true} activeClassName='active'>
-          Watchlists
-        </NavLink> */}
+        <NavLink className='navbar_link' to='/team' exact={true} activeClassName='active'>
+          Meet the Team
+        </NavLink>
         {/* <NavLink className='navbar_link' to='/account' exact={true} activeClassName='active'>
           Account
         </NavLink>
