@@ -112,6 +112,7 @@
 
 
 .submit-order {
+    cursor: pointer;
     width: 100%;
     background-color: #00C805;
     margin-top: 15px;

@@ -57,7 +57,7 @@ const transactionReducer = (state = initialState, action) => {
     let newState = {};
     switch (action.type) {
         case GET_USER_TRANSACTION:
-            newState = { ...state }
+            newState = { ...state, transactions:{} }
             Object.values(action.transactions).map(transaction => (newState.transactions[transaction.id] = { ...transaction }))
             return newState
 
