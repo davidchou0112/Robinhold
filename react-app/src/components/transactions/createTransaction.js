@@ -98,37 +98,35 @@ const TransactionContainer = () => {
         }
       }
     }
-      window.alert('Transaction submitted')
-      // history.push(`/`)
+    window.alert('Transaction submitted')
+    // history.push(`/`)
   };
 
   return (
     <>
       <div className="trsc-wrapper">
-          <div className="buy-sell-tab">
-            {displayBuy && (
-              <div
-                className={`trsc-type ${
-                  transactionType === "buy" ? "active-trsc-type" : ""
+        <div className="buy-sell-tab">
+          {displayBuy && (
+            <div
+              className={`trsc-type ${transactionType === "buy" ? "active-trsc-type" : ""
                 }`}
-                onClick={() => setTransactionType("buy")}
-              >
-                Buy
-              </div>
-            )}
+              onClick={() => setTransactionType("buy")}
+            >
+              Buy
+            </div>
+          )}
 
-            {displaySell && (
-              <div
-                className={`trsc-type ${
-                  transactionType === "sell" ? "active-trsc-type" : ""
+          {displaySell && (
+            <div
+              className={`trsc-type ${transactionType === "sell" ? "active-trsc-type" : ""
                 }`}
-                onClick={() => setTransactionType("sell")}
-              >
-                Sell
-              </div>
-            )}
-          </div>
-          <div className="form-break"></div>
+              onClick={() => setTransactionType("sell")}
+            >
+              Sell
+            </div>
+          )}
+        </div>
+        <div className="form-break"></div>
         <div className="trsc-container">
           <div className="errorList">
             {isSubmitted &&
@@ -137,10 +135,10 @@ const TransactionContainer = () => {
           <form className="trsc-form-container" onSubmit={handleTransaction}>
             <div className="grey-background">
               <div className="grey-background">
-                {transactionType === "buy" ? "buy shares" : "sell shares"}
+                {transactionType === "buy" ? "Buy Shares" : "Sell Shares"}
               </div>
             </div>
-          {/* <div className="form-break"></div> */}
+            {/* <div className="form-break"></div> */}
             <div className="grey-background"
             >
               <input
@@ -154,7 +152,7 @@ const TransactionContainer = () => {
               />
             </div>
             <div className="grey-background">Shares</div>
-          <div className="form-break"></div>
+            <div className="form-break"></div>
 
             <div className="grey-background">
               <div className="grey-background">Est. Price {(stockPrice * amount).toFixed(2)} </div>
