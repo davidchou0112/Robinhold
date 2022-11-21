@@ -18,6 +18,7 @@ import SingleStock from './components/Stock/singleStock';
 import SingleWatchlist from './components/Watchlist/singleWatchlist';
 import LineGraph from './components/Portfolio/LineGraph';
 import Stock from './components/Stock/Stock';
+import TeamIntro from './components/Portfolio/TeamIntro';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -64,6 +65,9 @@ function App() {
         </Route> */}
         <Route path='/testing' exact={true}>
           <Stock />
+        </Route>
+        <Route path='/team' exact={true}>
+          <TeamIntro />
         </Route>
       </Switch>
     </BrowserRouter>
