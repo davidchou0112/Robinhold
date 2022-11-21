@@ -15,7 +15,7 @@ export default function AllTransactions() {
     const userId = useSelector(state => state.session.user.id)
     const [showWLButton, setShowWLButton] = useState(true)
     const { stockId } = useParams();
-    const userTransactions = useSelector(state=>Object.values(state.transaction.transactions))
+    const userTransactions = useSelector(state => Object.values(state.transaction.transactions))
 
     useEffect(() => {
         dispatch(fetchUserTransactions(userId))
@@ -29,25 +29,28 @@ export default function AllTransactions() {
             <div id="list-general-header">
                 <h3>User Transcations</h3>
             </div >
-                <div className='stocks_in_list'>
-                    <div id="list-header-container">
-                        <div>
-                            Stock
-                        </div>
-                        <div>
-                            Price per Share
-                        </div>
+            <div className='stocks_in_list'>
+                <div id="list-header-container">
+                    <div>
+                        Stock
                     </div>
-                    {userTransactions.map(transaction => (
-                        <div id="watched_trsc_container">
-                            <li key={transaction.id} id="single_watched_stock">
-                                    {transaction.stock_symbol}
-                            </li>
-
-                            <div>${transaction.price}</div>
-                        </div>
-                    ))}
+                    <div>
+                        Quantity
+                    </div>
+                    <div>
+                        Price per Share
+                    </div>
                 </div>
+                {userTransactions.map(transaction => (
+                    <div id="watched_trsc_container">
+                        <li key={transaction.id} id="single_watched_stock">
+                            {transaction.stock_symbol}
+                        </li>
+                        <div className="transaction_quantity">{transaction.quantity}</div>
+                        <div>${transaction.price}</div>
+                    </div>
+                ))}
+            </div>
 
         </div>
 

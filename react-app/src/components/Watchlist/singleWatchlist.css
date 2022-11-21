@@ -98,3 +98,8 @@ td {
 .singleWatchlist-table-row {
     padding: 10px;
 }
+
+.transaction_quantity {
+    /* justify-content: center; */
+    align-items: center;
+}

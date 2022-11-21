@@ -159,13 +159,13 @@ const Portfolio = () => {
 
           <br></br>
         </div>
-        {/* <div className='watchlist-wrapper'> */}
+        <div className='watchlist-wrapper'>
 
-        <Watchlists />
+          <Watchlists />
 
-        {/* <AllTransactions /> */}
+          <AllTransactions />
 
-        {/* </div> */}
+        </div>
       </div>
     </div>
   )

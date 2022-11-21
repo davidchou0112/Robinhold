@@ -246,11 +246,7 @@
   flex: 0.3;
   display: flex;
   flex-direction: column;
-  padding: 30px 30px 30px 30px;
-  border: solid white 1px;
   height: fit-content;
-  position: fixed;
-  margin-left: 55%;
 }
 
 .pf-graph {
