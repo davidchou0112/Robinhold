@@ -3,15 +3,16 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getSingleStock } from '../../store/stocks';
-import Stock from './Stock'
 import './singleStock.css'
 import Watchlists from '../Watchlist/allWatchlists';
 import AddToWatchlist from '../Watchlist/addToWatchlist';
 import TestingGraph from '../Portfolio/testingGraph'
+import News from '../News/News';
+import TransactionContainer from '../transactions/createTransaction';
 const SingleStock = () => {
     const dispatch = useDispatch();
     const { stockId } = useParams();
-    console.log('this is stockId__:', stockId)
+    // console.log('this is stockId__:', stockId)
 
     const singleStock = useSelector(state => state.stocks.singleStock)
     // console.log('this is state__:', useSelector(state => state))
@@ -19,16 +20,18 @@ const SingleStock = () => {
 
     useEffect(() => {
         dispatch(getSingleStock(stockId))
-    }, [])
+        // .then(() => setIsLoaded(true))
+    }, [dispatch, stockId])
 
     return (
         <div className='single_stock_wrapper'>
-            <div>
+            <div className='left-side'>
                 <h2>{singleStock.name}</h2>
                 <h1>${singleStock.price}</h1>
-                {/* <Stock /> */}
-                <TestingGraph />
-                <h2 className='header_label'>About (dynamic)</h2>
+                <div className='stock-graph'>
+                    <TestingGraph stockId={stockId} />
+                </div>
+                <h2 className='header_label'>About</h2>
                 <div className='stock_description'>
                     <p>{singleStock.description}</p>
                 </div>
@@ -52,7 +55,7 @@ const SingleStock = () => {
                     </div>
                 </div>
 
-                <h2 className='header_label'>Key statistics (hard coded)</h2>
+                <h2 className='header_label'>Key statistics </h2>
                 <div className='stock_details'>
                     <div>
                         <div className='detail_label'>Market cap</div>
@@ -96,27 +99,27 @@ const SingleStock = () => {
                     </div>
                 </div>
 
-                <h2 className='header_label'>Related lists</h2>
+                {/* <h2 className='header_label'>Related lists</h2>
                 <div className='stock_description'>
                     Insert Data Here
-                </div>
+                </div> */}
 
                 <h2 className='header_label'>News</h2>
-                <div className='stock_description'>
-                    <a href='https://finance.yahoo.com/quote/TSLA/'>Yahoo News (using 'a' tag)</a>
+                <div className='stock_description' id='news_list'>
+                    <News />
                 </div>
 
-                <h2 className='header_label'>Analyst ratings</h2>
+                <h2 className='header_label'>Analyst ratings </h2>
                 <div className='stock_description'>
-                    Insert Data Here
+                    <div className='analyst_rating'></div>
                 </div>
 
                 <h2 className='header_label'>Earnings</h2>
                 <div className='stock_description'>
-                    Insert Data Here
+                    <div className='earnings'></div>
                 </div>
 
-                <h2 className='header_label'>Shareholder Q&As</h2>
+                {/* <h2 className='header_label'>Shareholder Q&As</h2>
                 <div className='stock_description'>
                     Insert Data Here
                 </div>
@@ -124,16 +127,24 @@ const SingleStock = () => {
                 <h2 className='header_label'>People also own</h2>
                 <div className='stock_description'>
                     Insert Data Here
+                </div> */}
+
+                {/* <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small> */}
+                <small>Robinhold is a clone of Robinhood. All figures and values are arbitrary. Do not make any financial decisions based on our projections.</small>
+                <br></br>
+                <br></br>
+            </div>
+
+            <div className='right-side'>
+                <div className='transaction-wrapper'>
+                    <TransactionContainer />
                 </div>
-
-                <small>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, Member SIPC and a registered broker-dealer.</small>
+                <div className='watchlist'>
+                    <Watchlists />
+                    {/* <AddToWatchlist /> */}
+                </div>
             </div>
 
-            <div className='watchlist'>
-
-                {/* <Watchlists /> */}
-                <AddToWatchlist />
-            </div>
         </div>
 
     )

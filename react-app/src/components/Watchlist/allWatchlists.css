@@ -1,0 +1,129 @@
+.all-lists-container {
+    border: solid grey 1px;
+    width: 350px;
+    height: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-bottom: 50px;
+    /* background-color: rgb(30, 33, 36); */
+}
+
+.all-lists-wrapper {
+    /* border: solid grey 1px; */
+    width: 350px;
+    height: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* background-color: rgb(30, 33, 36); */
+}
+
+
+#list-general-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+#list-header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 2px;
+    padding-bottom: 5px;
+}
+
+.list-nav-links {
+    text-decoration: none;
+    width: fit-content;
+}
+
+#list-name {
+    font-weight: bold;
+    font-size: large;
+    padding: 5px;
+}
+
+#list-name:hover {
+    color: #0dc80b;
+}
+
+#list-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+
+#watched_stocks_container {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 5px;
+}
+
+#watched_trsc_container {
+    /* cursor: pointer; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 5px;
+}
+
+#watched_stocks_container:hover {
+    border: solid 2px rgb(48, 54, 58);
+    border-radius: 12px;
+}
+
+#stocks-in-list {
+    list-style: none;
+    padding: 5px;
+}
+
+#watchlist-icons-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.stocks_in_list {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.watchlist-page-icon {
+    cursor: pointer;
+}
+
+
+.watchlist-page-button {
+    cursor: pointer;
+    /* padding: 5px; */
+    /* background-color: red; */
+    border-radius: 10px;
+    /* border: 2px solid #0dc80b; */
+}
+
+#single_watched_stock {
+    list-style: none;
+}
+
+
+#link-to-single-stock {
+    text-decoration: none;
+}
+
+.update-delete-button{
+    cursor: pointer;
+}

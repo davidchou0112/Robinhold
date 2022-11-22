@@ -10,6 +10,10 @@ def email_valid(form, field):
     user = User.query.filter(User.email == email).first()
     if user:
         raise ValidationError('Email address is already in use.')
+    if not email.__contains__('@' and '.'):
+        raise ValidationError('Should be in email format')
+
+
 
 
 def username_valid(form, field):

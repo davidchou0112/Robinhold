@@ -1,26 +1,39 @@
 * {
   color: white;
   background-color: black;
-} */
+}
 
 .body-wrapper {
   background-color: black;
-  margin: 0;
   display: grid;
-  place-items: center;
   z-index: -1;
+  place-items: center;
 }
 
 .body-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   background-color: black;
   padding-top: 36px;
-  width: 1024px;
-  box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.7);
+  width: 70%;
+  /* box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.7); */
   color: white;
   /* z-index: 50; */
+
+  position: relative;
+  margin-left: 1%
+}
+
+.errorList {
+  display: flex;
+  list-style: none;
+  color: #ff385c;
+  font-size: 14px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #1e2124;
 }
 
 
@@ -28,17 +41,36 @@
 /* ------------LEFT SIDE---------------- */
 
 .portfolio-wrapper {
-  flex: 0.7;
+  /* flex: 0.7; */
   display: flex;
   flex-direction: column;
   background-color: black;
   margin-right: 100px;
+  width: 700px
 }
 
 .pf-left-container {
-  flex: 1;
+  /* flex: 1; */
   background-color: black;
+  flex-basis: auto;
   font-size: 12px;
+
+}
+
+.pf-graph {
+  height: 300px;
+  width: 700px;
+}
+
+.portfolio_label {
+  border-bottom: 1px groove gray;
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+.portfolio_news {
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .buying-power-header {
@@ -49,9 +81,28 @@
   margin-bottom: 60px;
 }
 
+.daily_movers_label {
+  border-top: 1px groove gray;
+  padding-top: 15px;
+}
+
+.daily_movers_small {
+  margin-top: 5px;
+  margin-bottom: 10px;
+
+}
+
 .pf-chart-wrapper {
   width: 100%;
-  /* margin-right: 100px; */
+  max-height: 305px
+    /* margin-right: 100px; */
+}
+
+#add-amount {
+  border: solid 1px grey;
+  width: 50px;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 /* --------------------time period-------------------------- */
@@ -92,49 +143,60 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 40px;
+  margin-top: 100px;
   border-radius: 5px;
   /* border: white solid 1px; */
 }
 
-.buying-power-container{
+/* .bp_label {
+  font-family: ;
+} */
+
+.buying-power-container {
   /* border: solid white 1px; */
   /* border-radius: 10px; */
 }
 
-.buying-power-wrapper:hover{
+.buying-power-wrapper:hover {
   cursor: pointer;
 }
 
 /* .add-funds-form-div{
   border: white solid 1px;
 } */
-.deposit-funds{
+
+
+.deposit-funds {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
+  font-size: 13.5px;
 
 }
 
-.form-break{
-    background-color: rgb(200, 200, 200);
-    width: 100%;
-    height:1px;
-    /* margin-left: -11px;
+.pf-form-break {
+  background-color: rgb(200, 200, 200);
+  width: 100%;
+  height: 1px;
+  /* margin-left: -11px;
     margin-top: 10px; */
-    margin-bottom: 10px;
-}
-
-.flex-between{
-  margin-top: 17px;
-  margin-bottom: 17px;
-  background-color: rgb(30,33,36);
-}
-
-.addFundForm{
   margin-bottom: 10px;
 }
 
-.Deposit-fund-button{
+.flex-between {
+  margin-top: 17px;
+  margin-bottom: 17px;
+  background-color: rgb(30, 33, 36);
+}
+
+.addFundForm {
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.Deposit-fund-button {
+  cursor: pointer;
   width: 100%;
   background-color: #00C805;
   width: 100px;
@@ -142,25 +204,42 @@
   font-weight: bold;
   border-radius: 5px;
   border: none;
+  margin-bottom: 5px;
 }
+
 .Deposit-fund-button:hover {
   background-color: rgb(12, 128, 30);
 }
 
-.add-funds-container{
+.add-funds-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+  flex-direction: column;
+  /* align-items: center; */
+  width: 200px;
+  border-radius: 3px;
+  background-color: #1e2124;
+  border: 0.5px solid rgb(200, 200, 200, 0.5);
 }
 
-.addFund-form{
+.grey-background-label {
+  background-color: #1e2124;
+  margin-top: 15px;
+  /* text-align: center; */
+
+}
+
+.addFund-form {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 400px;
+  width: 200px;
   margin: auto;
+  background-color: #1e2124;
+  align-items: center;
+}
 
+.deposit-message {
+  margin-top: 10px;
 }
 
 /* ---------------------RIGHT SIDE----------------------- */
@@ -168,9 +247,94 @@
   flex: 0.3;
   display: flex;
   flex-direction: column;
-  padding: 0px 30px 30px 30px;
-  border: solid white 1px;
+  height: fit-content;
 }
+
+.pf-graph {
+  height: 300px;
+}
+
+.team-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.molly-pic{
+  width: 300px;
+
+}
+.team-header{
+  margin-bottom: 50px;
+  margin-top: 40px;
+}
+
+.header-img-container{
+  display: flex;
+  flex-direction: row;
+}
+
+
+.stockLine{
+  margin-top: 75px;
+}
+
+
+.team-member-container{
+  margin-top: 20px;
+  margin-bottom: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.member-box{
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  /* border: solid green 1px; */
+  width: 300px;
+  /* height: 200px; */
+  align-items: center;
+}
+
+.house-crest{
+  width: 190px;
+  height: 160px;
+}
+
+.info-icon{
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+
+.team-member-info{
+  display: flex;
+  flex-direction: column;
+  /* margin-top: 20px; */
+}
+
+.tm-name{
+  margin-top: 20px;
+  text-align: center;
+}
+
+.social-icon{
+  width: 30px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.social-icon-li{
+  width: 30px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+/* .portfolio-chart-container {
+  display: flex;
+  flex-direction: column;
+} */
 
 /* .port_wrapper {
   display: flex;
@@ -218,10 +382,7 @@
   width: 100%;
 }
 
-.portfolio-chart-container {
-  display: flex;
-  flex-direction: column;
-}
+
 
 
 

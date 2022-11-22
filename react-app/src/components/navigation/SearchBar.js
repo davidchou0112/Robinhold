@@ -18,7 +18,7 @@ const SearchBar = () => {
 
   useEffect(() => {
     dispatch(getAllStocks())
-  }, [])
+  }, [dispatch])
 
 
   const handleFilter = (event) => {
@@ -55,12 +55,12 @@ const SearchBar = () => {
       </div>
       <div className='searchall'>
         {filteredData.length !== 0 && (
-        <div className='dataResult'>
-          {filteredData.map((value, key) => {
-            return <NavLink className='dataItem' key={value.id} to={`/stocks/${value.id}`} onClick={clearInput}>
-              <p className='dataName'>{value.symbol}</p></NavLink>
-          })}
-        </div>
+          <div className='dataResult'>
+            {filteredData.map((value, key) => {
+              return <NavLink className='dataItem' key={value.id} to={`/stocks/${value.id}`} onClick={clearInput}>
+                <p className='dataName'>{value.symbol}</p></NavLink>
+            })}
+          </div>
         )}
       </div>
     </div>

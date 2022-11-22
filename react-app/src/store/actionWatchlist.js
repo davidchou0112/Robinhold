@@ -1,84 +1,80 @@
-// ========== CONSTANTS ==========
-const ADD_TO_WATCHLIST = 'actionWatchlist/addToWatchlist';
-const DELETE_FROM_WATCHLIST = 'actionWatchlist/deleteFromWatchlist'
+// // ========== CONSTANTS ==========
+// const ADD_TO_WATCHLIST = 'actionWatchlist/addToWatchlist';
+// const DELETE_FROM_WATCHLIST = 'actionWatchlist/deleteFromWatchlist'
 
-// ========== REGULAR ACTION CREATOR ==========
-const addToWatchlist = (userId, stockId, watchlist) => {
-    return {
-        type: ADD_TO_WATCHLIST,
-        userId,
-        stockId,
-        watchlist
-    }
-}
+// // ========== REGULAR ACTION CREATOR ==========
+// const addToWatchlist = (stock) => {
+//     return {
+//         type: ADD_TO_WATCHLIST,
+//         stock
+//     }
+// }
 
-const deleteFromWatchlist = (userId, stockId, watchlist) => {
-    return {
-        type: DELETE_FROM_WATCHLIST,
-        userId,
-        stockId,
-        watchlist
-    }
-}
+// const deleteFromWatchlist = (userId, stockId) => {
+//     return {
+//         type: DELETE_FROM_WATCHLIST,
+//         userId,
+//         stockId
 
-// ========== THUNK ===========
-export const toWatchList = (userId, stockId, watchlist) => async (dispatch) => {
-    const response = await fetch(`/stocks/${stockId}`, {
-        method: ['POST', 'GET'],
-        headers: {
-            'Content-Type': "application/json"
-        },
-        body: JSON.stringify(watchlist)
-    })
-    if (response.ok) {
-        const newWatchlist = await response.json()
-        dispatch(addToWatchlist(newWatchlist, userId, stockId))
-    }
-}
+//     }
+// }
 
-export const fromWatchList = (userId, stockId, watchlist) => async (dispatch) => {
-    const response = await fetch(`/stocks/${stockId}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': "application/json"
-        },
-        body: JSON.stringify(watchlist)
-    })
-    if (response.ok) {
-        const newWatchlist = await response.json()
-        dispatch(deleteFromWatchlist(newWatchlist, userId, stockId))
-    }
-}
+// // ========== THUNK ===========
+// export const toWatchList = (stockId, watchlistId, updatedWatchlist) => async (dispatch) => {
+//     // const response = await fetch(`/watchlists/${watchlistId}/${stockId}`, {
+//     const response = await fetch(`/api/watchlists/add`, {
 
-// export const
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': "application/json"
+//         },
+//         body: JSON.stringify(updatedWatchlist)
+//     })
+//     if (response.ok) {
+//         const stock = await response.json()
+//         dispatch(addToWatchlist(stock))
+//         // return stock
+//     }
+// }
 
-// ========== STATE & REDUCER ===========
-const initialState = { allWatchlists: {}, singleWatchlist: {} }
-const addedToWatchlist = (state = initialState, action) => {
+// export const fromWatchList = (userId, stockId) => async (dispatch) => {
+//     const response = await fetch(`/api/stocks/${stockId}`, {
+//         method: 'DELETE'
+//     })
+//     if (response.ok) {
+//         // const newWatchlist = await response.json()
+//         await dispatch(deleteFromWatchlist(userId, stockId))
+//     }
+// }
 
-    let newState = {};
-    switch (action.type) {
-        case ADD_TO_WATCHLIST:
-            return {
-                ...state,
-                allWatchlists: {
-                    ...state.allWatchlists,
-                    ...action.watchlist
-                },
-                singleWatchlist: {}
-            }
+// // export const
 
-        case DELETE_FROM_WATCHLIST:
-            newState = {
-                singleWatchlist: {},
-                allWatchlists: { ...state.allWatchlists }
-            }
-            delete newState.allWatchlists[action.watchlistId]
-            return newState
+// // ========== STATE & REDUCER ===========
+// const initialState = { allWatchlists: {}, singleWatchlist: {} }
+// const addedToWatchlist = (state = initialState, action) => {
 
-        default:
-            return state
-    }
-}
+//     let newState = {};
+//     switch (action.type) {
+//         case ADD_TO_WATCHLIST:
+//             return {
+//                 allWatchlists: {
+//                     ...state.allWatchlists,
+//                     ...action.stock
+//                 },
+//                 singleWatchlist: {}
+//             }
 
-export default addedToWatchlist;
+//         case DELETE_FROM_WATCHLIST:
+//             newState = {
+//                 singleWatchlist: {},
+//                 allWatchlists: { ...state.allWatchlists }
+//             }
+//             delete newState.allWatchlists[action.watchlistId]
+//             return newState
+
+//         default:
+//             return state
+//     }
+// }
+
+// export default addedToWatchlist;

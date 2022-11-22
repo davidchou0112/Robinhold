@@ -1,0 +1,50 @@
+.update-watchlist-form-container {
+    height: 100%;
+    background-color: rgb(30, 33,36);
+}
+
+#update-watchlist-form {
+    /* background-color: green; */
+}
+
+#update-form-inside {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(30, 33,36);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+
+}
+
+#updated-input {
+    margin: 10px;
+    border-radius: 5px;
+    border: 2px white solid;
+    background-color: rgb(30, 33,36);
+    font-size: 15px;
+    padding: 15px;
+    width: 80%;
+
+}
+
+#watchlist-update-submit-btn {
+    cursor: pointer;
+    background-color: #0dc80b;
+    color: azure;
+    height: 50px;
+    width: 60%;
+    border-radius: 20px;
+    border: #0dc80b;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 15px;
+    margin: 10px;
+}
+
+#formLabel{
+    margin-top: 25px;
+    background-color: transparent;
+}

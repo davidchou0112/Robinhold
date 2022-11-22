@@ -4,17 +4,20 @@ import "../../context/Modal.css"
 import UpdateWatchlistForm from "./updateWatchlistForm";
 
 
-function UpdateWatchlistModal({watchlistId}){
+function UpdateWatchlistModal({watchlistId,watchlistName}){
     const [ showModal, setShowModal ] = useState(false)
 
     return (
         <>
-            <button onClick={()=> setShowModal(true)}>Update</button>
+            <button className="watchlist-page-icon" onClick={()=> setShowModal(true)}>
+            <i class="fa-solid fa-pen"></i>
+            </button>
             {showModal && (
                 <Modal onClose={()=>setShowModal(false)}>
                     < UpdateWatchlistForm
                     watchlistId={watchlistId}
                     setShowModal={setShowModal}
+                    watchlistName={watchlistName}
                     />
                 </Modal>
             )}
