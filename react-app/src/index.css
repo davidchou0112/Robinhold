@@ -1,1 +1,9 @@
 /* TODO Add site wide styles */
+*{
+  margin: 0;
+  font-family:"Capsule Sans Text",sans-serif;
+  background-color: black;
+  color: white;
+  /* color:white;
+  background-color: white; */
+}

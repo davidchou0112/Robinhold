@@ -1,0 +1,188 @@
+.analyst_rating {
+    background-image: url('../images/robinhold_analyst_ratings_testing.jpg');
+    background-repeat: no-repeat;
+    height: 350px;
+}
+
+.detail_label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.earnings {
+    background-image: url('../images/robinhold_earnings_testing.jpg');
+    background-repeat: no-repeat;
+    height: 225px;
+    margin-left: 15px;
+}
+
+.header_label {
+    border-bottom: 1px groove gray;
+    padding-bottom: 5px;
+    padding-top: 3%;
+}
+
+#news_list {
+    padding-bottom: 8px;
+}
+
+.single_stock_wrapper {
+    /* display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: black;
+    padding-top: 36px;
+    width: 70%;
+    color: white;
+    position: relative;
+    margin-left: 15%; */
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    margin-right: 100px;
+    width: 700px;
+    margin-left: 12%;
+}
+
+.stock_details {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 20px 0px 20px 0px;
+
+}
+
+.stock_description {
+    margin: 20px 0px 20px 0px;
+    padding-top: 5px;
+}
+
+.detail_details {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.watchlist {
+    padding: 5px;
+}
+
+.top-portion {
+    display: flex;
+    flex-direction: row;
+}
+
+.stock-graph {
+    margin-right: 100px;
+}
+
+.transaction-wrapper {
+    margin-bottom: 100px;
+    margin-left: 18px
+}
+
+
+.left-side {
+    margin-right: 13%;
+    width: 700px;
+}
+
+.BS-button {
+    background-color: grey;
+    border: solid green 1px;
+}
+
+.trsc-type {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    width: 100px;
+    height: 10px;
+    border-bottom: 2px solid transparent;
+    padding: 15px 0;
+    /* border-radius: 5px; */
+    background-color: #1e2124;
+
+
+}
+
+.trsc-type.active-trsc-type {
+    cursor: default;
+    border-bottom: 2px solid rgb(66, 147, 66);
+    /* background-color: grey; */
+}
+
+
+.submit-order {
+    cursor: pointer;
+    width: 100%;
+    background-color: #00C805;
+    margin-top: 15px;
+    width: 100px;
+    height: 35px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+}
+
+.buy-sell-tab {
+    display: flex;
+    flex-direction: row;
+    /* border: solid green 1px; */
+    /* border-radius: 5px; */
+    width: 200px;
+    background-color: #1e2124;
+
+}
+
+.trsc-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #1e2124;
+    border: 0.5px solid rgb(200, 200, 200, 0.5);
+}
+
+.trsc-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #1e2124;
+    border: 0.5px solid #1e2124;
+}
+
+.trsc-form-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding-bottom: 10px;
+    font-size: 15px;
+    background-color: #1e2124;
+
+}
+
+.grey-background {
+    background-color: #1e2124;
+    margin-top: 15px;
+    text-align: center;
+}
+
+#trsc-input {
+    width: 75px;
+    height: 25px;
+    border-radius: 4px;
+    border: 1px rgb(200, 200, 200, 0.5) solid;
+}
+
+#trsc-input:focus {
+    border-color: rgba(17, 203, 20, 0.772);
+}
+
+.form-break {
+    background-color: rgb(200, 200, 200, 0.5);
+    width: 360px;
+    height: 1px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}

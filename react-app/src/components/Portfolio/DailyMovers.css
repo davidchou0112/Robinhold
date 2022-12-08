@@ -1,0 +1,52 @@
+.daily_movers_wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    margin: 10px 5px 5px 5px;
+    padding-bottom: 30px;
+    border-bottom: 1px groove gray;
+}
+
+.daily_movers_1 {
+    border: 1px solid gray;
+    border-radius: 12px;
+    width: 92%;
+    height: 175px;
+    background-image: url('../images/daily_movers_testing_1.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.daily_movers_2 {
+    border: 1px solid gray;
+    border-radius: 12px;
+    width: 92%;
+    height: 175px;
+    background-image: url('../images/daily_movers_testing_2.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.daily_movers_3 {
+    border: 1px solid gray;
+    border-radius: 12px;
+    width: 92%;
+    height: 175px;
+    background-image: url('../images/daily_movers_testing_3.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.daily_movers_4 {
+    border: 1px solid gray;
+    border-radius: 12px;
+    width: 92%;
+    height: 175px;
+    background-image: url('../images/daily_movers_testing_4.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}

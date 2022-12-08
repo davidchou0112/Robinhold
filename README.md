@@ -1,3 +1,34 @@
+## Welcome to Robinhold! 
+### Robinhold, a Robinhood clone, is a website for users to trade stocks, exchange-traded funds, and cryptocurrencies with zero commission.
+
+## Home:
+
+<a href="https://drive.google.com/uc?export=view&id=1wqsGxDD8GraKPd4ShbXNDTjDK1MM9Thi"><img src="https://drive.google.com/uc?export=view&id=1wqsGxDD8GraKPd4ShbXNDTjDK1MM9Thi" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
+
+## Login:
+      
+<a href="https://drive.google.com/uc?export=view&id=1ex_lOeSBCoJKLnA2SkslV5oTpTLR59v2"><img src="https://drive.google.com/uc?export=view&id=1ex_lOeSBCoJKLnA2SkslV5oTpTLR59v2" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
+      
+## Sign Up:      
+      
+<a href="https://drive.google.com/uc?export=view&id=1StkaBs1_RnSVe3FJjwWow6TIY76qgYnl"><img src="https://drive.google.com/uc?export=view&id=1StkaBs1_RnSVe3FJjwWow6TIY76qgYnl" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
+      
+## Portfolio:
+      
+<a href="https://drive.google.com/uc?export=view&id=1hvEfKUhAbDInaEFjqH5Y2klGCQxjr8T9"><img src="https://drive.google.com/uc?export=view&id=1hvEfKUhAbDInaEFjqH5Y2klGCQxjr8T9" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
+      
+## Single List:
+      
+<a href="https://drive.google.com/uc?export=view&id=1vJonFMvql3ai6Mz_B1N3iWD31_jlZlTq"><img src="https://drive.google.com/uc?export=view&id=1vJonFMvql3ai6Mz_B1N3iWD31_jlZlTq" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
+      
+## Single Stock:
+      
+<a href="https://drive.google.com/uc?export=view&id=195pKYN-RqeGPTNq312lgxoXvD28bt8o5"><img src="https://drive.google.com/uc?export=view&id=195pKYN-RqeGPTNq312lgxoXvD28bt8o5" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
+      
+## Meet the Team:
+<a href="https://drive.google.com/uc?export=view&id=10ez8htEZPcPwZjsbUoDY6c--TmAAg8C_"><img src="https://drive.google.com/uc?export=view&id=10ez8htEZPcPwZjsbUoDY6c--TmAAg8C_" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
+
+
 # Flask React Project
 
 This is the starter for the Flask React project.

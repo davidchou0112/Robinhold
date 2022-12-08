@@ -1,0 +1,49 @@
+.learn_wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+}
+
+.learn1 {
+    /* border: 1px solid white; */
+    border-radius: 12px;
+    width: 94%;
+    height: 158px;
+    background-image: url('../images/learn_testing_1.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.learn2 {
+    /* border: 1px solid white; */
+    border-radius: 12px;
+    width: 94%;
+    height: 158px;
+    background-image: url('../images/learn_testing_2.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.learn3 {
+    /* border: 1px solid white; */
+    border-radius: 12px;
+    width: 94%;
+    height: 158px;
+    background-image: url('../images/learn_testing_3.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.learn4 {
+    /* border: 1px solid white; */
+    border-radius: 12px;
+    width: 94%;
+    height: 158px;
+    background-image: url('../images/learn_testing_4.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}

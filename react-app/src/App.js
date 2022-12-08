@@ -3,18 +3,29 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
+import NavBar from './components/navigation/NavBar';
+
+import MainPage from './components/navigation/MainPage';
+// import Stock from './components/Stock/Stock'
+import Watchlists from './components/Watchlist/allWatchlists';
+
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import AllStocks from './components/Stock/allstocks';
+import SingleStock from './components/Stock/singleStock';
+import SingleWatchlist from './components/Watchlist/singleWatchlist';
+import LineGraph from './components/Portfolio/LineGraph';
+import Stock from './components/Stock/Stock';
+import TeamIntro from './components/Portfolio/TeamIntro';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -34,16 +45,36 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        {/* <ProtectedRoute path='/users' exact={true} >
+          <UsersList />
+        </ProtectedRoute> */}
+        {/* <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <MainPage />
+        </Route>
+        <Route path='/stocks/:stockId' exact={true}>
+          <SingleStock />
+        </Route>
+        {/* <Route path='/stocks' exact={true}>
+          <AllStocks />
+        </Route> */}
+        <Route path='/watchlists/:watchlistId' exact={true}>
+          <SingleWatchlist />
+        </Route>
+        {/* <Route path='/testing' exact={true}>
+          <Stock />
+        </Route> */}
+        <Route path='/testing' exact={true}>
+          <Stock />
+        </Route>
+        <Route path='/team' exact={true}>
+          <TeamIntro />
         </Route>
       </Switch>
+      <Route>
+      </Route>
     </BrowserRouter>
   );
 }
