@@ -3,19 +3,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Line } from "react-chartjs-2";
 import * as stockActions from '../../store/stocks'
 
-function TestingGraph() {
+function TestingGraph({stockId}) {
   const [graphData, setGraphData] = useState([]);
   // const []
   const [isActive, setIsActive] = useState(false)
   const dispatch = useDispatch()
   const stockObj = useSelector(state => state.stocks.singleStock)
-  const stockId = stockObj.id
   const StockSymbol = stockObj.symbol
 
   useEffect(() => {
     dispatch(stockActions.getSingleStock(stockId))
     fetchLiveStock()
-  }, [dispatch, stockId])
+  }, [stockId])
 
   // useEffect(() => {
   //   // createMockData();
@@ -33,7 +32,7 @@ function TestingGraph() {
 
 
 
-  function fetchLiveStock(timeSpan) {
+  async function fetchLiveStock(timeSpan) {
     let dataArr = []
     const API_KEY = 'FZ0Z77IPDL0DZW40';
     const API_KEY2 = 'VKXG6NIW2LT1ELQ8'
@@ -57,10 +56,18 @@ function TestingGraph() {
     }
 
 
-    fetch(API_Call)
+    await fetch(API_Call)
       .then(
         function (response) {
-          return response.json()
+          if(response.status < 400) {
+            console.log('Byte dance here====================', response)
+
+            return response.json()
+          }
+          else {
+            console.log('flashing words ********************************')
+            return
+          }
         }
       )
       .then(

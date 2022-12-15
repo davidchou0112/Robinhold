@@ -21,7 +21,7 @@ const SingleStock = () => {
     useEffect(() => {
         dispatch(getSingleStock(stockId))
         // .then(() => setIsLoaded(true))
-    }, [dispatch, stockId])
+    }, [stockId])
 
     return (
         <div className='single_stock_wrapper'>
